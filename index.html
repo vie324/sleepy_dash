@@ -1734,6 +1734,11 @@
                         <i data-lucide="calendar" class="w-6 h-6 md:w-4 md:h-4"></i>
                         <span class="hidden md:inline">カレンダー</span>
                     </button>
+                    <!-- Membership & Ticket Tab -->
+                    <button onclick="switchTab('membership')" id="tab-membership" class="tab-btn py-2 px-3 md:py-3 md:px-4 font-medium text-sm text-surface-500 flex items-center justify-center gap-2" title="会員・回数券">
+                        <i data-lucide="credit-card" class="w-6 h-6 md:w-4 md:h-4"></i>
+                        <span class="hidden md:inline">会員・回数券</span>
+                    </button>
                     <!-- Goal Setting Tab -->
                     <button onclick="switchTab('goal')" id="tab-goal" class="tab-btn py-2 px-3 md:py-3 md:px-4 font-medium text-sm text-surface-500 flex items-center justify-center gap-2" title="売上目標設定">
                         <i data-lucide="target" class="w-6 h-6 md:w-4 md:h-4"></i>
@@ -3125,6 +3130,273 @@
                     </div>
                 </div>
             </section>
+
+            <!-- TAB: MEMBERSHIP & TICKETS -->
+            <section id="content-membership" class="tab-content hidden">
+                <h2 class="text-2xl font-display font-bold text-accent-800 mb-6 flex items-center gap-2">
+                    <i data-lucide="credit-card" class="w-6 h-6 text-primary-500"></i>
+                    会員・回数券管理
+                </h2>
+
+                <!-- Sub-tab navigation -->
+                <div class="flex gap-2 mb-6">
+                    <button onclick="switchMembershipSubTab('subscription')" id="membership-subtab-subscription" class="membership-subtab-btn px-4 py-2 rounded-lg text-sm font-medium bg-accent-700 text-white">サブスク会員管理</button>
+                    <button onclick="switchMembershipSubTab('tickets')" id="membership-subtab-tickets" class="membership-subtab-btn px-4 py-2 rounded-lg text-sm font-medium bg-surface-200 text-surface-600">回数券管理</button>
+                </div>
+
+                <!-- ===== SUBSCRIPTION MANAGEMENT ===== -->
+                <div id="membership-content-subscription">
+                    <!-- Store & Month Selectors -->
+                    <div class="premium-card p-6 mb-6">
+                        <div class="flex flex-wrap items-end gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">店舗</label>
+                                <select id="sub-store-selector" onchange="renderSubscriptionDashboard()" class="px-3 py-2 border border-sleepy-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-400">
+                                    <option value="all">全店舗</option>
+                                    <option value="ebisu">恵比寿駅前店</option>
+                                    <option value="kadomori">大阪KADOMORI店</option>
+                                    <option value="fukushima">福島店</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">表示月</label>
+                                <input type="month" id="sub-month-selector" onchange="renderSubscriptionDashboard()" class="px-3 py-2 border border-sleepy-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-400">
+                            </div>
+                            <button onclick="openSubscriptionEditModal()" class="btn-primary py-2 px-4 text-sm flex items-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i>月次データ登録
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">現在の会員数</p>
+                            <p class="text-3xl font-bold text-accent-800" id="sub-current-members">0</p>
+                            <p class="text-xs text-surface-400">名</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">当月入会</p>
+                            <p class="text-3xl font-bold text-sage-500" id="sub-new-members">0</p>
+                            <p class="text-xs text-surface-400">名</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">当月退会</p>
+                            <p class="text-3xl font-bold text-rose-500" id="sub-cancelled-members">0</p>
+                            <p class="text-xs text-surface-400">名</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">月間増減</p>
+                            <p class="text-3xl font-bold" id="sub-net-change">0</p>
+                            <p class="text-xs text-surface-400">名</p>
+                        </div>
+                    </div>
+
+                    <!-- Membership Rate & Revenue -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">サブスク月間売上</p>
+                            <p class="text-2xl font-bold text-primary-500" id="sub-monthly-revenue">¥0</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">平均継続率（直近6ヶ月）</p>
+                            <p class="text-2xl font-bold text-accent-700" id="sub-retention-rate">--%</p>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Trend Table -->
+                    <div class="premium-card p-6">
+                        <h3 class="text-lg font-display font-bold text-accent-900 mb-4">月別推移</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b-2 border-sleepy-300">
+                                        <th class="py-2 px-3 text-left text-xs font-medium text-sleepy-800">月</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">月初会員数</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">入会</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">退会</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">月末会員数</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">増減</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">継続率</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">月額単価</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">月間売上</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sub-trend-table-body" class="divide-y divide-sleepy-100">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== TICKET MANAGEMENT ===== -->
+                <div id="membership-content-tickets" class="hidden">
+                    <!-- Store Selector & Add -->
+                    <div class="premium-card p-6 mb-6">
+                        <div class="flex flex-wrap items-end gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">店舗</label>
+                                <select id="ticket-store-selector" onchange="renderTicketDashboard()" class="px-3 py-2 border border-sleepy-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-400">
+                                    <option value="all">全店舗</option>
+                                    <option value="ebisu">恵比寿駅前店</option>
+                                    <option value="kadomori">大阪KADOMORI店</option>
+                                    <option value="fukushima">福島店</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">ステータス</label>
+                                <select id="ticket-status-filter" onchange="renderTicketDashboard()" class="px-3 py-2 border border-sleepy-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-400">
+                                    <option value="active">利用中</option>
+                                    <option value="all">すべて</option>
+                                    <option value="completed">消化済</option>
+                                    <option value="expired">期限切れ</option>
+                                </select>
+                            </div>
+                            <button onclick="openTicketModal()" class="btn-primary py-2 px-4 text-sm flex items-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i>回数券を登録
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">有効回数券</p>
+                            <p class="text-3xl font-bold text-accent-800" id="ticket-active-count">0</p>
+                            <p class="text-xs text-surface-400">件</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">残回数合計</p>
+                            <p class="text-3xl font-bold text-primary-500" id="ticket-remaining-count">0</p>
+                            <p class="text-xs text-surface-400">回</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">残役務金額</p>
+                            <p class="text-2xl font-bold text-rose-500" id="ticket-remaining-amount">¥0</p>
+                        </div>
+                        <div class="premium-card p-4 text-center">
+                            <p class="text-xs text-surface-500 mb-1">消化率</p>
+                            <p class="text-3xl font-bold text-sage-500" id="ticket-usage-rate">0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Ticket List -->
+                    <div class="premium-card p-6">
+                        <h3 class="text-lg font-display font-bold text-accent-900 mb-4">回数券一覧</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b-2 border-sleepy-300">
+                                        <th class="py-2 px-3 text-left text-xs font-medium text-sleepy-800">顧客名</th>
+                                        <th class="py-2 px-3 text-left text-xs font-medium text-sleepy-800">店舗</th>
+                                        <th class="py-2 px-3 text-left text-xs font-medium text-sleepy-800">券種</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">購入日</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">総回数</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">使用済</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">残回数</th>
+                                        <th class="py-2 px-3 text-right text-xs font-medium text-sleepy-800">金額</th>
+                                        <th class="py-2 px-3 text-right text-xs font-medium text-sleepy-800">残役務額</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">状態</th>
+                                        <th class="py-2 px-3 text-center text-xs font-medium text-sleepy-800">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ticket-table-body" class="divide-y divide-sleepy-100">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modal: Subscription Edit -->
+            <div id="subscription-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[9999] hidden flex items-center justify-center p-4">
+                <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+                    <h3 class="text-lg font-display font-bold text-accent-800 mb-4">サブスク月次データ登録</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">対象月</label>
+                            <input type="month" id="sub-edit-month" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">店舗</label>
+                            <select id="sub-edit-store" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                                <option value="ebisu">恵比寿駅前店</option>
+                                <option value="kadomori">大阪KADOMORI店</option>
+                                <option value="fukushima">福島店</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">月初会員数</label>
+                            <input type="number" id="sub-edit-start" min="0" value="0" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">当月入会数</label>
+                            <input type="number" id="sub-edit-new" min="0" value="0" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">当月退会数</label>
+                            <input type="number" id="sub-edit-cancelled" min="0" value="0" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">月額単価 (¥)</label>
+                            <input type="number" id="sub-edit-fee" min="0" value="9800" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-6">
+                        <button onclick="saveSubscriptionData()" class="flex-1 btn-primary py-2 text-sm">保存</button>
+                        <button onclick="closeSubscriptionModal()" class="flex-1 btn-secondary py-2 text-sm">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal: Ticket Edit -->
+            <div id="ticket-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[9999] hidden flex items-center justify-center p-4">
+                <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+                    <h3 class="text-lg font-display font-bold text-accent-800 mb-4" id="ticket-modal-title">回数券登録</h3>
+                    <input type="hidden" id="ticket-edit-id">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">顧客名</label>
+                            <input type="text" id="ticket-edit-customer" placeholder="例: 田中太郎" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">店舗</label>
+                            <select id="ticket-edit-store" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                                <option value="ebisu">恵比寿駅前店</option>
+                                <option value="kadomori">大阪KADOMORI店</option>
+                                <option value="fukushima">福島店</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">券種名</label>
+                            <input type="text" id="ticket-edit-name" placeholder="例: 5回券" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">購入日</label>
+                            <input type="date" id="ticket-edit-date" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">総回数</label>
+                                <input type="number" id="ticket-edit-total" min="1" value="5" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-surface-600 mb-1">使用済回数</label>
+                                <input type="number" id="ticket-edit-used" min="0" value="0" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-surface-600 mb-1">金額 (¥)</label>
+                            <input type="number" id="ticket-edit-price" min="0" value="0" class="w-full px-3 py-2 border border-sleepy-300 rounded-lg text-sm">
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-6">
+                        <button onclick="saveTicket()" class="flex-1 btn-primary py-2 text-sm">保存</button>
+                        <button onclick="closeTicketModal()" class="flex-1 btn-secondary py-2 text-sm">キャンセル</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- TAB: SETTINGS -->
             <section id="content-settings" class="tab-content hidden space-y-8 animate-fade-in">
@@ -7071,6 +7343,13 @@
                 }
             }
 
+            // Load membership data when switching to membership tab
+            if (id === 'membership') {
+                renderSubscriptionDashboard();
+                renderTicketDashboard();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+
             // Load counseling results when switching to staff-dashboard or counseling-results tab
             if (id === 'staff-dashboard' || id === 'counseling-results') {
                 if (customerData.length === 0) {
@@ -8531,7 +8810,390 @@
 
             // ダークモードでチャートを初期化した後に更新
             setTimeout(() => updateChartsForDarkMode(), 100);
+
+            // サブスク月セレクター初期化
+            const subMonthSel = document.getElementById('sub-month-selector');
+            if (subMonthSel) {
+                const now = new Date();
+                subMonthSel.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+            }
         });
+
+        // ========================================
+        // 会員・回数券管理
+        // ========================================
+
+        const SUB_STORAGE_KEY = 'sleepy_subscription_data';
+        const TICKET_STORAGE_KEY = 'sleepy_ticket_data';
+
+        // --- サブタブ切り替え ---
+        function switchMembershipSubTab(subTabId) {
+            document.getElementById('membership-content-subscription').classList.toggle('hidden', subTabId !== 'subscription');
+            document.getElementById('membership-content-tickets').classList.toggle('hidden', subTabId !== 'tickets');
+            document.querySelectorAll('.membership-subtab-btn').forEach(btn => {
+                btn.classList.remove('bg-accent-700', 'text-white');
+                btn.classList.add('bg-surface-200', 'text-surface-600');
+            });
+            const active = document.getElementById(`membership-subtab-${subTabId}`);
+            active.classList.remove('bg-surface-200', 'text-surface-600');
+            active.classList.add('bg-accent-700', 'text-white');
+        }
+
+        // ========================================
+        // サブスク会員管理
+        // ========================================
+
+        function loadSubscriptionData() {
+            try { return JSON.parse(localStorage.getItem(SUB_STORAGE_KEY)) || {}; } catch { return {}; }
+        }
+        function saveSubscriptionStorage(data) {
+            localStorage.setItem(SUB_STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function openSubscriptionEditModal(yearMonth, storeId) {
+            const modal = document.getElementById('subscription-modal');
+            const now = new Date();
+            const monthInput = document.getElementById('sub-edit-month');
+
+            if (yearMonth) {
+                // 既存データ編集
+                const [y, m] = yearMonth.split('/');
+                monthInput.value = `${y}-${m.padStart(2, '0')}`;
+                const data = loadSubscriptionData();
+                const record = data[yearMonth]?.[storeId] || {};
+                document.getElementById('sub-edit-store').value = storeId || 'ebisu';
+                document.getElementById('sub-edit-start').value = record.startCount || 0;
+                document.getElementById('sub-edit-new').value = record.newMembers || 0;
+                document.getElementById('sub-edit-cancelled').value = record.cancelled || 0;
+                document.getElementById('sub-edit-fee').value = record.monthlyFee || 9800;
+            } else {
+                monthInput.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+                const selectedStore = document.getElementById('sub-store-selector').value;
+                document.getElementById('sub-edit-store').value = selectedStore === 'all' ? 'ebisu' : selectedStore;
+                document.getElementById('sub-edit-start').value = 0;
+                document.getElementById('sub-edit-new').value = 0;
+                document.getElementById('sub-edit-cancelled').value = 0;
+                document.getElementById('sub-edit-fee').value = 9800;
+
+                // 前月データから月初会員数を自動セット
+                const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+                const prevKey = `${prevMonth.getFullYear()}/${prevMonth.getMonth() + 1}`;
+                const store = document.getElementById('sub-edit-store').value;
+                const data = loadSubscriptionData();
+                const prev = data[prevKey]?.[store];
+                if (prev) {
+                    document.getElementById('sub-edit-start').value = (prev.startCount || 0) + (prev.newMembers || 0) - (prev.cancelled || 0);
+                }
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeSubscriptionModal() {
+            document.getElementById('subscription-modal').classList.add('hidden');
+        }
+
+        function saveSubscriptionData() {
+            const monthVal = document.getElementById('sub-edit-month').value;
+            if (!monthVal) { alert('対象月を選択してください'); return; }
+            const [y, m] = monthVal.split('-');
+            const yearMonth = `${y}/${parseInt(m)}`;
+            const store = document.getElementById('sub-edit-store').value;
+
+            const data = loadSubscriptionData();
+            if (!data[yearMonth]) data[yearMonth] = {};
+            data[yearMonth][store] = {
+                startCount: parseInt(document.getElementById('sub-edit-start').value) || 0,
+                newMembers: parseInt(document.getElementById('sub-edit-new').value) || 0,
+                cancelled: parseInt(document.getElementById('sub-edit-cancelled').value) || 0,
+                monthlyFee: parseInt(document.getElementById('sub-edit-fee').value) || 0
+            };
+
+            saveSubscriptionStorage(data);
+            closeSubscriptionModal();
+            renderSubscriptionDashboard();
+        }
+
+        function deleteSubscriptionRecord(yearMonth, store) {
+            if (!confirm(`${yearMonth} ${getStoreNameById(store)} のデータを削除しますか？`)) return;
+            const data = loadSubscriptionData();
+            if (data[yearMonth]) {
+                delete data[yearMonth][store];
+                if (Object.keys(data[yearMonth]).length === 0) delete data[yearMonth];
+            }
+            saveSubscriptionStorage(data);
+            renderSubscriptionDashboard();
+        }
+
+        function getStoreNameById(id) {
+            const map = { ebisu: '恵比寿駅前店', kadomori: '大阪KADOMORI店', fukushima: '福島店' };
+            return map[id] || id;
+        }
+
+        function renderSubscriptionDashboard() {
+            const data = loadSubscriptionData();
+            const storeFilter = document.getElementById('sub-store-selector')?.value || 'all';
+            const monthVal = document.getElementById('sub-month-selector')?.value || '';
+
+            // 月別ソートされたキーを取得
+            const allMonths = Object.keys(data).sort((a, b) => {
+                const [ay, am] = a.split('/').map(Number);
+                const [by, bm] = b.split('/').map(Number);
+                return (ay * 12 + am) - (by * 12 + bm);
+            });
+
+            // 選択月のサマリー計算
+            let selectedYM = '';
+            if (monthVal) {
+                const [y, m] = monthVal.split('-');
+                selectedYM = `${y}/${parseInt(m)}`;
+            }
+
+            let currentMembers = 0, newMembers = 0, cancelled = 0, revenue = 0;
+            const stores = storeFilter === 'all' ? ['ebisu', 'kadomori', 'fukushima'] : [storeFilter];
+
+            if (selectedYM && data[selectedYM]) {
+                stores.forEach(s => {
+                    const r = data[selectedYM]?.[s];
+                    if (r) {
+                        const endCount = (r.startCount || 0) + (r.newMembers || 0) - (r.cancelled || 0);
+                        currentMembers += endCount;
+                        newMembers += r.newMembers || 0;
+                        cancelled += r.cancelled || 0;
+                        revenue += endCount * (r.monthlyFee || 0);
+                    }
+                });
+            }
+
+            const netChange = newMembers - cancelled;
+            document.getElementById('sub-current-members').textContent = currentMembers;
+            document.getElementById('sub-new-members').textContent = newMembers;
+            document.getElementById('sub-cancelled-members').textContent = cancelled;
+            const netEl = document.getElementById('sub-net-change');
+            netEl.textContent = (netChange >= 0 ? '+' : '') + netChange;
+            netEl.className = `text-3xl font-bold ${netChange >= 0 ? 'text-sage-500' : 'text-rose-500'}`;
+            document.getElementById('sub-monthly-revenue').textContent = `¥${revenue.toLocaleString()}`;
+
+            // 平均継続率（直近6ヶ月）
+            let retentionRates = [];
+            const recentMonths = allMonths.slice(-6);
+            recentMonths.forEach(ym => {
+                stores.forEach(s => {
+                    const r = data[ym]?.[s];
+                    if (r && r.startCount > 0) {
+                        const retained = r.startCount - (r.cancelled || 0);
+                        retentionRates.push(retained / r.startCount);
+                    }
+                });
+            });
+            const avgRetention = retentionRates.length > 0 ? (retentionRates.reduce((a, b) => a + b, 0) / retentionRates.length * 100).toFixed(1) : '--';
+            document.getElementById('sub-retention-rate').textContent = `${avgRetention}%`;
+
+            // 月別推移テーブル
+            const tbody = document.getElementById('sub-trend-table-body');
+            let rows = '';
+            allMonths.forEach(ym => {
+                stores.forEach(s => {
+                    const r = data[ym]?.[s];
+                    if (!r) return;
+                    const endCount = (r.startCount || 0) + (r.newMembers || 0) - (r.cancelled || 0);
+                    const change = (r.newMembers || 0) - (r.cancelled || 0);
+                    const retention = r.startCount > 0 ? ((r.startCount - (r.cancelled || 0)) / r.startCount * 100).toFixed(1) : '--';
+                    const monthRevenue = endCount * (r.monthlyFee || 0);
+                    rows += `<tr class="hover:bg-surface-50">
+                        <td class="py-2 px-3 text-left font-medium">${ym}</td>
+                        <td class="py-2 px-3 text-center">${storeFilter === 'all' ? getStoreNameById(s) + '<br>' : ''}${(r.startCount || 0).toLocaleString()}</td>
+                        <td class="py-2 px-3 text-center text-sage-600 font-medium">+${(r.newMembers || 0)}</td>
+                        <td class="py-2 px-3 text-center text-rose-600 font-medium">-${(r.cancelled || 0)}</td>
+                        <td class="py-2 px-3 text-center font-bold">${endCount.toLocaleString()}</td>
+                        <td class="py-2 px-3 text-center font-medium ${change >= 0 ? 'text-sage-600' : 'text-rose-600'}">${change >= 0 ? '+' : ''}${change}</td>
+                        <td class="py-2 px-3 text-center">${retention}%</td>
+                        <td class="py-2 px-3 text-center">¥${(r.monthlyFee || 0).toLocaleString()}</td>
+                        <td class="py-2 px-3 text-center font-bold">¥${monthRevenue.toLocaleString()}</td>
+                        <td class="py-2 px-3 text-center">
+                            <button onclick="openSubscriptionEditModal('${ym}', '${s}')" class="text-accent-600 hover:text-accent-800 text-xs mr-2">編集</button>
+                            <button onclick="deleteSubscriptionRecord('${ym}', '${s}')" class="text-rose-500 hover:text-rose-700 text-xs">削除</button>
+                        </td>
+                    </tr>`;
+                });
+            });
+            tbody.innerHTML = rows || '<tr><td colspan="10" class="py-8 text-center text-surface-400">データがありません。「月次データ登録」から入力してください。</td></tr>';
+        }
+
+        // ========================================
+        // 回数券管理
+        // ========================================
+
+        function loadTicketData() {
+            try { return JSON.parse(localStorage.getItem(TICKET_STORAGE_KEY)) || []; } catch { return []; }
+        }
+        function saveTicketStorage(data) {
+            localStorage.setItem(TICKET_STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function openTicketModal(ticketId) {
+            const modal = document.getElementById('ticket-modal');
+            const titleEl = document.getElementById('ticket-modal-title');
+
+            if (ticketId) {
+                titleEl.textContent = '回数券編集';
+                const tickets = loadTicketData();
+                const ticket = tickets.find(t => t.id === ticketId);
+                if (ticket) {
+                    document.getElementById('ticket-edit-id').value = ticket.id;
+                    document.getElementById('ticket-edit-customer').value = ticket.customerName;
+                    document.getElementById('ticket-edit-store').value = ticket.store;
+                    document.getElementById('ticket-edit-name').value = ticket.ticketName;
+                    document.getElementById('ticket-edit-date').value = ticket.purchaseDate;
+                    document.getElementById('ticket-edit-total').value = ticket.totalCount;
+                    document.getElementById('ticket-edit-used').value = ticket.usedCount;
+                    document.getElementById('ticket-edit-price').value = ticket.price;
+                }
+            } else {
+                titleEl.textContent = '回数券登録';
+                document.getElementById('ticket-edit-id').value = '';
+                document.getElementById('ticket-edit-customer').value = '';
+                document.getElementById('ticket-edit-store').value = document.getElementById('ticket-store-selector').value === 'all' ? 'ebisu' : document.getElementById('ticket-store-selector').value;
+                document.getElementById('ticket-edit-name').value = '';
+                document.getElementById('ticket-edit-date').value = new Date().toISOString().split('T')[0];
+                document.getElementById('ticket-edit-total').value = 5;
+                document.getElementById('ticket-edit-used').value = 0;
+                document.getElementById('ticket-edit-price').value = '';
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticket-modal').classList.add('hidden');
+        }
+
+        function saveTicket() {
+            const customerName = document.getElementById('ticket-edit-customer').value.trim();
+            if (!customerName) { alert('顧客名を入力してください'); return; }
+            const ticketName = document.getElementById('ticket-edit-name').value.trim();
+            if (!ticketName) { alert('券種名を入力してください'); return; }
+
+            const tickets = loadTicketData();
+            const editId = document.getElementById('ticket-edit-id').value;
+            const totalCount = parseInt(document.getElementById('ticket-edit-total').value) || 1;
+            const usedCount = Math.min(parseInt(document.getElementById('ticket-edit-used').value) || 0, totalCount);
+            let status = 'active';
+            if (usedCount >= totalCount) status = 'completed';
+
+            const ticketData = {
+                id: editId || `T-${Date.now()}`,
+                customerName,
+                store: document.getElementById('ticket-edit-store').value,
+                ticketName,
+                purchaseDate: document.getElementById('ticket-edit-date').value,
+                totalCount,
+                usedCount,
+                price: parseInt(document.getElementById('ticket-edit-price').value) || 0,
+                status
+            };
+
+            if (editId) {
+                const idx = tickets.findIndex(t => t.id === editId);
+                if (idx >= 0) tickets[idx] = ticketData;
+            } else {
+                tickets.push(ticketData);
+            }
+
+            saveTicketStorage(tickets);
+            closeTicketModal();
+            renderTicketDashboard();
+        }
+
+        function useTicket(ticketId) {
+            const tickets = loadTicketData();
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (ticket && ticket.usedCount < ticket.totalCount) {
+                ticket.usedCount++;
+                if (ticket.usedCount >= ticket.totalCount) ticket.status = 'completed';
+                saveTicketStorage(tickets);
+                renderTicketDashboard();
+            }
+        }
+
+        function deleteTicket(ticketId) {
+            if (!confirm('この回数券を削除しますか？')) return;
+            let tickets = loadTicketData();
+            tickets = tickets.filter(t => t.id !== ticketId);
+            saveTicketStorage(tickets);
+            renderTicketDashboard();
+        }
+
+        function renderTicketDashboard() {
+            const tickets = loadTicketData();
+            const storeFilter = document.getElementById('ticket-store-selector')?.value || 'all';
+            const statusFilter = document.getElementById('ticket-status-filter')?.value || 'active';
+
+            let filtered = tickets;
+            if (storeFilter !== 'all') filtered = filtered.filter(t => t.store === storeFilter);
+            if (statusFilter !== 'all') filtered = filtered.filter(t => t.status === statusFilter);
+
+            // サマリー計算（有効券のみ）
+            const activeTickets = tickets.filter(t => t.status === 'active' && (storeFilter === 'all' || t.store === storeFilter));
+            const totalRemaining = activeTickets.reduce((sum, t) => sum + (t.totalCount - t.usedCount), 0);
+            const totalUsed = activeTickets.reduce((sum, t) => sum + t.usedCount, 0);
+            const totalAll = activeTickets.reduce((sum, t) => sum + t.totalCount, 0);
+            const remainingAmount = activeTickets.reduce((sum, t) => {
+                const perUse = t.totalCount > 0 ? t.price / t.totalCount : 0;
+                return sum + perUse * (t.totalCount - t.usedCount);
+            }, 0);
+            const usageRate = totalAll > 0 ? (totalUsed / totalAll * 100).toFixed(1) : 0;
+
+            document.getElementById('ticket-active-count').textContent = activeTickets.length;
+            document.getElementById('ticket-remaining-count').textContent = totalRemaining;
+            document.getElementById('ticket-remaining-amount').textContent = `¥${Math.round(remainingAmount).toLocaleString()}`;
+            document.getElementById('ticket-usage-rate').textContent = `${usageRate}%`;
+
+            // テーブルレンダリング
+            const tbody = document.getElementById('ticket-table-body');
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="11" class="py-8 text-center text-surface-400">回数券データがありません。「回数券を登録」から入力してください。</td></tr>';
+                return;
+            }
+
+            // 購入日降順でソート
+            filtered.sort((a, b) => (b.purchaseDate || '').localeCompare(a.purchaseDate || ''));
+
+            let rows = '';
+            filtered.forEach(t => {
+                const remaining = t.totalCount - t.usedCount;
+                const perUse = t.totalCount > 0 ? t.price / t.totalCount : 0;
+                const remainAmt = Math.round(perUse * remaining);
+                const statusLabel = t.status === 'active' ? '<span class="px-2 py-1 bg-sage-500 text-white text-xs rounded-full">利用中</span>'
+                    : t.status === 'completed' ? '<span class="px-2 py-1 bg-surface-400 text-white text-xs rounded-full">消化済</span>'
+                    : '<span class="px-2 py-1 bg-rose-500 text-white text-xs rounded-full">期限切れ</span>';
+                const progressPct = t.totalCount > 0 ? (t.usedCount / t.totalCount * 100) : 0;
+
+                rows += `<tr class="hover:bg-surface-50">
+                    <td class="py-2 px-3 font-medium">${t.customerName}</td>
+                    <td class="py-2 px-3 text-xs text-surface-500">${getStoreNameById(t.store)}</td>
+                    <td class="py-2 px-3">${t.ticketName}</td>
+                    <td class="py-2 px-3 text-center text-xs">${t.purchaseDate || '-'}</td>
+                    <td class="py-2 px-3 text-center">${t.totalCount}</td>
+                    <td class="py-2 px-3 text-center">
+                        <div class="flex items-center justify-center gap-1">
+                            ${t.usedCount}
+                            <div class="w-12 h-1.5 bg-surface-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-500 rounded-full" style="width:${progressPct}%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-2 px-3 text-center font-bold ${remaining > 0 ? 'text-accent-700' : 'text-surface-400'}">${remaining}</td>
+                    <td class="py-2 px-3 text-right">¥${t.price.toLocaleString()}</td>
+                    <td class="py-2 px-3 text-right font-medium ${remaining > 0 ? 'text-rose-600' : 'text-surface-400'}">¥${remainAmt.toLocaleString()}</td>
+                    <td class="py-2 px-3 text-center">${statusLabel}</td>
+                    <td class="py-2 px-3 text-center whitespace-nowrap">
+                        ${t.status === 'active' ? `<button onclick="useTicket('${t.id}')" class="text-sage-600 hover:text-sage-800 text-xs mr-1" title="1回使用">+1使用</button>` : ''}
+                        <button onclick="openTicketModal('${t.id}')" class="text-accent-600 hover:text-accent-800 text-xs mr-1">編集</button>
+                        <button onclick="deleteTicket('${t.id}')" class="text-rose-500 hover:text-rose-700 text-xs">削除</button>
+                    </td>
+                </tr>`;
+            });
+            tbody.innerHTML = rows;
+        }
     </script>
 </body>
 </html>
