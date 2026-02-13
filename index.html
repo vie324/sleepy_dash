@@ -6,14 +6,14 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#fdfcfa" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
     <title>SLEEPY | 睡眠整体ダッシュボード</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,42 +31,42 @@
             theme: {
                 extend: {
                     colors: {
-                        // SLEEPY Theme - Warm & Sophisticated
+                        // SLEEPY Theme - Deep Navy & Cream (ロゴ配色ベース)
                         primary: {
-                            50: '#faf8f5',
-                            100: '#f5efe8',
-                            200: '#ebe0d1',
-                            300: '#dcc9b3',
-                            400: '#c9a87e',
-                            500: '#b8956a',  // Champagne Gold
-                            600: '#a07d52',
-                            700: '#866644',
-                            800: '#6d533a',
-                            900: '#5a4532',
+                            50: '#fdf8f0',
+                            100: '#f9eed9',
+                            200: '#f2dbb4',
+                            300: '#e8c48a',
+                            400: '#dba95e',
+                            500: '#c99445',  // Warm Gold (月のイメージ)
+                            600: '#b07e34',
+                            700: '#8f6529',
+                            800: '#745122',
+                            900: '#5e421e',
                         },
                         accent: {
-                            50: '#f5f6f8',
-                            100: '#e8ebf0',
-                            200: '#d4dae3',
-                            300: '#b5c0cf',
-                            400: '#8f9fb5',
-                            500: '#6e819c',
-                            600: '#566882',
-                            700: '#47566b',  // Slate Blue
-                            800: '#3d4859',
-                            900: '#353e4c',
+                            50: '#f0f2f7',
+                            100: '#dde2ee',
+                            200: '#bcc5db',
+                            300: '#92a1c2',
+                            400: '#6b7fa8',
+                            500: '#4d6290',
+                            600: '#3b4f78',
+                            700: '#2e3f62',  // Deep Navy (ロゴ背景)
+                            800: '#1e2d4d',
+                            900: '#162038',
                         },
                         surface: {
-                            50: '#faf9f7',
-                            100: '#f6f4f1',
-                            200: '#edeae5',
-                            300: '#dedad3',
-                            400: '#c7c1b6',
-                            500: '#aea69a',
-                            600: '#948a7d',
-                            700: '#7a7167',
-                            800: '#655d55',
-                            900: '#544e47',
+                            50: '#fdfcfa',
+                            100: '#faf6f0',
+                            200: '#f3ede3',
+                            300: '#e8dfd2',
+                            400: '#d4c8b6',
+                            500: '#b8aa98',
+                            600: '#9a8c7d',
+                            700: '#7d7065',
+                            800: '#635950',
+                            900: '#504840',
                         },
                         // Harmonious accent colors
                         sage: {
@@ -75,38 +75,38 @@
                             600: '#5d7d60',
                         },
                         rose: {
-                            400: '#c4a5a0',
-                            500: '#b08f8a',  // Dusty Rose
-                            600: '#9a7873',
+                            400: '#e0b0a8',
+                            500: '#d49890',  // Soft Pink (ひつじの頬)
+                            600: '#c08078',
                         },
                         warmgold: {
-                            400: '#d4b896',
-                            500: '#c9a96e',  // Warm Gold
-                            600: '#b8941d',
+                            400: '#e8c88a',
+                            500: '#dba95e',  // Moon Gold
+                            600: '#c99445',
                         },
                         // Brand colors - sleepy
                         sleepy: {
-                            50: '#faf9f7',
-                            100: '#f6f4f1',
-                            200: '#edeae5',
-                            300: '#dedad3',
-                            400: '#c9a87e',
-                            500: '#aea69a',
-                            600: '#6e819c',
-                            700: '#566882',
-                            800: '#47566b',
-                            900: '#3d4859',
+                            50: '#fdfcfa',
+                            100: '#faf6f0',
+                            200: '#f3ede3',
+                            300: '#e8dfd2',
+                            400: '#dba95e',
+                            500: '#b8aa98',
+                            600: '#4d6290',
+                            700: '#3b4f78',
+                            800: '#2e3f62',
+                            900: '#1e2d4d',
                         }
                     },
                     fontFamily: {
-                        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        display: ['"Zen Maru Gothic"', '"Hiragino Maru Gothic ProN"', 'sans-serif'],
                         sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
                         'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 2px 10px -2px rgba(0, 0, 0, 0.04)',
-                        'glow': '0 0 20px rgba(184, 149, 106, 0.15)',
-                        'glow-accent': '0 0 20px rgba(86, 104, 130, 0.2)',
+                        'glow': '0 0 20px rgba(219, 169, 94, 0.15)',
+                        'glow-accent': '0 0 20px rgba(46, 63, 98, 0.2)',
                     }
                 }
             }
@@ -130,7 +130,7 @@
                 radial-gradient(ellipse at 15% 0%, rgba(184, 149, 106, 0.06) 0%, transparent 45%),
                 radial-gradient(ellipse at 85% 100%, rgba(176, 143, 138, 0.05) 0%, transparent 45%),
                 radial-gradient(ellipse at 50% 50%, rgba(71, 86, 107, 0.02) 0%, transparent 60%),
-                linear-gradient(180deg, #faf9f7 0%, #f6f4f1 40%, #edeae5 100%);
+                linear-gradient(180deg, #fdfcfa 0%, #faf6f0 40%, #f3ede3 100%);
             min-height: 100vh;
             position: relative;
         }
@@ -398,21 +398,21 @@
 
         /* Gradient Backgrounds - Harmonious Colors */
         .gradient-primary {
-            background: linear-gradient(135deg, #b8956a 0%, #c9a87e 50%, #d4b896 100%);
+            background: linear-gradient(135deg, #c99445 0%, #dba95e 50%, #e8c88a 100%);
             background-size: 200% 200%;
             animation: gradientShift 5s ease infinite;
             box-shadow: 0 4px 15px rgba(184, 149, 106, 0.35);
         }
 
         .gradient-accent {
-            background: linear-gradient(135deg, #47566b 0%, #566882 50%, #6e819c 100%);
+            background: linear-gradient(135deg, #2e3f62 0%, #3b4f78 50%, #4d6290 100%);
             background-size: 200% 200%;
             animation: gradientShift 5s ease infinite;
             box-shadow: 0 4px 15px rgba(71, 86, 107, 0.35);
         }
 
         .gradient-surface {
-            background: linear-gradient(135deg, #faf9f7 0%, #ffffff 50%, #edeae5 100%);
+            background: linear-gradient(135deg, #fdfcfa 0%, #ffffff 50%, #f3ede3 100%);
             background-size: 200% 200%;
             animation: gradientShift 5s ease infinite;
         }
@@ -425,14 +425,14 @@
         }
 
         .gradient-rose {
-            background: linear-gradient(135deg, #9a7873 0%, #b08f8a 50%, #c4a5a0 100%);
+            background: linear-gradient(135deg, #c08078 0%, #d49890 50%, #e0b0a8 100%);
             background-size: 200% 200%;
             animation: gradientShift 5s ease infinite;
             box-shadow: 0 4px 15px rgba(176, 143, 138, 0.35);
         }
 
         .gradient-warmgold {
-            background: linear-gradient(135deg, #c9a96e 0%, #d4b896 50%, #dcc9b3 100%);
+            background: linear-gradient(135deg, #dba95e 0%, #e8c88a 50%, #f2dbb4 100%);
             background-size: 200% 200%;
             animation: gradientShift 5s ease infinite;
             box-shadow: 0 4px 15px rgba(201, 169, 110, 0.35);
@@ -505,7 +505,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background: linear-gradient(90deg, #b8956a, #c9a87e, #d4b896);
+            background: linear-gradient(90deg, #c99445, #dba95e, #e8c88a);
             border-radius: 3px 3px 0 0;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -522,7 +522,7 @@
         .tab-btn.active::after {
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #b8956a, #c9a87e, #d4b896, #c9a87e, #b8956a);
+            background: linear-gradient(90deg, #c99445, #dba95e, #e8c88a, #dba95e, #c99445);
             background-size: 200% 100%;
             animation: tabGradient 4s ease infinite;
         }
@@ -541,12 +541,12 @@
         }
 
         .tab-btn.active i {
-            color: #b8956a;
+            color: #c99445;
         }
 
         /* Premium Buttons - Elegant & Harmonious */
         .btn-primary {
-            background: linear-gradient(135deg, #b8956a 0%, #c9a87e 50%, #a07d52 100%);
+            background: linear-gradient(135deg, #c99445 0%, #dba95e 50%, #b07e34 100%);
             background-size: 200% 200%;
             color: white;
             border: none;
@@ -595,7 +595,7 @@
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #47566b 0%, #566882 50%, #3d4859 100%);
+            background: linear-gradient(135deg, #2e3f62 0%, #3b4f78 50%, #1e2d4d 100%);
             background-size: 200% 200%;
             color: white;
             border: none;
@@ -645,9 +645,9 @@
 
         /* Warm Gold Button Style */
         .btn-gold {
-            background: linear-gradient(135deg, #c9a96e 0%, #d4b896 50%, #b8956a 100%);
+            background: linear-gradient(135deg, #dba95e 0%, #e8c88a 50%, #c99445 100%);
             background-size: 200% 200%;
-            color: #47566b;
+            color: #2e3f62;
             border: none;
             padding: 12px 24px;
             border-radius: 12px;
@@ -711,7 +711,7 @@
                 radial-gradient(ellipse at 85% 100%, rgba(176, 143, 138, 0.04) 0%, transparent 45%),
                 radial-gradient(ellipse at 50% 50%, rgba(71, 86, 107, 0.03) 0%, transparent 60%),
                 linear-gradient(180deg, #1e1f23 0%, #18191c 50%, #121315 100%) !important;
-            color: #edeae5 !important;
+            color: #f3ede3 !important;
         }
 
         .dark body::before {
@@ -838,7 +838,7 @@
         }
 
         .dark .kpi-card h2 {
-            background: linear-gradient(135deg, #edeae5 0%, #c9a87e 50%, #edeae5 100%);
+            background: linear-gradient(135deg, #f3ede3 0%, #dba95e 50%, #f3ede3 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
@@ -904,7 +904,7 @@
 
         .dark .tab-btn.active,
         .dark .tab-btn:hover {
-            color: #edeae5 !important;
+            color: #f3ede3 !important;
         }
 
         .dark .tab-btn.active {
@@ -913,15 +913,15 @@
         }
 
         .dark .tab-btn::after {
-            background: linear-gradient(90deg, #b8956a, #c9a87e, #d4b896) !important;
+            background: linear-gradient(90deg, #c99445, #dba95e, #e8c88a) !important;
         }
 
         .dark .tab-btn.active::after {
-            background: linear-gradient(90deg, #b8956a, #c9a87e, #d4b896, #c9a87e, #b8956a) !important;
+            background: linear-gradient(90deg, #c99445, #dba95e, #e8c88a, #dba95e, #c99445) !important;
         }
 
         .dark .tab-btn.active i {
-            color: #c9a87e;
+            color: #dba95e;
         }
 
         /* Edit Table */
@@ -1248,7 +1248,7 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(250,248,245,0.9) 100%);
         }
         .kpi-card.accent-primary::before {
-            background: linear-gradient(90deg, #b8956a, #c9a87e, #d4b896);
+            background: linear-gradient(90deg, #c99445, #dba95e, #e8c88a);
         }
         .kpi-card.accent-primary:hover {
             box-shadow:
@@ -1262,7 +1262,7 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(245,246,248,0.9) 100%);
         }
         .kpi-card.accent-navy::before {
-            background: linear-gradient(90deg, #47566b, #566882, #6e819c);
+            background: linear-gradient(90deg, #2e3f62, #3b4f78, #4d6290);
         }
         .kpi-card.accent-navy:hover {
             box-shadow:
@@ -1276,7 +1276,7 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(252,249,243,0.9) 100%);
         }
         .kpi-card.accent-gold::before {
-            background: linear-gradient(90deg, #c9a96e, #d4b896, #dcc9b3);
+            background: linear-gradient(90deg, #dba95e, #e8c88a, #f2dbb4);
         }
         .kpi-card.accent-gold:hover {
             box-shadow:
@@ -1304,7 +1304,7 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(250,247,247,0.9) 100%);
         }
         .kpi-card.accent-purple::before {
-            background: linear-gradient(90deg, #9a7873, #b08f8a, #c4a5a0);
+            background: linear-gradient(90deg, #c08078, #d49890, #e0b0a8);
         }
         .kpi-card.accent-purple:hover {
             box-shadow:
@@ -1315,7 +1315,7 @@
 
         /* KPI Value Animation - Elegant */
         .kpi-card h2 {
-            background: linear-gradient(135deg, #47566b 0%, #6e819c 50%, #47566b 100%);
+            background: linear-gradient(135deg, #2e3f62 0%, #4d6290 50%, #2e3f62 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
@@ -1540,9 +1540,9 @@
                     <div class="relative">
                         <select id="store-selector" onchange="handleStoreChange()" class="select-premium appearance-none text-accent-800 text-sm cursor-pointer min-w-[140px]">
                             <option value="all">全店舗</option>
-                            <option value="chiba">千葉店</option>
-                            <option value="honatsugi">本厚木店</option>
-                            <option value="yamato">大和店</option>
+                            <option value="ebisu">恵比寿駅前店</option>
+                            <option value="kadomori">大阪KADOMORI店</option>
+                            <option value="fukushima">福島店</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-surface-500">
                             <i data-lucide="chevron-down" class="w-4 h-4"></i>
@@ -1866,7 +1866,7 @@
                             <!-- Unit Price Ranking -->
                             <div class="bg-surface-50 rounded-xl p-4">
                                 <h4 class="text-sm font-semibold text-accent-800 mb-3 flex items-center gap-2">
-                                    <i data-lucide="wallet" class="w-4 h-4 text-[#b8956a]"></i>
+                                    <i data-lucide="wallet" class="w-4 h-4 text-[#c99445]"></i>
                                     客単価ランキング
                                 </h4>
                                 <div id="unit-price-ranking-list" class="space-y-2">
@@ -1896,7 +1896,7 @@
                 <!-- Admin Only: Staff Incentive Summary -->
                 <div id="staff-incentive-section" class="premium-card p-6">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#b8956a] to-[#c9a96e] flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#c99445] to-[#dba95e] flex items-center justify-center">
                             <i data-lucide="coins" class="w-5 h-5 text-white"></i>
                         </div>
                         <div>
@@ -1907,7 +1907,7 @@
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm">
                             <thead>
-                                <tr class="border-b-2 border-[#b8956a] bg-[#faf8f5]">
+                                <tr class="border-b-2 border-[#c99445] bg-[#fdf8f0]">
                                     <th class="text-left py-3 px-4 font-semibold text-accent-800">店舗</th>
                                     <th class="text-left py-3 px-4 font-semibold text-accent-800">スタッフ</th>
                                     <th class="text-right py-3 px-4 font-semibold text-accent-800">基本給</th>
@@ -1915,21 +1915,21 @@
                                     <th class="text-right py-3 px-4 font-semibold text-accent-800">施術インセンティブ</th>
                                     <th class="text-right py-3 px-4 font-semibold text-accent-800">物販売上</th>
                                     <th class="text-right py-3 px-4 font-semibold text-accent-800">物販インセンティブ</th>
-                                    <th class="text-right py-3 px-4 font-semibold text-[#b8956a] text-base">推定報酬合計</th>
+                                    <th class="text-right py-3 px-4 font-semibold text-[#c99445] text-base">推定報酬合計</th>
                                 </tr>
                             </thead>
                             <tbody id="staff-incentive-table-body" class="divide-y divide-surface-100">
                                 <!-- Rows will be dynamically generated -->
                             </tbody>
                             <tfoot>
-                                <tr class="bg-[#faf8f5] border-t-2 border-[#b8956a]">
+                                <tr class="bg-[#fdf8f0] border-t-2 border-[#c99445]">
                                     <td class="py-3 px-4 font-bold text-accent-800" colspan="2">合計</td>
                                     <td class="py-3 px-4 text-right font-bold text-accent-800" id="incentive-total-base">¥0</td>
                                     <td class="py-3 px-4 text-right font-bold text-accent-800" id="incentive-total-service-sales">¥0</td>
                                     <td class="py-3 px-4 text-right font-bold text-accent-800" id="incentive-total-service">¥0</td>
                                     <td class="py-3 px-4 text-right font-bold text-accent-800" id="incentive-total-retail-sales">¥0</td>
                                     <td class="py-3 px-4 text-right font-bold text-accent-800" id="incentive-total-retail">¥0</td>
-                                    <td class="py-3 px-4 text-right font-bold text-[#b8956a] text-lg" id="incentive-grand-total">¥0</td>
+                                    <td class="py-3 px-4 text-right font-bold text-[#c99445] text-lg" id="incentive-grand-total">¥0</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -2229,9 +2229,9 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <select id="counseling-store-filter" onchange="renderCounselingResults()" class="px-3 py-2 text-sm border border-emerald-400 bg-emerald-500/50 text-white rounded focus:outline-none focus:ring-2 focus:ring-white/50">
                                 <option value="all">全店</option>
-                                <option value="chiba">千葉店</option>
-                                <option value="honatsugi">本厚木店</option>
-                                <option value="yamato">大和店</option>
+                                <option value="ebisu">恵比寿駅前店</option>
+                                <option value="kadomori">大阪KADOMORI店</option>
+                                <option value="fukushima">福島店</option>
                             </select>
                             <select id="counseling-date-filter" onchange="renderCounselingResults()" class="px-3 py-2 text-sm border border-emerald-400 bg-emerald-500/50 text-white rounded focus:outline-none focus:ring-2 focus:ring-white/50">
                                 <option value="all">全期間</option>
@@ -2309,9 +2309,9 @@
                             <!-- 店舗フィルター -->
                             <select id="marketing-store-filter" onchange="updateMarketingDashboard()" class="px-3 py-2 text-sm border border-surface-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white">
                                 <option value="all">全店</option>
-                                <option value="chiba">千葉店</option>
-                                <option value="honatsugi">本厚木店</option>
-                                <option value="yamato">大和店</option>
+                                <option value="ebisu">恵比寿駅前店</option>
+                                <option value="kadomori">大阪KADOMORI店</option>
+                                <option value="fukushima">福島店</option>
                             </select>
                             <button onclick="refreshCustomerData()" id="refresh-customer-btn" class="btn-secondary py-2 px-4 flex items-center gap-2">
                                 <i data-lucide="refresh-cw" class="w-4 h-4" id="refresh-customer-icon"></i>
@@ -2409,7 +2409,7 @@
                     <!-- Eyebrow Preferences -->
                     <div class="premium-card p-6">
                         <h3 class="text-lg font-display font-bold text-accent-900 mb-4 flex items-center gap-2">
-                            <i data-lucide="eye" class="w-5 h-5 text-[#b08f8a]"></i>
+                            <i data-lucide="eye" class="w-5 h-5 text-[#d49890]"></i>
                             眉毛メニュー希望分析
                         </h3>
                         <div class="space-y-4">
@@ -2427,7 +2427,7 @@
                     <!-- Menu Preferences -->
                     <div class="premium-card p-6">
                         <h3 class="text-lg font-display font-bold text-accent-900 mb-4 flex items-center gap-2">
-                            <i data-lucide="sparkles" class="w-5 h-5 text-[#b8956a]"></i>
+                            <i data-lucide="sparkles" class="w-5 h-5 text-[#c99445]"></i>
                             メニュー希望分析
                         </h3>
                         <div class="space-y-4">
@@ -2501,9 +2501,9 @@
                         <div class="flex flex-wrap gap-2">
                             <select id="admin-counseling-store-filter" onchange="renderAdminCounselingResults()" class="px-3 py-2 text-sm border border-surface-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white">
                                 <option value="all">全店</option>
-                                <option value="chiba">千葉店</option>
-                                <option value="honatsugi">本厚木店</option>
-                                <option value="yamato">大和店</option>
+                                <option value="ebisu">恵比寿駅前店</option>
+                                <option value="kadomori">大阪KADOMORI店</option>
+                                <option value="fukushima">福島店</option>
                             </select>
                             <select id="admin-counseling-date-filter" onchange="renderAdminCounselingResults()" class="px-3 py-2 text-sm border border-surface-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white">
                                 <option value="week">今週</option>
@@ -2705,9 +2705,9 @@
                                 <div class="relative">
                                     <select id="goal-store-selector" onchange="handleGoalStoreChange()" class="appearance-none bg-sleepy-900 border border-sleepy-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 font-medium text-sm cursor-pointer min-w-[140px]">
                                         <option value="all">全店舗</option>
-                                        <option value="chiba">千葉店</option>
-                                        <option value="honatsugi">本厚木店</option>
-                                        <option value="yamato">大和店</option>
+                                        <option value="ebisu">恵比寿駅前店</option>
+                                        <option value="kadomori">大阪KADOMORI店</option>
+                                        <option value="fukushima">福島店</option>
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">▼</div>
                                 </div>
@@ -3229,8 +3229,8 @@
                             </h4>
                             <div class="space-y-4">
                                 <div class="flex gap-2">
-                                    <input type="text" id="new-store-id" placeholder="店舗ID (例: chiba)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
-                                    <input type="text" id="new-store-name" placeholder="店舗名 (例: 千葉店)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <input type="text" id="new-store-id" placeholder="店舗ID (例: shinjuku)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <input type="text" id="new-store-name" placeholder="店舗名 (例: 新宿店)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                     <button onclick="addStore()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition font-bold">追加</button>
                                 </div>
                                 <div class="mt-4">
@@ -3288,7 +3288,7 @@
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-400">
                                     <p class="text-xs font-bold text-blue-800 mb-1">🔐 スタッフ専用ページのURL例</p>
-                                    <p class="text-xs text-blue-600 font-mono">?store=chiba&staff=kiki</p>
+                                    <p class="text-xs text-blue-600 font-mono">?store=ebisu&staff=yuki</p>
                                     <p class="text-xs text-sleepy-600 mt-2">パスワードを設定すると、スタッフはログイン後に自分のダッシュボードを確認できます。</p>
                                 </div>
                             </div>
@@ -3345,44 +3345,44 @@
 
         // スタッフ名簿（スプレッドシートから読み込み、未設定時はデフォルト値）
         let STAFF_ROSTER = {
-            honatsugi: ['haruka', 'vienna'],
-            chiba: ['kiki', 'karin', 'nanami', 'kanon', 'ayami', 'miki'],
-            yamato: ['amano']
+            ebisu: ['yuki', 'ren'],
+            kadomori: ['sora', 'hina'],
+            fukushima: ['aoi']
         };
         const DEFAULT_STAFF_ROSTER = {
-            honatsugi: ['haruka', 'vienna'],
-            chiba: ['kiki', 'karin', 'nanami', 'kanon', 'ayami', 'miki'],
-            yamato: ['amano']
+            ebisu: ['yuki', 'ren'],
+            kadomori: ['sora', 'hina'],
+            fukushima: ['aoi']
         };
 
-        // Premium Color Palette - Elegant & Harmonious
+        // SLEEPY Color Palette - Deep Navy & Cream (ロゴ配色ベース)
         const BrandColors = {
-            // Primary - Slate Blue (落ち着いたスレートブルー)
-            primary: '#47566b',
-            primaryLight: '#6e819c',
-            primaryDark: '#3d4859',
-            // Accent - Champagne Gold (エレガントなシャンパンゴールド)
-            accent: '#b8956a',
-            accentLight: '#d4b896',
-            accentDark: '#a07d52',
-            // Surface - Warm White (温かみのあるホワイト)
-            surface: '#faf9f7',
-            surfaceAlt: '#edeae5',
-            surfaceDark: '#dedad3',
+            // Primary - Deep Navy (ロゴ背景のディープネイビー)
+            primary: '#2e3f62',
+            primaryLight: '#4d6290',
+            primaryDark: '#1e2d4d',
+            // Accent - Warm Gold (月のウォームゴールド)
+            accent: '#c99445',
+            accentLight: '#e8c88a',
+            accentDark: '#b07e34',
+            // Surface - Cream (ひつじのクリームベージュ)
+            surface: '#fdfcfa',
+            surfaceAlt: '#f3ede3',
+            surfaceDark: '#e8dfd2',
             // Charts (統一感のある配色)
-            gold: '#c9a96e',      // ウォームゴールド
-            brown: '#47566b',     // スレートブルー
-            beige: '#dcc9b3',     // ウォームベージュ
-            light: '#f6f4f1',     // ウォームホワイト
+            gold: '#dba95e',      // ムーンゴールド
+            brown: '#2e3f62',     // ディープネイビー
+            beige: '#f2dbb4',     // クリームベージュ
+            light: '#faf6f0',     // ウォームクリーム
             white: '#ffffff',
-            darkBrown: '#3d4859', // ダークスレート
+            darkBrown: '#1e2d4d', // ダークネイビー
             // Harmonious accent colors
             sage: '#739977',      // セージグリーン
-            rose: '#b08f8a',      // ダスティローズ
-            warmgold: '#d4b896',  // ライトゴールド
+            rose: '#d49890',      // ソフトピンク
+            warmgold: '#e8c88a',  // ライトゴールド
             success: '#739977',   // セージグリーン
-            warning: '#c9a96e',   // ウォームゴールド
-            purple: '#b08f8a'     // ダスティローズ
+            warning: '#dba95e',   // ムーンゴールド
+            purple: '#d49890'     // ソフトピンク
         };
 
         let rawData = [];
@@ -3455,7 +3455,7 @@
             }
 
             try {
-                // 階層構造をフラットなキー形式に変換 {chiba: {staff1: pass}} -> {chiba_staff1: pass}
+                // 階層構造をフラットなキー形式に変換 {ebisu: {staff1: pass}} -> {ebisu_staff1: pass}
                 const flatPasswords = {};
                 Object.keys(passwords).forEach(store => {
                     Object.keys(passwords[store]).forEach(staff => {
@@ -3591,7 +3591,7 @@
             const header = document.querySelector('header');
 
             // スタッフ名を表示
-            const storeName = store === 'chiba' ? '千葉店' : store === 'honatsugi' ? '本厚木店' : store === 'yamato' ? '大和店' : store;
+            const storeName = store === 'ebisu' ? '恵比寿駅前店' : store === 'kadomori' ? '大阪KADOMORI店' : store === 'fukushima' ? '福島店' : store;
             nameEl.textContent = `${storeName} / ${staff}`;
 
             // エラーメッセージを非表示
@@ -4169,7 +4169,7 @@
                             id: idCounter++,
                             date: `${year}/${month}/${i}`,
                             store: storeKey,
-                            storeName: storeKey === 'chiba' ? '千葉店' : storeKey === 'honatsugi' ? '本厚木店' : storeKey === 'yamato' ? '大和店' : storeKey,
+                            storeName: storeKey === 'ebisu' ? '恵比寿駅前店' : storeKey === 'kadomori' ? '大阪KADOMORI店' : storeKey === 'fukushima' ? '福島店' : storeKey,
                             staff: staffName,
                             sales: { cash: salesCash, credit: salesCredit, qr: salesQr, product: salesProduct },
                             discounts: { hpbPoints: Math.random()>0.9?500:0, hpbGift: 0, other: 0, refund: Math.random()>0.98?3000:0 },
@@ -4603,7 +4603,7 @@
 
             const filtered = getFilteredCustomerData();
             const storeFilter = document.getElementById('marketing-store-filter')?.value || 'all';
-            const storeName = storeFilter === 'all' ? '全店' : storeFilter === 'chiba' ? '千葉店' : storeFilter === 'honatsugi' ? '本厚木店' : storeFilter === 'yamato' ? '大和店' : storeFilter;
+            const storeName = storeFilter === 'all' ? '全店' : storeFilter === 'ebisu' ? '恵比寿駅前店' : storeFilter === 'kadomori' ? '大阪KADOMORI店' : storeFilter === 'fukushima' ? '福島店' : storeFilter;
 
             const fmt = n => n.toLocaleString();
             const now = new Date();
@@ -4672,18 +4672,18 @@
             const data = sorted.map(([, v]) => v);
             // Elegant harmonious color palette
             const colors = [
-                '#b8956a', // Champagne Gold
-                '#47566b', // Slate Blue
+                '#c99445', // Champagne Gold
+                '#2e3f62', // Slate Blue
                 '#739977', // Sage Green
-                '#b08f8a', // Dusty Rose
-                '#c9a96e', // Warm Gold
-                '#6e819c', // Light Slate
+                '#d49890', // Dusty Rose
+                '#dba95e', // Warm Gold
+                '#4d6290', // Light Slate
                 '#8ba88e', // Light Sage
-                '#c4a5a0', // Light Rose
-                '#d4b896', // Light Gold
-                '#566882', // Medium Slate
+                '#e0b0a8', // Light Rose
+                '#e8c88a', // Light Gold
+                '#3b4f78', // Medium Slate
                 '#5d7d60', // Deep Sage
-                '#9a7873'  // Deep Rose
+                '#c08078'  // Deep Rose
             ];
 
             if (charts.visitReason) charts.visitReason.destroy();
@@ -4737,12 +4737,12 @@
 
             // Gradient colors for age groups
             const ageColors = [
-                '#d4b896', // 10代 - Light Gold
-                '#c9a96e', // 20代 - Warm Gold
-                '#b8956a', // 30代 - Champagne Gold (peak)
+                '#e8c88a', // 10代 - Light Gold
+                '#dba95e', // 20代 - Warm Gold
+                '#c99445', // 30代 - Champagne Gold (peak)
                 '#739977', // 40代 - Sage Green
-                '#6e819c', // 50代 - Light Slate
-                '#47566b'  // 60代以上 - Slate Blue
+                '#4d6290', // 50代 - Light Slate
+                '#2e3f62'  // 60代以上 - Slate Blue
             ];
 
             if (charts.ageDistribution) charts.ageDistribution.destroy();
@@ -4763,7 +4763,7 @@
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { beginAtZero: true, grid: { color: '#edeae5' } },
+                        y: { beginAtZero: true, grid: { color: '#f3ede3' } },
                         x: { grid: { display: false } }
                     }
                 }
@@ -4782,14 +4782,14 @@
             const sorted = Object.entries(occCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
             // Elegant harmonious color palette for occupation
             const colors = [
-                '#b8956a', // Champagne Gold
-                '#47566b', // Slate Blue
+                '#c99445', // Champagne Gold
+                '#2e3f62', // Slate Blue
                 '#739977', // Sage Green
-                '#b08f8a', // Dusty Rose
-                '#c9a96e', // Warm Gold
-                '#6e819c', // Light Slate
+                '#d49890', // Dusty Rose
+                '#dba95e', // Warm Gold
+                '#4d6290', // Light Slate
                 '#8ba88e', // Light Sage
-                '#c4a5a0'  // Light Rose
+                '#e0b0a8'  // Light Rose
             ];
 
             if (charts.occupation) charts.occupation.destroy();
@@ -4860,7 +4860,7 @@
             document.getElementById('eyebrow-concerns-list').innerHTML = sortedConcerns.map(([concern, count]) => `
                 <div class="flex items-center gap-2">
                     <div class="flex-1 bg-surface-200 h-2 rounded-full overflow-hidden">
-                        <div class="h-full bg-[#b08f8a] rounded-full" style="width: ${(count / maxConcern) * 100}%"></div>
+                        <div class="h-full bg-[#d49890] rounded-full" style="width: ${(count / maxConcern) * 100}%"></div>
                     </div>
                     <span class="text-xs text-accent-700 w-24 truncate">${concern}</span>
                     <span class="text-xs font-semibold text-accent-800">${count}</span>
@@ -4876,7 +4876,7 @@
             });
             document.getElementById('eyebrow-impression-list').innerHTML = Object.entries(impressions)
                 .sort((a, b) => b[1] - a[1]).slice(0, 6)
-                .map(([imp, count]) => `<span class="px-3 py-1 bg-[#f5ebe7] text-[#b08f8a] rounded-full text-xs">${imp} (${count})</span>`).join('') || '<p class="text-xs text-surface-500">データなし</p>';
+                .map(([imp, count]) => `<span class="px-3 py-1 bg-[#faf0ed] text-[#d49890] rounded-full text-xs">${imp} (${count})</span>`).join('') || '<p class="text-xs text-surface-500">データなし</p>';
 
             // まつ毛デザイン (lashDesign(Code.gs) または eyelashDesign の両方に対応)
             const eyelashDesigns = {};
@@ -4891,7 +4891,7 @@
             document.getElementById('eyelash-design-list').innerHTML = sortedDesigns.map(([design, count]) => `
                 <div class="flex items-center gap-2">
                     <div class="flex-1 bg-surface-200 h-2 rounded-full overflow-hidden">
-                        <div class="h-full bg-[#b8956a] rounded-full" style="width: ${(count / maxDesign) * 100}%"></div>
+                        <div class="h-full bg-[#c99445] rounded-full" style="width: ${(count / maxDesign) * 100}%"></div>
                     </div>
                     <span class="text-xs text-accent-700 w-24 truncate">${design}</span>
                     <span class="text-xs font-semibold text-accent-800">${count}</span>
@@ -4908,7 +4908,7 @@
             });
             document.getElementById('eyelash-eyelook-list').innerHTML = Object.entries(eyeLooks)
                 .sort((a, b) => b[1] - a[1]).slice(0, 6)
-                .map(([look, count]) => `<span class="px-3 py-1 bg-[#faf5f0] text-[#b8956a] rounded-full text-xs">${look} (${count})</span>`).join('') || '<p class="text-xs text-surface-500">データなし</p>';
+                .map(([look, count]) => `<span class="px-3 py-1 bg-[#faf5f0] text-[#c99445] rounded-full text-xs">${look} (${count})</span>`).join('') || '<p class="text-xs text-surface-500">データなし</p>';
         }
 
         function updateCustomerList() {
@@ -5084,7 +5084,7 @@
 
             container.innerHTML = filtered.map(c => {
                 const regDate = c.timestamp ? new Date(c.timestamp).toLocaleDateString('ja-JP', {year: 'numeric', month: 'short', day: 'numeric'}) : '-';
-                const storeName = c.store === 'chiba' ? '千葉店' : c.store === 'honatsugi' ? '本厚木店' : c.store === 'yamato' ? '大和店' : c.storeName || '-';
+                const storeName = c.store === 'ebisu' ? '恵比寿駅前店' : c.store === 'kadomori' ? '大阪KADOMORI店' : c.store === 'fukushima' ? '福島店' : c.storeName || '-';
                 const birthVal = c.birthday || c.birthDate;
                 let age = '-';
                 if (birthVal) {
@@ -5106,10 +5106,10 @@
                 return `
                     <div class="bg-white border border-sleepy-200 rounded-lg shadow-sm hover:shadow-md transition overflow-hidden">
                         <!-- ヘッダー: 名前・日付・店舗 -->
-                        <div class="bg-gradient-to-r ${c.store === 'chiba' ? 'from-blue-50 to-blue-100' : 'from-purple-50 to-purple-100'} px-4 py-3 border-b border-sleepy-200">
+                        <div class="bg-gradient-to-r ${c.store === 'ebisu' ? 'from-blue-50 to-blue-100' : 'from-purple-50 to-purple-100'} px-4 py-3 border-b border-sleepy-200">
                             <div class="flex flex-wrap items-center justify-between gap-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-full ${c.store === 'chiba' ? 'bg-blue-200 text-blue-700' : 'bg-purple-200 text-purple-700'} flex items-center justify-center font-bold text-lg">
+                                    <div class="w-12 h-12 rounded-full ${c.store === 'ebisu' ? 'bg-blue-200 text-blue-700' : 'bg-purple-200 text-purple-700'} flex items-center justify-center font-bold text-lg">
                                         ${c.name ? c.name.charAt(0) : '?'}
                                     </div>
                                     <div>
@@ -5118,7 +5118,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span class="px-3 py-1 text-sm font-semibold rounded-full ${c.store === 'chiba' ? 'bg-blue-500 text-white' : 'bg-purple-500 text-white'}">${storeName}</span>
+                                    <span class="px-3 py-1 text-sm font-semibold rounded-full ${c.store === 'ebisu' ? 'bg-blue-500 text-white' : 'bg-purple-500 text-white'}">${storeName}</span>
                                     <span class="text-sm text-sleepy-500 bg-white px-2 py-1 rounded">${regDate}</span>
                                 </div>
                             </div>
@@ -5183,8 +5183,8 @@
                             <!-- 眉毛・まつ毛メニュー情報 -->
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                 ${hasEyebrowInfo ? `
-                                <div class="bg-[#faf5f2] p-4 rounded-lg border border-[#e8d4cd]">
-                                    <h5 class="text-sm font-bold text-[#b08f8a] mb-3 flex items-center gap-2 pb-2 border-b border-[#e8d4cd]">
+                                <div class="bg-[#fdf5f2] p-4 rounded-lg border border-[#f0d5ce]">
+                                    <h5 class="text-sm font-bold text-[#d49890] mb-3 flex items-center gap-2 pb-2 border-b border-[#f0d5ce]">
                                         <i data-lucide="eye" class="w-4 h-4"></i>眉毛メニュー
                                     </h5>
                                     <div class="space-y-2 text-sm">
@@ -5198,8 +5198,8 @@
                                 </div>
                                 ` : ''}
                                 ${hasLashInfo ? `
-                                <div class="bg-[#faf8f5] p-4 rounded-lg border border-[#e8ddd0]">
-                                    <h5 class="text-sm font-bold text-[#b8956a] mb-3 flex items-center gap-2 pb-2 border-b border-[#e8ddd0]">
+                                <div class="bg-[#fdf8f0] p-4 rounded-lg border border-[#e8ddd0]">
+                                    <h5 class="text-sm font-bold text-[#c99445] mb-3 flex items-center gap-2 pb-2 border-b border-[#e8ddd0]">
                                         <i data-lucide="sparkles" class="w-4 h-4"></i>まつ毛メニュー
                                     </h5>
                                     <div class="space-y-2 text-sm">
@@ -5830,7 +5830,7 @@
                 const salesTrend = prevMetrics.salesTotal > 0 ? Math.round(((metrics.salesTotal - prevMetrics.salesTotal) / prevMetrics.salesTotal) * 100) : 0;
 
                 // Get staff goal（期間フィルターに応じて調整）
-                const staffStore = storeFilter === 'all' ? (safeRawData.find(d => d && d.staff?.toLowerCase() === staffLower)?.store || getStaffStoreFromRoster(staff) || 'chiba') : storeFilter;
+                const staffStore = storeFilter === 'all' ? (safeRawData.find(d => d && d.staff?.toLowerCase() === staffLower)?.store || getStaffStoreFromRoster(staff) || 'ebisu') : storeFilter;
                 const goalData = getStaffGoal(staffStore, staff);
                 const monthlyGoal = goalData.weekdays * goalData.weekdayTarget + goalData.weekends * goalData.weekendTarget;
 
@@ -5893,7 +5893,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-accent-800 dark:text-surface-100">${s.name}</h4>
-                                    <p class="text-xs text-surface-500">${s.store === 'chiba' ? '千葉店' : s.store === 'honatsugi' ? '本厚木店' : s.store === 'yamato' ? '大和店' : s.store}</p>
+                                    <p class="text-xs text-surface-500">${s.store === 'ebisu' ? '恵比寿駅前店' : s.store === 'kadomori' ? '大阪KADOMORI店' : s.store === 'fukushima' ? '福島店' : s.store}</p>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -5999,10 +5999,10 @@
             const maxPrice = priceRanking[0]?.unitPrice || 1;
             document.getElementById('unit-price-ranking-list').innerHTML = priceRanking.map((s, i) => `
                 <div class="flex items-center gap-2">
-                    <span class="w-5 h-5 rounded-full ${i === 0 ? 'bg-[#b8956a]' : i === 1 ? 'bg-[#c9a96e]' : i === 2 ? 'bg-[#d4b896]' : 'bg-surface-300'} text-white text-xs flex items-center justify-center font-bold">${i + 1}</span>
+                    <span class="w-5 h-5 rounded-full ${i === 0 ? 'bg-[#c99445]' : i === 1 ? 'bg-[#dba95e]' : i === 2 ? 'bg-[#e8c88a]' : 'bg-surface-300'} text-white text-xs flex items-center justify-center font-bold">${i + 1}</span>
                     <span class="flex-shrink-0 w-16 text-sm text-accent-700 dark:text-surface-200 truncate">${s.name}</span>
                     <div class="flex-1 bg-surface-200 dark:bg-accent-700 h-2 rounded-full overflow-hidden">
-                        <div class="h-full bg-[#b8956a] rounded-full" style="width: ${(s.unitPrice / maxPrice) * 100}%"></div>
+                        <div class="h-full bg-[#c99445] rounded-full" style="width: ${(s.unitPrice / maxPrice) * 100}%"></div>
                     </div>
                     <span class="text-xs text-accent-600 dark:text-surface-300 w-16 text-right">¥${fmt(s.unitPrice)}</span>
                 </div>
@@ -6084,7 +6084,7 @@
 
             // Generate table rows
             tableBody.innerHTML = allIncentives.map(s => {
-                const storeName = s.store === 'chiba' ? '千葉店' : s.store === 'honatsugi' ? '本厚木店' : s.store === 'yamato' ? '大和店' : s.store;
+                const storeName = s.store === 'ebisu' ? '恵比寿駅前店' : s.store === 'kadomori' ? '大阪KADOMORI店' : s.store === 'fukushima' ? '福島店' : s.store;
                 return `
                     <tr class="hover:bg-surface-50 transition">
                         <td class="py-3 px-4 text-surface-600">${storeName}</td>
@@ -6094,7 +6094,7 @@
                         <td class="py-3 px-4 text-right text-emerald-600">¥${fmt(Math.round(s.serviceIncentive))}</td>
                         <td class="py-3 px-4 text-right text-surface-600">¥${fmt(Math.round(s.retailSales))}</td>
                         <td class="py-3 px-4 text-right text-emerald-600">¥${fmt(Math.round(s.retailIncentive))}</td>
-                        <td class="py-3 px-4 text-right font-bold text-[#b8956a] text-base">¥${fmt(Math.round(s.totalIncentive))}</td>
+                        <td class="py-3 px-4 text-right font-bold text-[#c99445] text-base">¥${fmt(Math.round(s.totalIncentive))}</td>
                     </tr>
                 `;
             }).join('');
@@ -6191,7 +6191,7 @@
                 const total = d.sales.cash + d.sales.credit + d.sales.qr;
                 const allNewCust = (d.customers.newHPB || 0) + (d.customers.newMiniNai || 0);
                 const newResRate = allNewCust > 0 ? Math.round(((d.nextRes.newHPB + d.nextRes.newMiniNai)/allNewCust)*100) : '-';
-                const storeLabel = d.store === 'chiba' ? '千葉店' : d.store === 'honatsugi' ? '本厚木店' : d.store === 'yamato' ? '大和店' : d.store;
+                const storeLabel = d.store === 'ebisu' ? '恵比寿駅前店' : d.store === 'kadomori' ? '大阪KADOMORI店' : d.store === 'fukushima' ? '福島店' : d.store;
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -6715,7 +6715,7 @@
                 const titleEl = document.getElementById('goal-summary-title');
                 const descEl = document.getElementById('goal-summary-description');
                 if (context.type === 'store') {
-                    const storeName = context.store === 'chiba' ? '千葉店' : context.store === 'honatsugi' ? '本厚木店' : context.store === 'yamato' ? '大和店' : context.store;
+                    const storeName = context.store === 'ebisu' ? '恵比寿駅前店' : context.store === 'kadomori' ? '大阪KADOMORI店' : context.store === 'fukushima' ? '福島店' : context.store;
                     titleEl.innerText = `${storeName} 目標サマリー`;
                     descEl.innerText = 'この目標は所属スタッフの目標の合算値です。個別のスタッフを選択すると、個人目標を編集できます。';
                 } else {
@@ -6764,7 +6764,7 @@
                 // 全店舗のスタッフ
                 Object.keys(STAFF_ROSTER).forEach(store => {
                     const staffList = STAFF_ROSTER[store] || [];
-                    const storeName = store === 'chiba' ? '千葉店' : store === 'honatsugi' ? '本厚木店' : store === 'yamato' ? '大和店' : store;
+                    const storeName = store === 'ebisu' ? '恵比寿駅前店' : store === 'kadomori' ? '大阪KADOMORI店' : store === 'fukushima' ? '福島店' : store;
                     staffList.forEach(staff => {
                         const staffGoal = getStaffGoal(store, staff, yearMonth);
                         const monthlyTarget = ((staffGoal.weekdays || 0) * (staffGoal.weekdayTarget || 0)) +
@@ -7427,7 +7427,7 @@
             staffList.innerHTML = '';
             const baseUrl = window.location.origin + window.location.pathname;
             Object.keys(STAFF_ROSTER).forEach(storeId => {
-                const storeName = storeId === 'chiba' ? '千葉店' : storeId === 'honatsugi' ? '本厚木店' : storeId === 'yamato' ? '大和店' : storeId;
+                const storeName = storeId === 'ebisu' ? '恵比寿駅前店' : storeId === 'kadomori' ? '大阪KADOMORI店' : storeId === 'fukushima' ? '福島店' : storeId;
                 STAFF_ROSTER[storeId].forEach(staffName => {
                     const staffDiv = document.createElement('div');
                     staffDiv.className = 'bg-sleepy-50 p-3 rounded';
@@ -7659,7 +7659,7 @@
             let html = '';
 
             Object.keys(STAFF_ROSTER).forEach(storeId => {
-                const storeName = storeId === 'chiba' ? '千葉店' : storeId === 'honatsugi' ? '本厚木店' : storeId === 'yamato' ? '大和店' : storeId;
+                const storeName = storeId === 'ebisu' ? '恵比寿駅前店' : storeId === 'kadomori' ? '大阪KADOMORI店' : storeId === 'fukushima' ? '福島店' : storeId;
                 const staffList = STAFF_ROSTER[storeId];
 
                 staffList.forEach(staff => {
@@ -7695,7 +7695,7 @@
             // 店舗セレクタを初期化
             storeSel.innerHTML = '<option value="">店舗を選択</option>';
             Object.keys(STAFF_ROSTER).forEach(storeId => {
-                const storeName = storeId === 'chiba' ? '千葉店' : storeId === 'honatsugi' ? '本厚木店' : storeId === 'yamato' ? '大和店' : storeId;
+                const storeName = storeId === 'ebisu' ? '恵比寿駅前店' : storeId === 'kadomori' ? '大阪KADOMORI店' : storeId === 'fukushima' ? '福島店' : storeId;
                 const opt = document.createElement('option');
                 opt.value = storeId;
                 opt.text = storeName;
@@ -7780,7 +7780,7 @@
                 message.textContent = '管理ページへのアクセスにはパスワードが必要です';
             } else {
                 title.textContent = 'スタッフページ認証';
-                message.textContent = `${store === 'chiba' ? '千葉店' : store === 'honatsugi' ? '本厚木店' : store === 'yamato' ? '大和店' : store} / ${staff} のページへのアクセスにはパスワードが必要です`;
+                message.textContent = `${store === 'ebisu' ? '恵比寿駅前店' : store === 'kadomori' ? '大阪KADOMORI店' : store === 'fukushima' ? '福島店' : store} / ${staff} のページへのアクセスにはパスワードが必要です`;
             }
 
             dialog.classList.remove('hidden');
@@ -8154,7 +8154,7 @@
 
             // スタッフ専用ページの場合、所属店舗のみ表示
             if (lockedStore) {
-                const storeName = lockedStore === 'chiba' ? '千葉店' : lockedStore === 'honatsugi' ? '本厚木店' : lockedStore === 'yamato' ? '大和店' : lockedStore;
+                const storeName = lockedStore === 'ebisu' ? '恵比寿駅前店' : lockedStore === 'kadomori' ? '大阪KADOMORI店' : lockedStore === 'fukushima' ? '福島店' : lockedStore;
                 storeSel.innerHTML = `<option value="${lockedStore}">${storeName}</option>`;
                 storeSel.disabled = true;
                 storeSel.parentElement.style.display = 'none';
@@ -8169,7 +8169,7 @@
                 // 通常ページの場合、全店舗を表示
                 storeSel.innerHTML = '<option value="all">全店舗</option>';
                 Object.keys(STAFF_ROSTER).forEach(storeId => {
-                    const storeName = storeId === 'chiba' ? '千葉店' : storeId === 'honatsugi' ? '本厚木店' : storeId === 'yamato' ? '大和店' : storeId;
+                    const storeName = storeId === 'ebisu' ? '恵比寿駅前店' : storeId === 'kadomori' ? '大阪KADOMORI店' : storeId === 'fukushima' ? '福島店' : storeId;
                     const opt = document.createElement('option');
                     opt.value = storeId;
                     opt.text = storeName;
