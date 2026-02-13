@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
-    <title>vie | Eyelash Salon Dashboard</title>
+    <title>SLEEPY | 睡眠整体ダッシュボード</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
             theme: {
                 extend: {
                     colors: {
-                        // Elegant Salon Theme - Warm & Sophisticated
+                        // SLEEPY Theme - Warm & Sophisticated
                         primary: {
                             50: '#faf8f5',
                             100: '#f5efe8',
@@ -84,8 +84,8 @@
                             500: '#c9a96e',  // Warm Gold
                             600: '#b8941d',
                         },
-                        // Backwards compatible mavie colors
-                        mavie: {
+                        // Brand colors - sleepy
+                        sleepy: {
                             50: '#faf9f7',
                             100: '#f6f4f1',
                             200: '#edeae5',
@@ -1470,20 +1470,20 @@
         <div class="text-center px-8">
             <!-- Logo -->
             <div class="splash-logo mb-6">
-                <img src="assets/logo.png" alt="vie" class="h-[220px] w-auto mx-auto drop-shadow-lg"
+                <img src="assets/logo.png" alt="SLEEPY" class="h-[220px] w-auto mx-auto drop-shadow-lg"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <!-- Fallback if logo doesn't load -->
                 <div class="hidden w-32 h-32 mx-auto gradient-primary text-white rounded-2xl items-center justify-center text-5xl font-display tracking-widest shadow-xl">
-                    V
+                    S
                 </div>
             </div>
 
             <!-- Brand Name -->
             <h1 class="splash-text text-2xl font-display font-bold text-accent-800 dark:text-white tracking-wide mb-1">
-                vie
+                SLEEPY
             </h1>
             <p class="splash-subtext text-xs text-surface-500 dark:text-surface-400 font-medium uppercase tracking-widest mb-8">
-                Eyelash Salon Dashboard
+                睡眠整体ダッシュボード
             </p>
 
             <!-- Progress Bar -->
@@ -1505,14 +1505,14 @@
 
                 <!-- Logo -->
                 <div class="flex items-center gap-3">
-                    <img src="assets/logo.png" alt="vie Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="w-10 h-10 gradient-primary text-white rounded-xl items-center justify-center text-xl font-display tracking-widest hidden shadow-glow">V</div>
+                    <img src="assets/logo.png" alt="SLEEPY Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-10 h-10 gradient-primary text-white rounded-xl items-center justify-center text-xl font-display tracking-widest hidden shadow-glow">S</div>
                     <div>
                         <h1 class="logo-text text-xl text-accent-900 flex items-center gap-3">
-                            vie
+                            SLEEPY
                             <span id="staff-mode-badge" class="hidden text-xs bg-primary-500 text-white px-3 py-1 rounded-full font-sans normal-case tracking-normal shadow-sm">専用モード</span>
                         </h1>
-                        <p class="logo-subtitle text-[10px] text-surface-500 font-medium uppercase">Eyelash Salon Dashboard</p>
+                        <p class="logo-subtitle text-[10px] text-surface-500 font-medium uppercase">睡眠整体ダッシュボード</p>
                     </div>
                 </div>
 
@@ -1754,34 +1754,34 @@
 
             <!-- TAB: OVERVIEW -->
             <section id="content-overview" class="tab-content block space-y-8 animate-fade-in">
-                <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                    <h3 class="text-lg font-serif font-bold text-mavie-800 mb-6">客単価・来店内訳推移</h3>
-                    <p class="text-xs text-mavie-500 mb-4">棒グラフ: 新規/既存の内訳 (右軸) | 折れ線: 平均客単価 (左軸)</p>
+                <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                    <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-6">客単価・来店内訳推移</h3>
+                    <p class="text-xs text-sleepy-500 mb-4">棒グラフ: 新規/既存の内訳 (右軸) | 折れ線: 平均客単価 (左軸)</p>
                     <div class="chart-container"><canvas id="overviewChart"></canvas></div>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                        <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">新規・既存の割合</h3>
+                    <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">新規・既存の割合</h3>
                         <div class="flex items-center gap-6">
                             <div class="chart-container h-64 flex-1"><canvas id="customerRatioChart"></canvas></div>
                             <div class="flex-1 space-y-4">
-                                <div class="bg-mavie-50 p-3 rounded">
-                                    <div class="flex justify-between text-sm"><span class="text-mavie-500">新規</span><span class="font-bold" id="ratio-new-count">0</span></div>
-                                    <div class="w-full bg-white h-1.5 mt-1"><div class="bg-mavie-400 h-1.5" id="bar-new-rate" style="width:0%"></div></div>
+                                <div class="bg-sleepy-50 p-3 rounded">
+                                    <div class="flex justify-between text-sm"><span class="text-sleepy-500">新規</span><span class="font-bold" id="ratio-new-count">0</span></div>
+                                    <div class="w-full bg-white h-1.5 mt-1"><div class="bg-sleepy-400 h-1.5" id="bar-new-rate" style="width:0%"></div></div>
                                 </div>
-                                <div class="bg-mavie-50 p-3 rounded">
-                                    <div class="flex justify-between text-sm"><span class="text-mavie-500">既存</span><span class="font-bold" id="ratio-exist-count">0</span></div>
-                                    <div class="w-full bg-white h-1.5 mt-1"><div class="bg-mavie-800 h-1.5" id="bar-exist-rate" style="width:0%"></div></div>
+                                <div class="bg-sleepy-50 p-3 rounded">
+                                    <div class="flex justify-between text-sm"><span class="text-sleepy-500">既存</span><span class="font-bold" id="ratio-exist-count">0</span></div>
+                                    <div class="w-full bg-white h-1.5 mt-1"><div class="bg-sleepy-800 h-1.5" id="bar-exist-rate" style="width:0%"></div></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                        <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">新規媒体シェア</h3>
+                    <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">新規媒体シェア</h3>
                         <div class="chart-container h-64"><canvas id="channelShareChart"></canvas></div>
-                        <div class="mt-4 flex justify-center gap-4 text-xs text-mavie-500">
-                             <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-mavie-400"></span>HPB: <span id="hpb-count" class="font-bold ml-1">0</span>名</div>
-                             <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-mavie-300"></span>minimo/Nailie: <span id="mininai-count" class="font-bold ml-1">0</span>名</div>
+                        <div class="mt-4 flex justify-center gap-4 text-xs text-sleepy-500">
+                             <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-sleepy-400"></span>HPB: <span id="hpb-count" class="font-bold ml-1">0</span>名</div>
+                             <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-sleepy-300"></span>minimo/Nailie: <span id="mininai-count" class="font-bold ml-1">0</span>名</div>
                         </div>
                     </div>
                 </div>
@@ -1942,20 +1942,20 @@
                 </div>
 
                 <!-- AI Advice Section -->
-                <div id="ai-advice-section" class="bg-gradient-to-br from-mavie-50 to-white rounded-lg shadow-sm border border-mavie-200 overflow-hidden">
-                    <div class="bg-gradient-to-r from-mavie-700 to-mavie-800 text-white px-6 py-4 flex justify-between items-center">
+                <div id="ai-advice-section" class="bg-gradient-to-br from-sleepy-50 to-white rounded-lg shadow-sm border border-sleepy-200 overflow-hidden">
+                    <div class="bg-gradient-to-r from-sleepy-700 to-sleepy-800 text-white px-6 py-4 flex justify-between items-center">
                         <div>
                             <h3 class="text-lg font-bold flex items-center gap-2">
                                 <span>💡</span> AI業務改善アドバイス
                             </h3>
-                            <p class="text-xs text-mavie-100 mt-1">目標達成のための具体的なアドバイスを取得</p>
+                            <p class="text-xs text-sleepy-100 mt-1">目標達成のための具体的なアドバイスを取得</p>
                         </div>
-                        <button onclick="getAIAdvice()" id="btn-ai-advice" class="bg-white text-mavie-800 px-4 py-2 rounded hover:bg-mavie-50 transition font-bold text-sm">
+                        <button onclick="getAIAdvice()" id="btn-ai-advice" class="bg-white text-sleepy-800 px-4 py-2 rounded hover:bg-sleepy-50 transition font-bold text-sm">
                             アドバイスを取得
                         </button>
                     </div>
                     <div class="p-6" id="ai-advice-content">
-                        <div class="text-center text-mavie-500 py-8">
+                        <div class="text-center text-sleepy-500 py-8">
                             <p class="text-sm">「アドバイスを取得」ボタンをクリックすると、AIが目標達成のための具体的なアドバイスを提供します。</p>
                             <p class="text-xs mt-2">※事前に設定タブでGemini APIキーを登録してください</p>
                         </div>
@@ -1968,79 +1968,79 @@
                 <!-- Comparison Grid: Personal vs Store -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
                     <!-- Personal Metrics -->
-                    <div class="bg-white rounded-lg shadow-lg border-2 border-mavie-400 overflow-hidden">
-                        <div class="bg-mavie-400 text-white px-4 md:px-6 py-2 md:py-4">
+                    <div class="bg-white rounded-lg shadow-lg border-2 border-sleepy-400 overflow-hidden">
+                        <div class="bg-sleepy-400 text-white px-4 md:px-6 py-2 md:py-4">
                             <h3 class="text-base md:text-lg font-serif font-bold flex items-center gap-2">
                                 <span>👤</span> あなたの実績
                             </h3>
                         </div>
                         <div class="p-3 md:p-6 space-y-3 md:space-y-4">
                             <!-- Sales -->
-                            <div class="bg-mavie-50 p-3 md:p-4 rounded">
-                                <p class="text-[10px] md:text-xs font-bold text-mavie-400 uppercase tracking-wider mb-1">総売上</p>
-                                <h3 class="text-2xl md:text-3xl font-serif font-bold text-mavie-800" id="staff-personal-sales">¥0</h3>
-                                <div class="mt-1 md:mt-2 text-[10px] md:text-xs text-mavie-600">
+                            <div class="bg-sleepy-50 p-3 md:p-4 rounded">
+                                <p class="text-[10px] md:text-xs font-bold text-sleepy-400 uppercase tracking-wider mb-1">総売上</p>
+                                <h3 class="text-2xl md:text-3xl font-serif font-bold text-sleepy-800" id="staff-personal-sales">¥0</h3>
+                                <div class="mt-1 md:mt-2 text-[10px] md:text-xs text-sleepy-600">
                                     目標: <span id="staff-personal-goal" class="font-bold">¥1,100,000</span>
-                                    <span class="ml-1 md:ml-2">達成率: <span id="staff-personal-goal-rate" class="font-bold text-mavie-800">0%</span></span>
+                                    <span class="ml-1 md:ml-2">達成率: <span id="staff-personal-goal-rate" class="font-bold text-sleepy-800">0%</span></span>
                                 </div>
                             </div>
 
                             <!-- Customers -->
-                            <div class="border-t border-mavie-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
+                            <div class="border-t border-sleepy-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs md:text-sm text-mavie-600">総来店数</span>
-                                    <span class="text-lg md:text-xl font-bold text-mavie-800" id="staff-personal-customers">0名</span>
+                                    <span class="text-xs md:text-sm text-sleepy-600">総来店数</span>
+                                    <span class="text-lg md:text-xl font-bold text-sleepy-800" id="staff-personal-customers">0名</span>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">新規</span>
+                                    <span class="text-sleepy-600">新規</span>
                                     <div>
-                                        <span id="staff-personal-new" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-new-goal" class="font-bold text-mavie-600">30</span>
+                                        <span id="staff-personal-new" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-new-goal" class="font-bold text-sleepy-600">30</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">既存</span>
+                                    <span class="text-sleepy-600">既存</span>
                                     <div>
-                                        <span id="staff-personal-existing" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-existing-goal" class="font-bold text-mavie-600">90</span>
+                                        <span id="staff-personal-existing" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-existing-goal" class="font-bold text-sleepy-600">90</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">客単価</span>
+                                    <span class="text-sleepy-600">客単価</span>
                                     <div>
-                                        <span id="staff-personal-unit-price" class="font-bold text-mavie-800">¥0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-unit-price-goal" class="font-bold text-mavie-600">¥9,000</span>
+                                        <span id="staff-personal-unit-price" class="font-bold text-sleepy-800">¥0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-unit-price-goal" class="font-bold text-sleepy-600">¥9,000</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Reservation Rates -->
-                            <div class="border-t border-mavie-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
+                            <div class="border-t border-sleepy-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">新規次回予約率</span>
+                                    <span class="text-sleepy-600">新規次回予約率</span>
                                     <div>
-                                        <span id="staff-personal-new-res-rate" class="font-bold text-mavie-800">0%</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-new-res-rate-goal" class="font-bold text-mavie-600">50%</span>
+                                        <span id="staff-personal-new-res-rate" class="font-bold text-sleepy-800">0%</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-new-res-rate-goal" class="font-bold text-sleepy-600">50%</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">次回予約率</span>
+                                    <span class="text-sleepy-600">次回予約率</span>
                                     <div>
-                                        <span id="staff-personal-res-rate" class="font-bold text-mavie-800">0%</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-res-rate-goal" class="font-bold text-mavie-600">70%</span>
+                                        <span id="staff-personal-res-rate" class="font-bold text-sleepy-800">0%</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-res-rate-goal" class="font-bold text-sleepy-600">70%</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">★5口コミ</span>
+                                    <span class="text-sleepy-600">★5口コミ</span>
                                     <div>
-                                        <span id="staff-personal-reviews" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-personal-reviews-goal" class="font-bold text-mavie-600">0</span>
+                                        <span id="staff-personal-reviews" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-personal-reviews-goal" class="font-bold text-sleepy-600">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -2048,79 +2048,79 @@
                     </div>
 
                     <!-- Store Total Metrics -->
-                    <div class="bg-white rounded-lg shadow-lg border-2 border-mavie-800 overflow-hidden">
-                        <div class="bg-mavie-800 text-white px-4 md:px-6 py-2 md:py-4">
+                    <div class="bg-white rounded-lg shadow-lg border-2 border-sleepy-800 overflow-hidden">
+                        <div class="bg-sleepy-800 text-white px-4 md:px-6 py-2 md:py-4">
                             <h3 class="text-base md:text-lg font-serif font-bold flex items-center gap-2">
                                 <span>🏢</span> 店舗全体の実績
                             </h3>
                         </div>
                         <div class="p-3 md:p-6 space-y-3 md:space-y-4">
                             <!-- Sales -->
-                            <div class="bg-mavie-50 p-3 md:p-4 rounded">
-                                <p class="text-[10px] md:text-xs font-bold text-mavie-400 uppercase tracking-wider mb-1">総売上</p>
-                                <h3 class="text-2xl md:text-3xl font-serif font-bold text-mavie-800" id="staff-store-sales">¥0</h3>
-                                <div class="mt-1 md:mt-2 text-[10px] md:text-xs text-mavie-600">
+                            <div class="bg-sleepy-50 p-3 md:p-4 rounded">
+                                <p class="text-[10px] md:text-xs font-bold text-sleepy-400 uppercase tracking-wider mb-1">総売上</p>
+                                <h3 class="text-2xl md:text-3xl font-serif font-bold text-sleepy-800" id="staff-store-sales">¥0</h3>
+                                <div class="mt-1 md:mt-2 text-[10px] md:text-xs text-sleepy-600">
                                     目標: <span id="staff-store-goal" class="font-bold">¥3,000,000</span>
-                                    <span class="ml-1 md:ml-2">達成率: <span id="staff-store-goal-rate" class="font-bold text-mavie-800">0%</span></span>
+                                    <span class="ml-1 md:ml-2">達成率: <span id="staff-store-goal-rate" class="font-bold text-sleepy-800">0%</span></span>
                                 </div>
                             </div>
 
                             <!-- Customers -->
-                            <div class="border-t border-mavie-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
+                            <div class="border-t border-sleepy-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs md:text-sm text-mavie-600">総来店数</span>
-                                    <span class="text-lg md:text-xl font-bold text-mavie-800" id="staff-store-customers">0名</span>
+                                    <span class="text-xs md:text-sm text-sleepy-600">総来店数</span>
+                                    <span class="text-lg md:text-xl font-bold text-sleepy-800" id="staff-store-customers">0名</span>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">新規</span>
+                                    <span class="text-sleepy-600">新規</span>
                                     <div>
-                                        <span id="staff-store-new" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-new-goal" class="font-bold text-mavie-600">100</span>
+                                        <span id="staff-store-new" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-new-goal" class="font-bold text-sleepy-600">100</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">既存</span>
+                                    <span class="text-sleepy-600">既存</span>
                                     <div>
-                                        <span id="staff-store-existing" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-existing-goal" class="font-bold text-mavie-600">300</span>
+                                        <span id="staff-store-existing" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-existing-goal" class="font-bold text-sleepy-600">300</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">客単価</span>
+                                    <span class="text-sleepy-600">客単価</span>
                                     <div>
-                                        <span id="staff-store-unit-price" class="font-bold text-mavie-800">¥0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-unit-price-goal" class="font-bold text-mavie-600">¥9,000</span>
+                                        <span id="staff-store-unit-price" class="font-bold text-sleepy-800">¥0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-unit-price-goal" class="font-bold text-sleepy-600">¥9,000</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Reservation Rates -->
-                            <div class="border-t border-mavie-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
+                            <div class="border-t border-sleepy-200 pt-3 md:pt-4 space-y-2 md:space-y-3">
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">新規次回予約率</span>
+                                    <span class="text-sleepy-600">新規次回予約率</span>
                                     <div>
-                                        <span id="staff-store-new-res-rate" class="font-bold text-mavie-800">0%</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-new-res-rate-goal" class="font-bold text-mavie-600">50%</span>
+                                        <span id="staff-store-new-res-rate" class="font-bold text-sleepy-800">0%</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-new-res-rate-goal" class="font-bold text-sleepy-600">50%</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">次回予約率</span>
+                                    <span class="text-sleepy-600">次回予約率</span>
                                     <div>
-                                        <span id="staff-store-res-rate" class="font-bold text-mavie-800">0%</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-res-rate-goal" class="font-bold text-mavie-600">70%</span>
+                                        <span id="staff-store-res-rate" class="font-bold text-sleepy-800">0%</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-res-rate-goal" class="font-bold text-sleepy-600">70%</span>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center text-xs md:text-sm">
-                                    <span class="text-mavie-600">★5口コミ</span>
+                                    <span class="text-sleepy-600">★5口コミ</span>
                                     <div>
-                                        <span id="staff-store-reviews" class="font-bold text-mavie-800">0</span>
-                                        <span class="text-mavie-400"> / </span>
-                                        <span id="staff-store-reviews-goal" class="font-bold text-mavie-600">0</span>
+                                        <span id="staff-store-reviews" class="font-bold text-sleepy-800">0</span>
+                                        <span class="text-sleepy-400"> / </span>
+                                        <span id="staff-store-reviews-goal" class="font-bold text-sleepy-600">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -2129,34 +2129,34 @@
                 </div>
 
                 <!-- Incentive Details -->
-                <div class="bg-white rounded-lg shadow-sm border border-mavie-200 p-3 md:p-6">
-                    <h3 class="text-base md:text-lg font-serif font-bold text-mavie-800 mb-3 md:mb-6 flex items-center gap-2">
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-3 md:p-6">
+                    <h3 class="text-base md:text-lg font-serif font-bold text-sleepy-800 mb-3 md:mb-6 flex items-center gap-2">
                         <span>💰</span> インセンティブ詳細
                     </h3>
                     <div class="space-y-3 md:space-y-4">
-                        <div class="bg-gradient-to-br from-mavie-800 to-mavie-900 text-white p-3 md:p-4 rounded-lg">
-                            <p class="text-[10px] md:text-xs font-bold text-mavie-200 uppercase mb-1">今月の推定インセンティブ</p>
+                        <div class="bg-gradient-to-br from-sleepy-800 to-sleepy-900 text-white p-3 md:p-4 rounded-lg">
+                            <p class="text-[10px] md:text-xs font-bold text-sleepy-200 uppercase mb-1">今月の推定インセンティブ</p>
                             <div class="text-2xl md:text-3xl font-serif font-bold" id="staff-incentive-total">¥0</div>
                         </div>
 
                         <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
-                            <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                <span class="text-mavie-600">基本給</span>
-                                <span class="font-bold text-mavie-800" id="staff-incentive-base">¥0</span>
+                            <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                <span class="text-sleepy-600">基本給</span>
+                                <span class="font-bold text-sleepy-800" id="staff-incentive-base">¥0</span>
                             </div>
-                            <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                <span class="text-mavie-600">施術売上 (5%)</span>
+                            <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                <span class="text-sleepy-600">施術売上 (5%)</span>
                                 <div class="text-right">
-                                    <div class="text-mavie-500 text-[10px] md:text-xs" id="staff-incentive-service-sales">施術売上: ¥0</div>
-                                    <span class="font-bold text-mavie-800" id="staff-incentive-service">¥0</span>
+                                    <div class="text-sleepy-500 text-[10px] md:text-xs" id="staff-incentive-service-sales">施術売上: ¥0</div>
+                                    <span class="font-bold text-sleepy-800" id="staff-incentive-service">¥0</span>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                <span class="text-mavie-600">物販インセンティブ</span>
+                            <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                <span class="text-sleepy-600">物販インセンティブ</span>
                                 <div class="text-right">
-                                    <div class="text-mavie-500 text-[10px] md:text-xs" id="staff-incentive-retail-sales">物販売上: ¥0</div>
-                                    <div class="text-mavie-500 text-[10px] md:text-xs" id="staff-incentive-retail-rate">(5%適用)</div>
-                                    <span class="font-bold text-mavie-800" id="staff-incentive-retail">¥0</span>
+                                    <div class="text-sleepy-500 text-[10px] md:text-xs" id="staff-incentive-retail-sales">物販売上: ¥0</div>
+                                    <div class="text-sleepy-500 text-[10px] md:text-xs" id="staff-incentive-retail-rate">(5%適用)</div>
+                                    <span class="font-bold text-sleepy-800" id="staff-incentive-retail">¥0</span>
                                 </div>
                             </div>
                         </div>
@@ -2172,39 +2172,39 @@
                 </div>
 
                 <!-- Achievement Progress Bars -->
-                <div class="bg-white rounded-lg shadow-sm border border-mavie-200 p-3 md:p-6">
-                    <h3 class="text-base md:text-lg font-serif font-bold text-mavie-800 mb-3 md:mb-6">目標達成の進捗</h3>
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-3 md:p-6">
+                    <h3 class="text-base md:text-lg font-serif font-bold text-sleepy-800 mb-3 md:mb-6">目標達成の進捗</h3>
                     <div class="space-y-4 md:space-y-6">
                         <!-- Sales Progress -->
                         <div>
                             <div class="flex justify-between text-xs md:text-sm mb-1 md:mb-2">
-                                <span class="text-mavie-600 font-medium">売上目標</span>
-                                <span class="text-mavie-800 font-bold"><span id="staff-progress-sales-percent">0%</span></span>
+                                <span class="text-sleepy-600 font-medium">売上目標</span>
+                                <span class="text-sleepy-800 font-bold"><span id="staff-progress-sales-percent">0%</span></span>
                             </div>
-                            <div class="w-full bg-mavie-100 h-3 md:h-4 rounded-full overflow-hidden">
-                                <div class="bg-gradient-to-r from-mavie-400 to-mavie-800 h-3 md:h-4 transition-all duration-500" id="staff-progress-sales-bar" style="width:0%"></div>
+                            <div class="w-full bg-sleepy-100 h-3 md:h-4 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-sleepy-400 to-sleepy-800 h-3 md:h-4 transition-all duration-500" id="staff-progress-sales-bar" style="width:0%"></div>
                             </div>
                         </div>
 
                         <!-- New Customers Progress -->
                         <div>
                             <div class="flex justify-between text-xs md:text-sm mb-1 md:mb-2">
-                                <span class="text-mavie-600 font-medium">新規数目標</span>
-                                <span class="text-mavie-800 font-bold"><span id="staff-progress-new-percent">0%</span></span>
+                                <span class="text-sleepy-600 font-medium">新規数目標</span>
+                                <span class="text-sleepy-800 font-bold"><span id="staff-progress-new-percent">0%</span></span>
                             </div>
-                            <div class="w-full bg-mavie-100 h-3 md:h-4 rounded-full overflow-hidden">
-                                <div class="bg-gradient-to-r from-mavie-300 to-mavie-600 h-3 md:h-4 transition-all duration-500" id="staff-progress-new-bar" style="width:0%"></div>
+                            <div class="w-full bg-sleepy-100 h-3 md:h-4 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-sleepy-300 to-sleepy-600 h-3 md:h-4 transition-all duration-500" id="staff-progress-new-bar" style="width:0%"></div>
                             </div>
                         </div>
 
                         <!-- Existing Customers Progress -->
                         <div>
                             <div class="flex justify-between text-xs md:text-sm mb-1 md:mb-2">
-                                <span class="text-mavie-600 font-medium">既存数目標</span>
-                                <span class="text-mavie-800 font-bold"><span id="staff-progress-existing-percent">0%</span></span>
+                                <span class="text-sleepy-600 font-medium">既存数目標</span>
+                                <span class="text-sleepy-800 font-bold"><span id="staff-progress-existing-percent">0%</span></span>
                             </div>
-                            <div class="w-full bg-mavie-100 h-3 md:h-4 rounded-full overflow-hidden">
-                                <div class="bg-gradient-to-r from-mavie-300 to-mavie-600 h-3 md:h-4 transition-all duration-500" id="staff-progress-existing-bar" style="width:0%"></div>
+                            <div class="w-full bg-sleepy-100 h-3 md:h-4 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-sleepy-300 to-sleepy-600 h-3 md:h-4 transition-all duration-500" id="staff-progress-existing-bar" style="width:0%"></div>
                             </div>
                         </div>
                     </div>
@@ -2248,19 +2248,19 @@
                 </div>
 
                 <!-- 検索・件数 -->
-                <div class="bg-white rounded-lg shadow-sm border border-mavie-100 p-4">
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-100 p-4">
                     <div class="flex flex-col sm:flex-row items-center gap-4">
                         <div class="relative flex-1 w-full">
-                            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-mavie-400"></i>
-                            <input type="text" id="counseling-result-search" onkeyup="renderCounselingResults()" placeholder="お客様名で検索..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-mavie-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-sleepy-400"></i>
+                            <input type="text" id="counseling-result-search" onkeyup="renderCounselingResults()" placeholder="お客様名で検索..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-sleepy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
                         </div>
-                        <div class="text-sm text-mavie-600 font-semibold" id="counseling-result-count">0件の回答</div>
+                        <div class="text-sm text-sleepy-600 font-semibold" id="counseling-result-count">0件の回答</div>
                     </div>
                 </div>
 
                 <!-- 回答一覧 -->
                 <div id="counseling-results-container" class="space-y-4">
-                    <div class="text-center py-12 text-mavie-400 bg-white rounded-lg border border-mavie-100">
+                    <div class="text-center py-12 text-sleepy-400 bg-white rounded-lg border border-sleepy-100">
                         <i data-lucide="clipboard-list" class="w-16 h-16 mx-auto mb-4 opacity-50"></i>
                         <p class="text-base">顧客データAPIを設定すると、カウンセリング回答が表示されます</p>
                         <p class="text-xs mt-2">設定タブ → 顧客データ連携設定</p>
@@ -2270,8 +2270,8 @@
 
             <!-- TAB: CUSTOMERS -->
             <section id="content-customers" class="tab-content hidden space-y-8 animate-fade-in">
-                <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                    <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">媒体別 新規集客推移</h3>
+                <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                    <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">媒体別 新規集客推移</h3>
                     <div class="chart-container"><canvas id="channelTrendChart"></canvas></div>
                 </div>
             </section>
@@ -2279,14 +2279,14 @@
             <!-- TAB: SALES -->
             <section id="content-sales" class="tab-content hidden space-y-8 animate-fade-in">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                        <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">決済方法</h3>
+                    <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">決済方法</h3>
                         <div class="chart-container"><canvas id="paymentChart"></canvas></div>
                     </div>
-                    <div class="bg-white rounded p-6 shadow-sm border border-mavie-100">
-                        <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">割引・損失分析</h3>
+                    <div class="bg-white rounded p-6 shadow-sm border border-sleepy-100">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">割引・損失分析</h3>
                         <div class="chart-container"><canvas id="lossChart"></canvas></div>
-                        <p class="mt-4 text-right text-sm text-mavie-500">損失合計: <span class="font-bold text-mavie-800 text-lg" id="val-total-loss">¥0</span></p>
+                        <p class="mt-4 text-right text-sm text-sleepy-500">損失合計: <span class="font-bold text-sleepy-800 text-lg" id="val-total-loss">¥0</span></p>
                     </div>
                 </div>
             </section>
@@ -2424,11 +2424,11 @@
                         </div>
                     </div>
 
-                    <!-- Eyelash Preferences -->
+                    <!-- Menu Preferences -->
                     <div class="premium-card p-6">
                         <h3 class="text-lg font-display font-bold text-accent-900 mb-4 flex items-center gap-2">
                             <i data-lucide="sparkles" class="w-5 h-5 text-[#b8956a]"></i>
-                            まつ毛メニュー希望分析
+                            メニュー希望分析
                         </h3>
                         <div class="space-y-4">
                             <div>
@@ -2531,28 +2531,28 @@
 
             <!-- TAB: CALENDAR VIEW -->
             <section id="content-calendar" class="tab-content hidden space-y-8 animate-fade-in">
-                <div class="bg-white rounded-lg shadow-sm border border-mavie-200 p-6">
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-6">
                     <!-- Calendar Header -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                         <div>
-                            <h2 class="text-2xl font-serif font-bold text-mavie-800">カレンダービュー</h2>
-                            <p class="text-sm text-mavie-500 mt-1">日別の売上を一目で確認</p>
+                            <h2 class="text-2xl font-serif font-bold text-sleepy-800">カレンダービュー</h2>
+                            <p class="text-sm text-sleepy-500 mt-1">日別の売上を一目で確認</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
                             <!-- 店舗・スタッフセレクター -->
-                            <select id="calendar-store-selector" onchange="handleCalendarStoreChange()" class="px-3 py-2 text-sm border border-mavie-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400">
+                            <select id="calendar-store-selector" onchange="handleCalendarStoreChange()" class="px-3 py-2 text-sm border border-sleepy-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400">
                                 <option value="all">全店舗</option>
                             </select>
-                            <select id="calendar-staff-selector" onchange="renderCalendar()" class="px-3 py-2 text-sm border border-mavie-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400">
+                            <select id="calendar-staff-selector" onchange="renderCalendar()" class="px-3 py-2 text-sm border border-sleepy-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400">
                                 <option value="all">全スタッフ</option>
                             </select>
                             <!-- 月ナビゲーション -->
-                            <div class="flex items-center gap-2 bg-mavie-50 px-4 py-2 rounded-lg border border-mavie-200">
-                                <button onclick="changeCalendarMonth(-1)" class="p-2 hover:bg-mavie-100 rounded transition-colors" title="前月">
+                            <div class="flex items-center gap-2 bg-sleepy-50 px-4 py-2 rounded-lg border border-sleepy-200">
+                                <button onclick="changeCalendarMonth(-1)" class="p-2 hover:bg-sleepy-100 rounded transition-colors" title="前月">
                                     <span>◀</span>
                                 </button>
-                                <span id="calendar-month-display" class="text-lg font-bold text-mavie-800 min-w-[120px] text-center">2025年1月</span>
-                                <button onclick="changeCalendarMonth(1)" class="p-2 hover:bg-mavie-100 rounded transition-colors" title="次月">
+                                <span id="calendar-month-display" class="text-lg font-bold text-sleepy-800 min-w-[120px] text-center">2025年1月</span>
+                                <button onclick="changeCalendarMonth(1)" class="p-2 hover:bg-sleepy-100 rounded transition-colors" title="次月">
                                     <span>▶</span>
                                 </button>
                             </div>
@@ -2564,11 +2564,11 @@
                         <!-- Day Headers -->
                         <div class="grid grid-cols-7 gap-1 mb-2 min-w-[600px]">
                             <div class="text-center font-bold text-sm py-2 text-red-500">日</div>
-                            <div class="text-center font-bold text-sm py-2 text-mavie-800">月</div>
-                            <div class="text-center font-bold text-sm py-2 text-mavie-800">火</div>
-                            <div class="text-center font-bold text-sm py-2 text-mavie-800">水</div>
-                            <div class="text-center font-bold text-sm py-2 text-mavie-800">木</div>
-                            <div class="text-center font-bold text-sm py-2 text-mavie-800">金</div>
+                            <div class="text-center font-bold text-sm py-2 text-sleepy-800">月</div>
+                            <div class="text-center font-bold text-sm py-2 text-sleepy-800">火</div>
+                            <div class="text-center font-bold text-sm py-2 text-sleepy-800">水</div>
+                            <div class="text-center font-bold text-sm py-2 text-sleepy-800">木</div>
+                            <div class="text-center font-bold text-sm py-2 text-sleepy-800">金</div>
                             <div class="text-center font-bold text-sm py-2 text-blue-500">土</div>
                         </div>
                         <!-- Calendar Days -->
@@ -2578,64 +2578,64 @@
                     </div>
 
                     <!-- Legend -->
-                    <div class="mt-6 pt-6 border-t border-mavie-200">
-                        <p class="text-xs text-mavie-600 mb-2 font-semibold">売上レベル</p>
+                    <div class="mt-6 pt-6 border-t border-sleepy-200">
+                        <p class="text-xs text-sleepy-600 mb-2 font-semibold">売上レベル</p>
                         <div class="flex flex-wrap gap-3 text-xs">
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-gray-100 border border-gray-200"></div>
-                                <span class="text-mavie-600">休業/データなし</span>
+                                <span class="text-sleepy-600">休業/データなし</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-blue-50 border border-blue-200"></div>
-                                <span class="text-mavie-600">~¥50,000</span>
+                                <span class="text-sleepy-600">~¥50,000</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-green-50 border border-green-200"></div>
-                                <span class="text-mavie-600">¥50,000~¥100,000</span>
+                                <span class="text-sleepy-600">¥50,000~¥100,000</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-yellow-50 border border-yellow-200"></div>
-                                <span class="text-mavie-600">¥100,000~¥150,000</span>
+                                <span class="text-sleepy-600">¥100,000~¥150,000</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-orange-50 border border-orange-200"></div>
-                                <span class="text-mavie-600">¥150,000~¥200,000</span>
+                                <span class="text-sleepy-600">¥150,000~¥200,000</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-4 h-4 rounded bg-red-50 border border-red-200"></div>
-                                <span class="text-mavie-600">¥200,000~</span>
+                                <span class="text-sleepy-600">¥200,000~</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Selected Day Details -->
-                <div id="calendar-day-details" class="hidden bg-white rounded-lg shadow-sm border border-mavie-200 p-6">
-                    <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4" id="calendar-day-title">0月0日の詳細</h3>
+                <div id="calendar-day-details" class="hidden bg-white rounded-lg shadow-sm border border-sleepy-200 p-6">
+                    <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4" id="calendar-day-title">0月0日の詳細</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="calendar-day-stats">
                         <!-- Generated by JavaScript -->
                     </div>
                 </div>
 
                 <!-- Monthly Summary -->
-                <div class="bg-white rounded-lg shadow-sm border border-mavie-200 p-6">
-                    <h3 class="text-lg font-serif font-bold text-mavie-800 mb-4">月間サマリー</h3>
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-6">
+                    <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4">月間サマリー</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="bg-mavie-50 rounded-lg p-4 border border-mavie-200">
-                            <p class="text-xs text-mavie-500 mb-1">営業日数</p>
-                            <p class="text-2xl font-bold text-mavie-800" id="calendar-summary-days">0<span class="text-sm font-normal ml-1">日</span></p>
+                        <div class="bg-sleepy-50 rounded-lg p-4 border border-sleepy-200">
+                            <p class="text-xs text-sleepy-500 mb-1">営業日数</p>
+                            <p class="text-2xl font-bold text-sleepy-800" id="calendar-summary-days">0<span class="text-sm font-normal ml-1">日</span></p>
                         </div>
-                        <div class="bg-mavie-50 rounded-lg p-4 border border-mavie-200">
-                            <p class="text-xs text-mavie-500 mb-1">月間総売上</p>
-                            <p class="text-2xl font-bold text-mavie-800" id="calendar-summary-sales">¥0</p>
+                        <div class="bg-sleepy-50 rounded-lg p-4 border border-sleepy-200">
+                            <p class="text-xs text-sleepy-500 mb-1">月間総売上</p>
+                            <p class="text-2xl font-bold text-sleepy-800" id="calendar-summary-sales">¥0</p>
                         </div>
-                        <div class="bg-mavie-50 rounded-lg p-4 border border-mavie-200">
-                            <p class="text-xs text-mavie-500 mb-1">日平均売上</p>
-                            <p class="text-2xl font-bold text-mavie-800" id="calendar-summary-avg">¥0</p>
+                        <div class="bg-sleepy-50 rounded-lg p-4 border border-sleepy-200">
+                            <p class="text-xs text-sleepy-500 mb-1">日平均売上</p>
+                            <p class="text-2xl font-bold text-sleepy-800" id="calendar-summary-avg">¥0</p>
                         </div>
-                        <div class="bg-mavie-50 rounded-lg p-4 border border-mavie-200">
-                            <p class="text-xs text-mavie-500 mb-1">最高売上日</p>
-                            <p class="text-2xl font-bold text-mavie-400" id="calendar-summary-max">¥0</p>
+                        <div class="bg-sleepy-50 rounded-lg p-4 border border-sleepy-200">
+                            <p class="text-xs text-sleepy-500 mb-1">最高売上日</p>
+                            <p class="text-2xl font-bold text-sleepy-400" id="calendar-summary-max">¥0</p>
                         </div>
                     </div>
                 </div>
@@ -2644,39 +2644,39 @@
             <!-- TAB: KPI -->
             <section id="content-kpi" class="tab-content hidden space-y-8 animate-fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded p-6 border border-mavie-200 text-center relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-mavie-400"></div>
-                        <h4 class="text-sm font-bold text-mavie-800 mb-2">新規次回予約率(HPB)</h4>
-                        <div class="text-4xl font-serif font-bold text-mavie-400" id="kpi-rate-hpb-lg">0%</div>
+                    <div class="bg-white rounded p-6 border border-sleepy-200 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-sleepy-400"></div>
+                        <h4 class="text-sm font-bold text-sleepy-800 mb-2">新規次回予約率(HPB)</h4>
+                        <div class="text-4xl font-serif font-bold text-sleepy-400" id="kpi-rate-hpb-lg">0%</div>
                     </div>
-                    <div class="bg-white rounded p-6 border border-mavie-200 text-center relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-mavie-800"></div>
-                        <h4 class="text-sm font-bold text-mavie-800 mb-2">既存次回予約率</h4>
-                        <div class="text-4xl font-serif font-bold text-mavie-800" id="kpi-rate-exist-lg">0%</div>
+                    <div class="bg-white rounded p-6 border border-sleepy-200 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-sleepy-800"></div>
+                        <h4 class="text-sm font-bold text-sleepy-800 mb-2">既存次回予約率</h4>
+                        <div class="text-4xl font-serif font-bold text-sleepy-800" id="kpi-rate-exist-lg">0%</div>
                     </div>
-                    <div class="bg-white rounded p-6 border border-mavie-200 text-center relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-mavie-300"></div>
-                        <h4 class="text-sm font-bold text-mavie-800 mb-2">総次回予約率</h4>
-                        <div class="text-4xl font-serif font-bold text-mavie-300" id="kpi-rate-total-lg">0%</div>
+                    <div class="bg-white rounded p-6 border border-sleepy-200 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-sleepy-300"></div>
+                        <h4 class="text-sm font-bold text-sleepy-800 mb-2">総次回予約率</h4>
+                        <div class="text-4xl font-serif font-bold text-sleepy-300" id="kpi-rate-total-lg">0%</div>
                     </div>
                 </div>
-                <div class="bg-white rounded shadow-sm border border-mavie-200 overflow-hidden mt-8">
-                    <div class="px-6 py-4 bg-mavie-50 border-b border-mavie-200">
-                        <h3 class="text-sm font-bold text-mavie-800 uppercase">Daily Report (直近データ)</h3>
+                <div class="bg-white rounded shadow-sm border border-sleepy-200 overflow-hidden mt-8">
+                    <div class="px-6 py-4 bg-sleepy-50 border-b border-sleepy-200">
+                        <h3 class="text-sm font-bold text-sleepy-800 uppercase">Daily Report (直近データ)</h3>
                     </div>
                     <div class="overflow-x-auto custom-scroll">
-                        <table class="min-w-full divide-y divide-mavie-200">
-                            <thead class="bg-mavie-100">
+                        <table class="min-w-full divide-y divide-sleepy-200">
+                            <thead class="bg-sleepy-100">
                                 <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-mavie-800 uppercase">店舗</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-mavie-800 uppercase">スタッフ</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-mavie-800 uppercase">日付</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-mavie-800 uppercase">売上</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-mavie-800 uppercase">来店数</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-mavie-800 uppercase">HPB予約率</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-sleepy-800 uppercase">店舗</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-sleepy-800 uppercase">スタッフ</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-sleepy-800 uppercase">日付</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-sleepy-800 uppercase">売上</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-sleepy-800 uppercase">来店数</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-sleepy-800 uppercase">HPB予約率</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-mavie-100" id="data-table-body"></tbody>
+                            <tbody class="bg-white divide-y divide-sleepy-100" id="data-table-body"></tbody>
                         </table>
                     </div>
                 </div>
@@ -2684,18 +2684,18 @@
 
             <!-- TAB: GOAL SETTING -->
             <section id="content-goal" class="tab-content hidden space-y-8 animate-fade-in">
-                <div class="bg-gradient-to-br from-mavie-50 to-white rounded-lg shadow-lg border border-mavie-200 overflow-hidden">
-                    <div class="bg-mavie-800 text-white px-6 py-4">
+                <div class="bg-gradient-to-br from-sleepy-50 to-white rounded-lg shadow-lg border border-sleepy-200 overflow-hidden">
+                    <div class="bg-sleepy-800 text-white px-6 py-4">
                         <h3 class="text-xl font-serif font-bold flex items-center gap-2">
                             <span class="text-2xl">🎯</span> 売上目標計算ツール
                         </h3>
-                        <p class="text-xs text-mavie-200 mt-1">月間目標金額と出勤日数を入力すると、過去の実績からデイリー目標を自動計算します</p>
-                        <div class="mt-3 pt-3 border-t border-mavie-700">
-                            <p class="text-xs font-bold text-mavie-200 mb-2">設定対象:</p>
+                        <p class="text-xs text-sleepy-200 mt-1">月間目標金額と出勤日数を入力すると、過去の実績からデイリー目標を自動計算します</p>
+                        <div class="mt-3 pt-3 border-t border-sleepy-700">
+                            <p class="text-xs font-bold text-sleepy-200 mb-2">設定対象:</p>
                             <div class="flex flex-wrap items-center gap-3">
                                 <!-- Month Selector for Goal Setting -->
                                 <div class="relative">
-                                    <select id="goal-month-selector" onchange="loadGoalInputs()" class="appearance-none bg-mavie-900 border border-mavie-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 font-medium text-sm cursor-pointer min-w-[140px]">
+                                    <select id="goal-month-selector" onchange="loadGoalInputs()" class="appearance-none bg-sleepy-900 border border-sleepy-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 font-medium text-sm cursor-pointer min-w-[140px]">
                                         <!-- Options will be populated by JavaScript -->
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">▼</div>
@@ -2703,7 +2703,7 @@
 
                                 <!-- Store Selector for Goal Setting -->
                                 <div class="relative">
-                                    <select id="goal-store-selector" onchange="handleGoalStoreChange()" class="appearance-none bg-mavie-900 border border-mavie-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 font-medium text-sm cursor-pointer min-w-[140px]">
+                                    <select id="goal-store-selector" onchange="handleGoalStoreChange()" class="appearance-none bg-sleepy-900 border border-sleepy-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 font-medium text-sm cursor-pointer min-w-[140px]">
                                         <option value="all">全店舗</option>
                                         <option value="chiba">千葉店</option>
                                         <option value="honatsugi">本厚木店</option>
@@ -2714,7 +2714,7 @@
 
                                 <!-- Staff Selector for Goal Setting -->
                                 <div class="relative">
-                                    <select id="goal-staff-selector" onchange="loadGoalInputs()" class="appearance-none bg-mavie-900 border border-mavie-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 font-medium text-sm cursor-pointer min-w-[140px]">
+                                    <select id="goal-staff-selector" onchange="loadGoalInputs()" class="appearance-none bg-sleepy-900 border border-sleepy-700 text-white py-2 pl-4 pr-8 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 font-medium text-sm cursor-pointer min-w-[140px]">
                                         <option value="all">店舗合計</option>
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">▼</div>
@@ -2727,7 +2727,7 @@
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             <!-- Input Form - Column 1: Days & Sales -->
                             <div id="goal-input-column-1" class="space-y-6">
-                                <h4 class="text-sm font-bold text-mavie-800 uppercase tracking-wider border-b border-mavie-200 pb-2">出勤日数・売上</h4>
+                                <h4 class="text-sm font-bold text-sleepy-800 uppercase tracking-wider border-b border-sleepy-200 pb-2">出勤日数・売上</h4>
 
                                 <!-- Monthly Target Amount -->
                                 <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded border-2 border-amber-300">
@@ -2741,21 +2741,21 @@
                                 </div>
 
                                 <!-- Weekday Days -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">平日出勤日数</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">平日出勤日数</label>
                                     <input type="number" id="goal-weekdays" value="20" min="0" max="31"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoalFromMonthlyTarget()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の平日出勤日数</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の平日出勤日数</p>
                                 </div>
 
                                 <!-- Weekend Days -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">休日出勤日数</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">休日出勤日数</label>
                                     <input type="number" id="goal-weekends" value="6" min="0" max="31"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoalFromMonthlyTarget()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の休日出勤日数</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の休日出勤日数</p>
                                 </div>
 
                                 <!-- Past Performance Info -->
@@ -2804,18 +2804,18 @@
                                 </div>
 
                                 <!-- Retail Sales Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">月間物販目標 (円)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">月間物販目標 (円)</label>
                                     <input type="number" id="goal-retail" value="50000" min="0" step="1000"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の物販売上目標</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の物販売上目標</p>
                                 </div>
                             </div>
 
                             <!-- Input Form - Column 2: Customer Targets -->
                             <div id="goal-input-column-2" class="space-y-6">
-                                <h4 class="text-sm font-bold text-mavie-800 uppercase tracking-wider border-b border-mavie-200 pb-2">基本給・来店目標</h4>
+                                <h4 class="text-sm font-bold text-sleepy-800 uppercase tracking-wider border-b border-sleepy-200 pb-2">基本給・来店目標</h4>
 
                                 <!-- Base Salary -->
                                 <div class="bg-gradient-to-br from-green-50 to-white p-4 rounded border-2 border-green-300">
@@ -2829,57 +2829,57 @@
                                 </div>
 
                                 <!-- New Customers Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">月間新規数目標 (名)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">月間新規数目標 (名)</label>
                                     <input type="number" id="goal-new-customers" value="30" min="0"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の新規顧客目標数</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の新規顧客目標数</p>
                                 </div>
 
                                 <!-- Existing Customers Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">月間既存数目標 (名)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">月間既存数目標 (名)</label>
                                     <input type="number" id="goal-existing-customers" value="90" min="0"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の既存顧客目標数</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の既存顧客目標数</p>
                                 </div>
 
                                 <!-- Unit Price Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">目標客単価 (円)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">目標客単価 (円)</label>
                                     <input type="number" id="goal-unit-price" value="9000" min="0" step="100"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">目標とする平均客単価</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">目標とする平均客単価</p>
                                 </div>
 
                                 <!-- New Customer Next Reservation Rate Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">目標新規次回予約率 (%)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">目標新規次回予約率 (%)</label>
                                     <input type="number" id="goal-new-reservation-rate" value="50" min="0" max="100"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">新規顧客の次回予約率目標</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">新規顧客の次回予約率目標</p>
                                 </div>
 
                                 <!-- Overall Reservation Rate Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">目標次回予約率 (%)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">目標次回予約率 (%)</label>
                                     <input type="number" id="goal-reservation-rate" value="70" min="0" max="100"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">全体の次回予約率目標</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">全体の次回予約率目標</p>
                                 </div>
 
                                 <!-- 5 Star Reviews Target -->
-                                <div class="bg-white p-4 rounded border border-mavie-200">
-                                    <label class="block text-sm font-bold text-mavie-800 mb-2">★5口コミ獲得目標 (件)</label>
+                                <div class="bg-white p-4 rounded border border-sleepy-200">
+                                    <label class="block text-sm font-bold text-sleepy-800 mb-2">★5口コミ獲得目標 (件)</label>
                                     <input type="number" id="goal-reviews-5star" value="0" min="0"
-                                           class="w-full px-4 py-3 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400 text-lg font-medium"
+                                           class="w-full px-4 py-3 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400 text-lg font-medium"
                                            onchange="calculateGoal()">
-                                    <p class="text-xs text-mavie-500 mt-1">月間の★5口コミ獲得目標</p>
+                                    <p class="text-xs text-sleepy-500 mt-1">月間の★5口コミ獲得目標</p>
                                 </div>
 
                                 <button onclick="calculateGoalFromMonthlyTarget()" class="w-full bg-amber-600 text-white py-3 rounded shadow hover:bg-amber-700 transition font-bold text-base flex items-center justify-center gap-2">
@@ -2897,12 +2897,12 @@
 
                             <!-- Store/All Summary Display (hidden by default, shown when viewing store or all) -->
                             <div id="goal-store-summary" class="lg:col-span-2 hidden">
-                                <div class="bg-gradient-to-br from-mavie-50 to-white p-6 rounded-lg border-2 border-mavie-300">
-                                    <h4 class="text-lg font-bold text-mavie-800 mb-6 flex items-center gap-2">
+                                <div class="bg-gradient-to-br from-sleepy-50 to-white p-6 rounded-lg border-2 border-sleepy-300">
+                                    <h4 class="text-lg font-bold text-sleepy-800 mb-6 flex items-center gap-2">
                                         <span class="text-2xl">📊</span>
                                         <span id="goal-summary-title">店舗目標サマリー</span>
                                     </h4>
-                                    <p class="text-sm text-mavie-600 mb-6" id="goal-summary-description">
+                                    <p class="text-sm text-sleepy-600 mb-6" id="goal-summary-description">
                                         この目標は所属スタッフの目標の合算値です。個別のスタッフを選択すると、個人目標を編集できます。
                                     </p>
 
@@ -2914,43 +2914,43 @@
                                         </div>
 
                                         <!-- Retail Target -->
-                                        <div class="bg-white p-4 rounded-lg border border-mavie-200">
-                                            <p class="text-xs font-bold text-mavie-500 mb-1">物販目標</p>
-                                            <p class="text-xl font-bold text-mavie-800" id="summary-retail">¥0</p>
+                                        <div class="bg-white p-4 rounded-lg border border-sleepy-200">
+                                            <p class="text-xs font-bold text-sleepy-500 mb-1">物販目標</p>
+                                            <p class="text-xl font-bold text-sleepy-800" id="summary-retail">¥0</p>
                                         </div>
 
                                         <!-- New Customers -->
-                                        <div class="bg-white p-4 rounded-lg border border-mavie-200">
-                                            <p class="text-xs font-bold text-mavie-500 mb-1">新規数目標</p>
-                                            <p class="text-xl font-bold text-mavie-800" id="summary-new-customers">0名</p>
+                                        <div class="bg-white p-4 rounded-lg border border-sleepy-200">
+                                            <p class="text-xs font-bold text-sleepy-500 mb-1">新規数目標</p>
+                                            <p class="text-xl font-bold text-sleepy-800" id="summary-new-customers">0名</p>
                                         </div>
 
                                         <!-- Existing Customers -->
-                                        <div class="bg-white p-4 rounded-lg border border-mavie-200">
-                                            <p class="text-xs font-bold text-mavie-500 mb-1">既存数目標</p>
-                                            <p class="text-xl font-bold text-mavie-800" id="summary-existing-customers">0名</p>
+                                        <div class="bg-white p-4 rounded-lg border border-sleepy-200">
+                                            <p class="text-xs font-bold text-sleepy-500 mb-1">既存数目標</p>
+                                            <p class="text-xl font-bold text-sleepy-800" id="summary-existing-customers">0名</p>
                                         </div>
 
                                         <!-- Unit Price (Average) -->
-                                        <div class="bg-white p-4 rounded-lg border border-mavie-200">
-                                            <p class="text-xs font-bold text-mavie-500 mb-1">目標客単価 (平均)</p>
-                                            <p class="text-xl font-bold text-mavie-800" id="summary-unit-price">¥0</p>
+                                        <div class="bg-white p-4 rounded-lg border border-sleepy-200">
+                                            <p class="text-xs font-bold text-sleepy-500 mb-1">目標客単価 (平均)</p>
+                                            <p class="text-xl font-bold text-sleepy-800" id="summary-unit-price">¥0</p>
                                         </div>
 
                                         <!-- Reservation Rate (Average) -->
-                                        <div class="bg-white p-4 rounded-lg border border-mavie-200">
-                                            <p class="text-xs font-bold text-mavie-500 mb-1">目標予約率 (平均)</p>
-                                            <p class="text-xl font-bold text-mavie-800" id="summary-reservation-rate">0%</p>
+                                        <div class="bg-white p-4 rounded-lg border border-sleepy-200">
+                                            <p class="text-xs font-bold text-sleepy-500 mb-1">目標予約率 (平均)</p>
+                                            <p class="text-xl font-bold text-sleepy-800" id="summary-reservation-rate">0%</p>
                                         </div>
                                     </div>
 
                                     <!-- Staff breakdown -->
-                                    <div class="mt-6 pt-6 border-t border-mavie-200">
-                                        <h5 class="text-sm font-bold text-mavie-700 mb-4">スタッフ別内訳</h5>
+                                    <div class="mt-6 pt-6 border-t border-sleepy-200">
+                                        <h5 class="text-sm font-bold text-sleepy-700 mb-4">スタッフ別内訳</h5>
                                         <div class="overflow-x-auto">
                                             <table class="w-full text-sm">
                                                 <thead>
-                                                    <tr class="bg-mavie-100 text-mavie-700">
+                                                    <tr class="bg-sleepy-100 text-sleepy-700">
                                                         <th class="py-2 px-3 text-left font-bold">スタッフ</th>
                                                         <th class="py-2 px-3 text-right font-bold">月間目標</th>
                                                         <th class="py-2 px-3 text-right font-bold">物販</th>
@@ -2968,99 +2968,99 @@
 
                             <!-- Results Display -->
                             <div class="space-y-6">
-                                <h4 class="text-sm font-bold text-mavie-800 uppercase tracking-wider border-b border-mavie-200 pb-2">計算結果</h4>
+                                <h4 class="text-sm font-bold text-sleepy-800 uppercase tracking-wider border-b border-sleepy-200 pb-2">計算結果</h4>
 
-                                <div class="bg-gradient-to-br from-mavie-800 to-mavie-900 text-white p-6 rounded-lg shadow-lg">
-                                    <p class="text-xs font-bold text-mavie-200 uppercase tracking-wider mb-2">月間売上目標</p>
+                                <div class="bg-gradient-to-br from-sleepy-800 to-sleepy-900 text-white p-6 rounded-lg shadow-lg">
+                                    <p class="text-xs font-bold text-sleepy-200 uppercase tracking-wider mb-2">月間売上目標</p>
                                     <div class="text-4xl font-serif font-bold" id="goal-total">¥1,100,000</div>
-                                    <div class="mt-4 pt-4 border-t border-mavie-700 space-y-2 text-sm">
+                                    <div class="mt-4 pt-4 border-t border-sleepy-700 space-y-2 text-sm">
                                         <div class="flex justify-between">
-                                            <span class="text-mavie-300">平日売上:</span>
+                                            <span class="text-sleepy-300">平日売上:</span>
                                             <span class="font-bold" id="goal-weekday-total">¥800,000</span>
                                         </div>
                                         <div class="flex justify-between">
-                                            <span class="text-mavie-300">休日売上:</span>
+                                            <span class="text-sleepy-300">休日売上:</span>
                                             <span class="font-bold" id="goal-weekend-total">¥300,000</span>
                                         </div>
                                         <div class="flex justify-between">
-                                            <span class="text-mavie-300">物販目標:</span>
+                                            <span class="text-sleepy-300">物販目標:</span>
                                             <span class="font-bold" id="goal-retail-display">¥50,000</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-white p-6 rounded border border-mavie-200">
-                                    <p class="text-xs font-bold text-mavie-400 uppercase tracking-wider mb-4">売上達成状況</p>
+                                <div class="bg-white p-6 rounded border border-sleepy-200">
+                                    <p class="text-xs font-bold text-sleepy-400 uppercase tracking-wider mb-4">売上達成状況</p>
                                     <div class="space-y-4">
                                         <div>
                                             <div class="flex justify-between text-sm mb-1">
-                                                <span class="text-mavie-600">現在の売上</span>
-                                                <span class="font-bold text-mavie-800" id="goal-current-sales">¥0</span>
+                                                <span class="text-sleepy-600">現在の売上</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-current-sales">¥0</span>
                                             </div>
-                                            <div class="w-full bg-mavie-100 h-3 rounded-full overflow-hidden">
-                                                <div class="bg-mavie-400 h-3 transition-all duration-500" id="goal-progress-bar" style="width:0%"></div>
+                                            <div class="w-full bg-sleepy-100 h-3 rounded-full overflow-hidden">
+                                                <div class="bg-sleepy-400 h-3 transition-all duration-500" id="goal-progress-bar" style="width:0%"></div>
                                             </div>
                                         </div>
                                         <div class="flex justify-between items-center">
-                                            <span class="text-xs text-mavie-500">達成率</span>
-                                            <span class="text-2xl font-serif font-bold text-mavie-800" id="goal-percentage">0%</span>
+                                            <span class="text-xs text-sleepy-500">達成率</span>
+                                            <span class="text-2xl font-serif font-bold text-sleepy-800" id="goal-percentage">0%</span>
                                         </div>
-                                        <div class="flex justify-between items-center pt-4 border-t border-mavie-200">
-                                            <span class="text-xs text-mavie-500">目標まで残り</span>
-                                            <span class="text-lg font-bold text-mavie-600" id="goal-remaining">¥1,100,000</span>
+                                        <div class="flex justify-between items-center pt-4 border-t border-sleepy-200">
+                                            <span class="text-xs text-sleepy-500">目標まで残り</span>
+                                            <span class="text-lg font-bold text-sleepy-600" id="goal-remaining">¥1,100,000</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-white p-6 rounded border border-mavie-200">
-                                    <p class="text-xs font-bold text-mavie-400 uppercase tracking-wider mb-4">来店数・客単価・予約率</p>
+                                <div class="bg-white p-6 rounded border border-sleepy-200">
+                                    <p class="text-xs font-bold text-sleepy-400 uppercase tracking-wider mb-4">来店数・客単価・予約率</p>
                                     <div class="space-y-3 text-sm">
-                                        <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                            <span class="text-mavie-600">新規数</span>
+                                        <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                            <span class="text-sleepy-600">新規数</span>
                                             <div class="flex gap-2 items-center">
-                                                <span class="text-mavie-500" id="goal-new-current">0</span>
-                                                <span class="text-mavie-400">/</span>
-                                                <span class="font-bold text-mavie-800" id="goal-new-target">30名</span>
+                                                <span class="text-sleepy-500" id="goal-new-current">0</span>
+                                                <span class="text-sleepy-400">/</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-new-target">30名</span>
                                             </div>
                                         </div>
-                                        <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                            <span class="text-mavie-600">既存数</span>
+                                        <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                            <span class="text-sleepy-600">既存数</span>
                                             <div class="flex gap-2 items-center">
-                                                <span class="text-mavie-500" id="goal-existing-current">0</span>
-                                                <span class="text-mavie-400">/</span>
-                                                <span class="font-bold text-mavie-800" id="goal-existing-target">90名</span>
+                                                <span class="text-sleepy-500" id="goal-existing-current">0</span>
+                                                <span class="text-sleepy-400">/</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-existing-target">90名</span>
                                             </div>
                                         </div>
-                                        <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                            <span class="text-mavie-600">客単価</span>
+                                        <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                            <span class="text-sleepy-600">客単価</span>
                                             <div class="flex gap-2 items-center">
-                                                <span class="text-mavie-500" id="goal-unit-price-current">¥0</span>
-                                                <span class="text-mavie-400">/</span>
-                                                <span class="font-bold text-mavie-800" id="goal-unit-price-target">¥9,000</span>
+                                                <span class="text-sleepy-500" id="goal-unit-price-current">¥0</span>
+                                                <span class="text-sleepy-400">/</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-unit-price-target">¥9,000</span>
                                             </div>
                                         </div>
-                                        <div class="flex justify-between items-center border-b border-mavie-100 pb-2">
-                                            <span class="text-mavie-600">新規次回予約率</span>
+                                        <div class="flex justify-between items-center border-b border-sleepy-100 pb-2">
+                                            <span class="text-sleepy-600">新規次回予約率</span>
                                             <div class="flex gap-2 items-center">
-                                                <span class="text-mavie-500" id="goal-new-res-rate-current">0%</span>
-                                                <span class="text-mavie-400">/</span>
-                                                <span class="font-bold text-mavie-800" id="goal-new-res-rate-target">50%</span>
+                                                <span class="text-sleepy-500" id="goal-new-res-rate-current">0%</span>
+                                                <span class="text-sleepy-400">/</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-new-res-rate-target">50%</span>
                                             </div>
                                         </div>
                                         <div class="flex justify-between items-center">
-                                            <span class="text-mavie-600">次回予約率</span>
+                                            <span class="text-sleepy-600">次回予約率</span>
                                             <div class="flex gap-2 items-center">
-                                                <span class="text-mavie-500" id="goal-res-rate-current">0%</span>
-                                                <span class="text-mavie-400">/</span>
-                                                <span class="font-bold text-mavie-800" id="goal-res-rate-target">70%</span>
+                                                <span class="text-sleepy-500" id="goal-res-rate-current">0%</span>
+                                                <span class="text-sleepy-400">/</span>
+                                                <span class="font-bold text-sleepy-800" id="goal-res-rate-target">70%</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-mavie-50 p-4 rounded border-l-4 border-mavie-400">
-                                    <p class="text-xs font-bold text-mavie-800 mb-1">💡 ヒント</p>
-                                    <p class="text-xs text-mavie-600" id="goal-hint-text">各項目の目標を設定して、達成状況を確認できます。現在の数値は選択中のスタッフ・店舗のデータから自動計算されます。</p>
+                                <div class="bg-sleepy-50 p-4 rounded border-l-4 border-sleepy-400">
+                                    <p class="text-xs font-bold text-sleepy-800 mb-1">💡 ヒント</p>
+                                    <p class="text-xs text-sleepy-600" id="goal-hint-text">各項目の目標を設定して、達成状況を確認できます。現在の数値は選択中のスタッフ・店舗のデータから自動計算されます。</p>
                                 </div>
 
                                 <div class="bg-green-50 p-4 rounded border-l-4 border-green-500" id="goal-save-notice" style="display:none;">
@@ -3075,50 +3075,50 @@
 
             <!-- TAB: EDIT -->
             <section id="content-edit" class="tab-content hidden space-y-8 animate-fade-in">
-                <div class="bg-mavie-100 p-4 rounded border-l-4 border-mavie-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="bg-sleepy-100 p-4 rounded border-l-4 border-sleepy-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div>
-                        <p class="text-sm text-mavie-800 font-bold">データ修正モード</p>
-                        <p class="text-xs text-mavie-600">修正して「保存」を押すと、スプレッドシート本体が更新されます。</p>
+                        <p class="text-sm text-sleepy-800 font-bold">データ修正モード</p>
+                        <p class="text-xs text-sleepy-600">修正して「保存」を押すと、スプレッドシート本体が更新されます。</p>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="applyEditsLocally()" id="btn-preview-edit" class="bg-white border border-mavie-300 text-mavie-600 px-4 py-2 rounded hover:bg-mavie-50 transition text-sm font-bold">
+                        <button onclick="applyEditsLocally()" id="btn-preview-edit" class="bg-white border border-sleepy-300 text-sleepy-600 px-4 py-2 rounded hover:bg-sleepy-50 transition text-sm font-bold">
                             表示のみ更新 (プレビュー)
                         </button>
-                        <button onclick="saveToSpreadsheet()" id="btn-save-sheet" class="bg-mavie-800 text-white px-6 py-2 rounded shadow hover:bg-mavie-900 transition text-sm font-bold flex items-center gap-2">
+                        <button onclick="saveToSpreadsheet()" id="btn-save-sheet" class="bg-sleepy-800 text-white px-6 py-2 rounded shadow hover:bg-sleepy-900 transition text-sm font-bold flex items-center gap-2">
                             <span>☁</span> スプレッドシートに保存
                         </button>
                     </div>
                 </div>
 
-                <div class="bg-white rounded shadow-sm border border-mavie-200 overflow-hidden">
+                <div class="bg-white rounded shadow-sm border border-sleepy-200 overflow-hidden">
                     <div class="overflow-x-auto custom-scroll" style="max-height: 70vh;">
-                        <table class="min-w-full divide-y divide-mavie-200" id="edit-table">
-                            <thead class="bg-mavie-100 sticky top-0 z-10">
+                        <table class="min-w-full divide-y divide-sleepy-200" id="edit-table">
+                            <thead class="bg-sleepy-100 sticky top-0 z-10">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-mavie-800 whitespace-nowrap">日付</th>
-                                    <th id="edit-th-store" class="px-4 py-3 text-left text-xs font-medium text-mavie-800 whitespace-nowrap">店舗</th>
-                                    <th id="edit-th-staff" class="px-4 py-3 text-left text-xs font-medium text-mavie-800 whitespace-nowrap">スタッフ</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">売上(現金)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">売上(クレカ)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">売上(QR)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">物販</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">HPBポイント</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">HPBギフト</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">その他割引</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">返金</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">HPB新規</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">Mini/Nailie新規</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">既存</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">知り合い価格</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">次回予約(HPB新規)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">次回予約(Mini新規)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">次回予約(既存)</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">★5口コミ</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">ブログ</th>
-                                    <th class="px-4 py-3 text-center text-xs font-medium text-mavie-800 whitespace-nowrap">SNS</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-sleepy-800 whitespace-nowrap">日付</th>
+                                    <th id="edit-th-store" class="px-4 py-3 text-left text-xs font-medium text-sleepy-800 whitespace-nowrap">店舗</th>
+                                    <th id="edit-th-staff" class="px-4 py-3 text-left text-xs font-medium text-sleepy-800 whitespace-nowrap">スタッフ</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">売上(現金)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">売上(クレカ)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">売上(QR)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">物販</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">HPBポイント</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">HPBギフト</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">その他割引</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">返金</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">HPB新規</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">Mini/Nailie新規</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">既存</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">知り合い価格</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">次回予約(HPB新規)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">次回予約(Mini新規)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">次回予約(既存)</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">★5口コミ</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">ブログ</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-sleepy-800 whitespace-nowrap">SNS</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-mavie-100" id="edit-table-body">
+                            <tbody class="bg-white divide-y divide-sleepy-100" id="edit-table-body">
                                 <!-- Populated by JS -->
                             </tbody>
                         </table>
@@ -3128,29 +3128,29 @@
 
             <!-- TAB: SETTINGS -->
             <section id="content-settings" class="tab-content hidden space-y-8 animate-fade-in">
-                <div class="bg-gradient-to-br from-mavie-50 to-white rounded-lg shadow-lg border border-mavie-200 overflow-hidden">
-                    <div class="bg-mavie-800 text-white px-6 py-4">
+                <div class="bg-gradient-to-br from-sleepy-50 to-white rounded-lg shadow-lg border border-sleepy-200 overflow-hidden">
+                    <div class="bg-sleepy-800 text-white px-6 py-4">
                         <h3 class="text-xl font-serif font-bold flex items-center gap-2">
                             <span class="text-2xl">⚙</span> スタッフ・店舗管理
                         </h3>
-                        <p class="text-xs text-mavie-200 mt-1">スタッフと店舗の追加・削除を行います</p>
+                        <p class="text-xs text-sleepy-200 mt-1">スタッフと店舗の追加・削除を行います</p>
                     </div>
 
                     <div class="p-6 md:p-8 space-y-8">
                         <!-- Spreadsheet API Settings -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200" id="spreadsheet-api-settings">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200" id="spreadsheet-api-settings">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <i data-lucide="table" class="w-5 h-5 text-primary-500"></i>
                                 スプレッドシート連携設定
                             </h4>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-bold text-mavie-600 mb-2">Google Apps Script Web App URL</label>
-                                    <input type="text" id="spreadsheet-api-url" placeholder="https://script.google.com/macros/s/..." class="w-full px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
-                                    <p class="text-xs text-mavie-500 mt-1">※ページを開くたびに自動でデータを取得します</p>
+                                    <label class="block text-sm font-bold text-sleepy-600 mb-2">Google Apps Script Web App URL</label>
+                                    <input type="text" id="spreadsheet-api-url" placeholder="https://script.google.com/macros/s/..." class="w-full px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <p class="text-xs text-sleepy-500 mt-1">※ページを開くたびに自動でデータを取得します</p>
                                 </div>
                                 <div class="flex gap-2 flex-wrap">
-                                    <button onclick="saveSpreadsheetApiUrl()" class="bg-mavie-700 text-white px-6 py-2 rounded hover:bg-mavie-800 transition font-bold flex items-center gap-2">
+                                    <button onclick="saveSpreadsheetApiUrl()" class="bg-sleepy-700 text-white px-6 py-2 rounded hover:bg-sleepy-800 transition font-bold flex items-center gap-2">
                                         <i data-lucide="save" class="w-4 h-4"></i>
                                         保存
                                     </button>
@@ -3160,9 +3160,9 @@
                                     </button>
                                 </div>
                                 <div id="spreadsheet-connection-status" class="hidden"></div>
-                                <div class="bg-mavie-50 p-4 rounded border-l-4 border-primary-500">
-                                    <p class="text-xs font-bold text-mavie-800 mb-2">📋 設定手順</p>
-                                    <ol class="text-xs text-mavie-600 space-y-1 list-decimal list-inside">
+                                <div class="bg-sleepy-50 p-4 rounded border-l-4 border-primary-500">
+                                    <p class="text-xs font-bold text-sleepy-800 mb-2">📋 設定手順</p>
+                                    <ol class="text-xs text-sleepy-600 space-y-1 list-decimal list-inside">
                                         <li>Google スプレッドシートを開きます</li>
                                         <li>「拡張機能」→「Apps Script」を選択</li>
                                         <li>データ取得用のスクリプトを作成し、Web Appとしてデプロイ</li>
@@ -3173,19 +3173,19 @@
                         </div>
 
                         <!-- Customer Data API Settings -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200" id="customer-api-settings">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200" id="customer-api-settings">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <i data-lucide="users" class="w-5 h-5 text-emerald-500"></i>
                                 顧客データ連携設定（マーケティング用）
                             </h4>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-bold text-mavie-600 mb-2">顧客データ API URL</label>
-                                    <input type="text" id="customer-api-url" placeholder="https://script.google.com/macros/s/..." class="w-full px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
-                                    <p class="text-xs text-mavie-500 mt-1">※Googleフォームの回答が保存されているスプレッドシートのAPI URL</p>
+                                    <label class="block text-sm font-bold text-sleepy-600 mb-2">顧客データ API URL</label>
+                                    <input type="text" id="customer-api-url" placeholder="https://script.google.com/macros/s/..." class="w-full px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <p class="text-xs text-sleepy-500 mt-1">※Googleフォームの回答が保存されているスプレッドシートのAPI URL</p>
                                 </div>
                                 <div class="flex gap-2">
-                                    <button onclick="saveCustomerApiUrl()" class="bg-mavie-700 text-white px-6 py-2 rounded hover:bg-mavie-800 transition font-bold flex items-center gap-2">
+                                    <button onclick="saveCustomerApiUrl()" class="bg-sleepy-700 text-white px-6 py-2 rounded hover:bg-sleepy-800 transition font-bold flex items-center gap-2">
                                         <i data-lucide="save" class="w-4 h-4"></i>
                                         保存
                                     </button>
@@ -3196,86 +3196,86 @@
                                 </div>
                                 <div id="customer-api-connection-status" class="hidden"></div>
                                 <div class="bg-emerald-50 p-4 rounded border-l-4 border-emerald-500">
-                                    <p class="text-xs font-bold text-mavie-800 mb-2">📝 顧客データ連携について</p>
-                                    <p class="text-xs text-mavie-600 mb-2">Googleフォームで収集した顧客情報をマーケティング分析に活用できます。</p>
-                                    <p class="text-xs text-mavie-600">設定後、「マーケティング」タブで年齢層・地域・来店理由などの分析が可能になります。</p>
+                                    <p class="text-xs font-bold text-sleepy-800 mb-2">📝 顧客データ連携について</p>
+                                    <p class="text-xs text-sleepy-600 mb-2">Googleフォームで収集した顧客情報をマーケティング分析に活用できます。</p>
+                                    <p class="text-xs text-sleepy-600">設定後、「マーケティング」タブで年齢層・地域・来店理由などの分析が可能になります。</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- API Key Settings -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200" id="gemini-api-settings">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200" id="gemini-api-settings">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <span>💡</span> Gemini API設定
                             </h4>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-bold text-mavie-600 mb-2">Gemini APIキー</label>
-                                    <input type="password" id="gemini-api-key" placeholder="APIキーを入力" class="w-full px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
-                                    <p class="text-xs text-mavie-500 mt-1">※目標達成アドバイス機能で使用します</p>
+                                    <label class="block text-sm font-bold text-sleepy-600 mb-2">Gemini APIキー</label>
+                                    <input type="password" id="gemini-api-key" placeholder="APIキーを入力" class="w-full px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <p class="text-xs text-sleepy-500 mt-1">※目標達成アドバイス機能で使用します</p>
                                 </div>
-                                <button onclick="saveGeminiApiKey()" class="bg-mavie-700 text-white px-6 py-2 rounded hover:bg-mavie-800 transition font-bold">保存</button>
-                                <div class="bg-mavie-50 p-3 rounded border-l-4 border-mavie-400">
-                                    <p class="text-xs font-bold text-mavie-800 mb-1">💡 Gemini APIキーの取得方法</p>
-                                    <p class="text-xs text-mavie-600">Google AI Studioから無料でAPIキーを取得できます: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="underline">https://aistudio.google.com/app/apikey</a></p>
+                                <button onclick="saveGeminiApiKey()" class="bg-sleepy-700 text-white px-6 py-2 rounded hover:bg-sleepy-800 transition font-bold">保存</button>
+                                <div class="bg-sleepy-50 p-3 rounded border-l-4 border-sleepy-400">
+                                    <p class="text-xs font-bold text-sleepy-800 mb-1">💡 Gemini APIキーの取得方法</p>
+                                    <p class="text-xs text-sleepy-600">Google AI Studioから無料でAPIキーを取得できます: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="underline">https://aistudio.google.com/app/apikey</a></p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Store Management -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <span>🏢</span> 店舗管理
                             </h4>
                             <div class="space-y-4">
                                 <div class="flex gap-2">
-                                    <input type="text" id="new-store-id" placeholder="店舗ID (例: chiba)" class="flex-1 px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
-                                    <input type="text" id="new-store-name" placeholder="店舗名 (例: 千葉店)" class="flex-1 px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <input type="text" id="new-store-id" placeholder="店舗ID (例: chiba)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
+                                    <input type="text" id="new-store-name" placeholder="店舗名 (例: 千葉店)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                     <button onclick="addStore()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition font-bold">追加</button>
                                 </div>
                                 <div class="mt-4">
-                                    <h5 class="text-sm font-bold text-mavie-600 mb-2">現在の店舗:</h5>
+                                    <h5 class="text-sm font-bold text-sleepy-600 mb-2">現在の店舗:</h5>
                                     <div id="store-list" class="space-y-2"></div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Staff Management -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <span>👥</span> スタッフ管理
                             </h4>
                             <div class="space-y-4">
                                 <div class="flex gap-2">
-                                    <select id="staff-store-selector" class="px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <select id="staff-store-selector" class="px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                         <option value="">店舗を選択</option>
                                     </select>
-                                    <input type="text" id="new-staff-name" placeholder="スタッフ名 (例: kiki)" class="flex-1 px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <input type="text" id="new-staff-name" placeholder="スタッフ名 (例: kiki)" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                     <button onclick="addStaff()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition font-bold">追加</button>
                                 </div>
                                 <div class="mt-4">
-                                    <h5 class="text-sm font-bold text-mavie-600 mb-2">現在のスタッフ:</h5>
+                                    <h5 class="text-sm font-bold text-sleepy-600 mb-2">現在のスタッフ:</h5>
                                     <div id="staff-list" class="space-y-2"></div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Staff Password Management -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200" id="staff-password-settings">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200" id="staff-password-settings">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <i data-lucide="lock" class="w-5 h-5 text-primary-500"></i>
                                 スタッフログインパスワード設定
                             </h4>
                             <div class="space-y-4">
-                                <p class="text-sm text-mavie-600">各スタッフの専用ページ（URLパラメータでアクセス）にパスワード認証を設定できます。</p>
+                                <p class="text-sm text-sleepy-600">各スタッフの専用ページ（URLパラメータでアクセス）にパスワード認証を設定できます。</p>
                                 <div class="flex gap-2 flex-wrap">
-                                    <select id="password-store-selector" onchange="updatePasswordStaffSelector()" class="px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <select id="password-store-selector" onchange="updatePasswordStaffSelector()" class="px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                         <option value="">店舗を選択</option>
                                     </select>
-                                    <select id="password-staff-selector" class="px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <select id="password-staff-selector" class="px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                         <option value="">スタッフを選択</option>
                                     </select>
-                                    <input type="password" id="staff-password-input" placeholder="パスワード（空白で無効化）" class="flex-1 min-w-[150px] px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <input type="password" id="staff-password-input" placeholder="パスワード（空白で無効化）" class="flex-1 min-w-[150px] px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                     <button onclick="saveStaffPasswordSettings()" class="bg-primary-500 text-white px-6 py-2 rounded hover:bg-primary-600 transition font-bold flex items-center gap-2">
                                         <i data-lucide="save" class="w-4 h-4"></i>
                                         保存
@@ -3283,27 +3283,27 @@
                                 </div>
                                 <div id="staff-password-status" class="hidden"></div>
                                 <div class="mt-4">
-                                    <h5 class="text-sm font-bold text-mavie-600 mb-2">パスワード設定状況:</h5>
+                                    <h5 class="text-sm font-bold text-sleepy-600 mb-2">パスワード設定状況:</h5>
                                     <div id="staff-password-list" class="space-y-2"></div>
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-400">
                                     <p class="text-xs font-bold text-blue-800 mb-1">🔐 スタッフ専用ページのURL例</p>
                                     <p class="text-xs text-blue-600 font-mono">?store=chiba&staff=kiki</p>
-                                    <p class="text-xs text-mavie-600 mt-2">パスワードを設定すると、スタッフはログイン後に自分のダッシュボードを確認できます。</p>
+                                    <p class="text-xs text-sleepy-600 mt-2">パスワードを設定すると、スタッフはログイン後に自分のダッシュボードを確認できます。</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 管理ページパスワード設定 -->
-                        <div class="bg-white p-6 rounded-lg border border-mavie-200">
-                            <h4 class="text-lg font-bold text-mavie-800 mb-4 flex items-center gap-2">
+                        <div class="bg-white p-6 rounded-lg border border-sleepy-200">
+                            <h4 class="text-lg font-bold text-sleepy-800 mb-4 flex items-center gap-2">
                                 <i data-lucide="shield" class="w-5 h-5 text-red-500"></i>
                                 管理ページパスワード設定
                             </h4>
                             <div class="space-y-4">
-                                <p class="text-sm text-mavie-600">管理ページ（設定タブ）へのアクセスにパスワード認証を設定します。</p>
+                                <p class="text-sm text-sleepy-600">管理ページ（設定タブ）へのアクセスにパスワード認証を設定します。</p>
                                 <div class="flex gap-2">
-                                    <input type="password" id="admin-password-input" placeholder="新しいパスワード（空白で無効化）" class="flex-1 px-4 py-2 border border-mavie-300 rounded focus:outline-none focus:ring-2 focus:ring-mavie-400">
+                                    <input type="password" id="admin-password-input" placeholder="新しいパスワード（空白で無効化）" class="flex-1 px-4 py-2 border border-sleepy-300 rounded focus:outline-none focus:ring-2 focus:ring-sleepy-400">
                                     <button onclick="saveAdminPassword()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition font-bold flex items-center gap-2">
                                         <i data-lucide="save" class="w-4 h-4"></i>
                                         保存
@@ -3327,15 +3327,15 @@
             </section>
         </main>
         
-        <footer class="bg-mavie-900 text-mavie-300 py-8 mt-12 text-center text-xs">
-            <p>&copy; vie Eyelash Salon</p>
+        <footer class="bg-sleepy-900 text-sleepy-300 py-8 mt-12 text-center text-xs">
+            <p>&copy; 睡眠整体SLEEPY</p>
         </footer>
     </div>
 
     <!-- Application Logic -->
     <script>
         // ★ スプレッドシートAPI設定
-        const SPREADSHEET_API_KEY = 'mavie_spreadsheet_api_url';
+        const SPREADSHEET_API_KEY = 'sleepy_spreadsheet_api_url';
 
         // デフォルトのAPI URL（コードに埋め込み）
         const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbwrz7LgQb2uH9VTtmalZxIEcJnHc-Ae53UNMnDi0MM5eLdP7XmZKOlDPTaOL5pmsFwf/exec';
@@ -3391,7 +3391,7 @@
         const customerListPageSize = 20;
 
         // 顧客データAPI設定
-        const CUSTOMER_API_KEY = 'mavie_customer_api_url';
+        const CUSTOMER_API_KEY = 'sleepy_customer_api_url';
         let CUSTOMER_API_URL = localStorage.getItem(CUSTOMER_API_KEY) || "";
         let charts = {};
         let lockedStore = null;
@@ -3401,7 +3401,7 @@
         let monthlyGoal = 1100000; // Default goal
 
         // --- STAFF PASSWORD FUNCTIONS ---
-        const STAFF_PASSWORD_STORAGE_KEY = 'mavie_staff_passwords';
+        const STAFF_PASSWORD_STORAGE_KEY = 'sleepy_staff_passwords';
         let staffPasswordsCache = null; // スプレッドシートから読み込んだパスワードのキャッシュ
 
         // ローカルストレージから読み込み（フォールバック用）
@@ -3496,7 +3496,7 @@
         }
 
         // --- SETTINGS SYNC FUNCTIONS (スプレッドシート連携) ---
-        const SETTINGS_LOCAL_KEY = 'mavie_dashboard_settings';
+        const SETTINGS_LOCAL_KEY = 'sleepy_dashboard_settings';
 
         // ローカルストレージから設定を読み込み（フォールバック用）
         function loadSettingsFromLocalStorage() {
@@ -3648,9 +3648,9 @@
         }
 
         // --- GOAL STORAGE FUNCTIONS ---
-        const GOAL_STORAGE_KEY = 'mavie_staff_goals_v2'; // v2: 月別対応
-        const GOAL_STORAGE_KEY_LEGACY = 'mavie_staff_goals'; // 旧バージョン
-        const BASE_SALARY_STORAGE_KEY = 'mavie_staff_base_salary';
+        const GOAL_STORAGE_KEY = 'sleepy_staff_goals_v2'; // v2: 月別対応
+        const GOAL_STORAGE_KEY_LEGACY = 'sleepy_staff_goals'; // 旧バージョン
+        const BASE_SALARY_STORAGE_KEY = 'sleepy_staff_base_salary';
         const DEFAULT_GOAL = {
             weekdays: 0,
             weekends: 0,
@@ -5020,7 +5020,7 @@
 
             if (!customerData || customerData.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-mavie-400">
+                    <div class="text-center py-8 text-sleepy-400">
                         <i data-lucide="clipboard-list" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
                         <p class="text-sm">顧客データAPIを設定すると、カウンセリング回答が表示されます</p>
                         <p class="text-xs mt-1">設定タブ → 顧客データ連携設定</p>
@@ -5073,7 +5073,7 @@
 
             if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-mavie-400">
+                    <div class="text-center py-8 text-sleepy-400">
                         <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
                         <p class="text-sm">該当する回答がありません</p>
                     </div>
@@ -5104,51 +5104,51 @@
                 const hasOtherInfo = c.allergy || c.fromOtherSalon || c.dissatisfaction;
 
                 return `
-                    <div class="bg-white border border-mavie-200 rounded-lg shadow-sm hover:shadow-md transition overflow-hidden">
+                    <div class="bg-white border border-sleepy-200 rounded-lg shadow-sm hover:shadow-md transition overflow-hidden">
                         <!-- ヘッダー: 名前・日付・店舗 -->
-                        <div class="bg-gradient-to-r ${c.store === 'chiba' ? 'from-blue-50 to-blue-100' : 'from-purple-50 to-purple-100'} px-4 py-3 border-b border-mavie-200">
+                        <div class="bg-gradient-to-r ${c.store === 'chiba' ? 'from-blue-50 to-blue-100' : 'from-purple-50 to-purple-100'} px-4 py-3 border-b border-sleepy-200">
                             <div class="flex flex-wrap items-center justify-between gap-2">
                                 <div class="flex items-center gap-3">
                                     <div class="w-12 h-12 rounded-full ${c.store === 'chiba' ? 'bg-blue-200 text-blue-700' : 'bg-purple-200 text-purple-700'} flex items-center justify-center font-bold text-lg">
                                         ${c.name ? c.name.charAt(0) : '?'}
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-mavie-800 text-lg">${c.name || '名前未入力'}</h4>
-                                        <p class="text-sm text-mavie-500">${c.nameKana || ''}</p>
+                                        <h4 class="font-bold text-sleepy-800 text-lg">${c.name || '名前未入力'}</h4>
+                                        <p class="text-sm text-sleepy-500">${c.nameKana || ''}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="px-3 py-1 text-sm font-semibold rounded-full ${c.store === 'chiba' ? 'bg-blue-500 text-white' : 'bg-purple-500 text-white'}">${storeName}</span>
-                                    <span class="text-sm text-mavie-500 bg-white px-2 py-1 rounded">${regDate}</span>
+                                    <span class="text-sm text-sleepy-500 bg-white px-2 py-1 rounded">${regDate}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="p-4 space-y-4">
                             <!-- 基本情報 -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-sm bg-mavie-50 p-3 rounded-lg">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-sm bg-sleepy-50 p-3 rounded-lg">
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">年齢</span>
-                                    <span class="font-semibold text-mavie-700">${age !== '-' ? age + '歳' : '-'}</span>
+                                    <span class="text-xs text-sleepy-400 block">年齢</span>
+                                    <span class="font-semibold text-sleepy-700">${age !== '-' ? age + '歳' : '-'}</span>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">職業</span>
-                                    <span class="font-semibold text-mavie-700">${c.job || c.occupation || '-'}</span>
+                                    <span class="text-xs text-sleepy-400 block">職業</span>
+                                    <span class="font-semibold text-sleepy-700">${c.job || c.occupation || '-'}</span>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">電話番号</span>
-                                    <span class="font-semibold text-mavie-700">${c.phone || '-'}</span>
+                                    <span class="text-xs text-sleepy-400 block">電話番号</span>
+                                    <span class="font-semibold text-sleepy-700">${c.phone || '-'}</span>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">住所</span>
-                                    <span class="font-semibold text-mavie-700 text-xs">${c.address || '-'}</span>
+                                    <span class="text-xs text-sleepy-400 block">住所</span>
+                                    <span class="font-semibold text-sleepy-700 text-xs">${c.address || '-'}</span>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">生年月日</span>
-                                    <span class="font-semibold text-mavie-700 text-xs">${birthVal || '-'}</span>
+                                    <span class="text-xs text-sleepy-400 block">生年月日</span>
+                                    <span class="font-semibold text-sleepy-700 text-xs">${birthVal || '-'}</span>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-mavie-400 block">SNS許可</span>
+                                    <span class="text-xs text-sleepy-400 block">SNS許可</span>
                                     <span class="font-semibold ${hasSns ? 'text-emerald-600' : 'text-red-500'}">${c.snsOk || c.snsPermission || '-'}</span>
                                 </div>
                             </div>
@@ -5157,7 +5157,7 @@
                             ${c.visitReason ? `
                             <div class="bg-amber-50 p-3 rounded-lg border-l-4 border-amber-400">
                                 <span class="text-xs font-bold text-amber-700 block mb-1">来店理由</span>
-                                <p class="text-sm text-mavie-700">${c.visitReason}</p>
+                                <p class="text-sm text-sleepy-700">${c.visitReason}</p>
                             </div>
                             ` : ''}
 
@@ -5166,8 +5166,8 @@
                             <div class="bg-orange-50 p-3 rounded-lg border-l-4 border-orange-400">
                                 <span class="text-xs font-bold text-orange-700 block mb-2">他サロン情報</span>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                                    ${c.fromOtherSalon ? `<div><span class="text-mavie-400">他サロン利用:</span> <span class="text-mavie-700">${c.fromOtherSalon}</span></div>` : ''}
-                                    ${c.dissatisfaction ? `<div><span class="text-mavie-400">不満点:</span> <span class="text-mavie-700">${c.dissatisfaction}</span></div>` : ''}
+                                    ${c.fromOtherSalon ? `<div><span class="text-sleepy-400">他サロン利用:</span> <span class="text-sleepy-700">${c.fromOtherSalon}</span></div>` : ''}
+                                    ${c.dissatisfaction ? `<div><span class="text-sleepy-400">不満点:</span> <span class="text-sleepy-700">${c.dissatisfaction}</span></div>` : ''}
                                 </div>
                             </div>
                             ` : ''}
@@ -5188,11 +5188,11 @@
                                         <i data-lucide="eye" class="w-4 h-4"></i>眉毛メニュー
                                     </h5>
                                     <div class="space-y-2 text-sm">
-                                        ${c.eyebrowFrequency ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">利用頻度:</span><span class="text-mavie-700">${c.eyebrowFrequency}</span></div>` : ''}
-                                        ${c.eyebrowLastCare ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">最後のお手入れ:</span><span class="text-mavie-700">${c.eyebrowLastCare}</span></div>` : ''}
-                                        ${c.eyebrowConcern ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">お悩み:</span><span class="text-mavie-700">${c.eyebrowConcern}</span></div>` : ''}
-                                        ${c.eyebrowDesign ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">希望デザイン:</span><span class="text-mavie-700">${c.eyebrowDesign}</span></div>` : ''}
-                                        ${c.eyebrowImpression ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">希望印象:</span><span class="text-mavie-700">${c.eyebrowImpression}</span></div>` : ''}
+                                        ${c.eyebrowFrequency ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">利用頻度:</span><span class="text-sleepy-700">${c.eyebrowFrequency}</span></div>` : ''}
+                                        ${c.eyebrowLastCare ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">最後のお手入れ:</span><span class="text-sleepy-700">${c.eyebrowLastCare}</span></div>` : ''}
+                                        ${c.eyebrowConcern ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">お悩み:</span><span class="text-sleepy-700">${c.eyebrowConcern}</span></div>` : ''}
+                                        ${c.eyebrowDesign ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">希望デザイン:</span><span class="text-sleepy-700">${c.eyebrowDesign}</span></div>` : ''}
+                                        ${c.eyebrowImpression ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">希望印象:</span><span class="text-sleepy-700">${c.eyebrowImpression}</span></div>` : ''}
                                         ${c.eyebrowTrouble ? `<div class="flex"><span class="text-red-400 w-28 shrink-0">施術後トラブル:</span><span class="text-red-600">${c.eyebrowTrouble}</span></div>` : ''}
                                     </div>
                                 </div>
@@ -5203,10 +5203,10 @@
                                         <i data-lucide="sparkles" class="w-4 h-4"></i>まつ毛メニュー
                                     </h5>
                                     <div class="space-y-2 text-sm">
-                                        ${c.lashFrequency ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">利用頻度:</span><span class="text-mavie-700">${c.lashFrequency}</span></div>` : ''}
-                                        ${c.lashDesign ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">希望デザイン:</span><span class="text-mavie-700">${c.lashDesign}</span></div>` : ''}
-                                        ${c.lashEyeLook ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">目の見え方:</span><span class="text-mavie-700">${c.lashEyeLook}</span></div>` : ''}
-                                        ${c.lashContact ? `<div class="flex"><span class="text-mavie-400 w-28 shrink-0">コンタクト:</span><span class="text-mavie-700">${c.lashContact}</span></div>` : ''}
+                                        ${c.lashFrequency ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">利用頻度:</span><span class="text-sleepy-700">${c.lashFrequency}</span></div>` : ''}
+                                        ${c.lashDesign ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">希望デザイン:</span><span class="text-sleepy-700">${c.lashDesign}</span></div>` : ''}
+                                        ${c.lashEyeLook ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">目の見え方:</span><span class="text-sleepy-700">${c.lashEyeLook}</span></div>` : ''}
+                                        ${c.lashContact ? `<div class="flex"><span class="text-sleepy-400 w-28 shrink-0">コンタクト:</span><span class="text-sleepy-700">${c.lashContact}</span></div>` : ''}
                                         ${c.lashTrouble ? `<div class="flex"><span class="text-red-400 w-28 shrink-0">施術後トラブル:</span><span class="text-red-600">${c.lashTrouble}</span></div>` : ''}
                                     </div>
                                 </div>
@@ -5215,7 +5215,7 @@
 
                             <!-- 同意確認 -->
                             ${c.agreement ? `
-                            <div class="text-xs text-mavie-400 pt-2 border-t border-mavie-100">
+                            <div class="text-xs text-sleepy-400 pt-2 border-t border-sleepy-100">
                                 <span class="font-semibold">注意事項確認:</span> ${c.agreement}
                             </div>
                             ` : ''}
@@ -6195,11 +6195,11 @@
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-xs font-bold text-mavie-800">${storeLabel}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-xs text-mavie-600">${d.staff}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-xs text-mavie-500">${d.date}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-xs text-right font-medium text-mavie-800">¥${total.toLocaleString()}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-xs text-right text-mavie-600">${d.customers.newHPB + d.customers.newMiniNai + d.customers.existing}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-xs font-bold text-sleepy-800">${storeLabel}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-xs text-sleepy-600">${d.staff}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-xs text-sleepy-500">${d.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-xs text-right font-medium text-sleepy-800">¥${total.toLocaleString()}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-xs text-right text-sleepy-600">${d.customers.newHPB + d.customers.newMiniNai + d.customers.existing}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-xs text-right ${newResRate < 40 && newResRate !== '-' ? 'text-red-400' : ''}">${newResRate !== '-' ? newResRate+'%' : '-'}</td>
                 `;
                 tbody.appendChild(tr);
@@ -6782,12 +6782,12 @@
             }
 
             tbody.innerHTML = rows.map(r => `
-                <tr class="border-b border-mavie-100 hover:bg-mavie-50">
-                    <td class="py-2 px-3 text-mavie-800 font-medium">${r.name}</td>
-                    <td class="py-2 px-3 text-right text-mavie-700">¥${fmt(r.monthlyTarget)}</td>
-                    <td class="py-2 px-3 text-right text-mavie-600">¥${fmt(r.retail)}</td>
-                    <td class="py-2 px-3 text-right text-mavie-600">${r.newCustomers}名</td>
-                    <td class="py-2 px-3 text-right text-mavie-600">${r.existingCustomers}名</td>
+                <tr class="border-b border-sleepy-100 hover:bg-sleepy-50">
+                    <td class="py-2 px-3 text-sleepy-800 font-medium">${r.name}</td>
+                    <td class="py-2 px-3 text-right text-sleepy-700">¥${fmt(r.monthlyTarget)}</td>
+                    <td class="py-2 px-3 text-right text-sleepy-600">¥${fmt(r.retail)}</td>
+                    <td class="py-2 px-3 text-right text-sleepy-600">${r.newCustomers}名</td>
+                    <td class="py-2 px-3 text-right text-sleepy-600">${r.existingCustomers}名</td>
                 </tr>
             `).join('');
         }
@@ -7233,7 +7233,7 @@
 
             if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-mavie-500">
+                    <div class="text-center py-8 text-sleepy-500">
                         <i data-lucide="users" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
                         <p class="text-sm">${filterVal === 'today' ? '今日の予約はありません' : '該当するお客様がいません'}</p>
                     </div>
@@ -7259,12 +7259,12 @@
             const hasLashInfo = customer.lashDesign || customer.lashFrequency || customer.lashEyeLook || customer.lashContact;
 
             return `
-                <div class="bg-gradient-to-r from-white to-mavie-50 rounded-lg border border-mavie-200 p-4 ${alertClass} hover:shadow-md transition">
+                <div class="bg-gradient-to-r from-white to-sleepy-50 rounded-lg border border-sleepy-200 p-4 ${alertClass} hover:shadow-md transition">
                     <div class="flex items-start justify-between mb-3">
                         <div>
-                            <h4 class="font-bold text-mavie-800 text-lg">${customer.name || '名前未登録'}</h4>
-                            ${customer.nameKana ? `<p class="text-xs text-mavie-400">${customer.nameKana}</p>` : ''}
-                            <p class="text-xs text-mavie-500">${customer.date || ''} ${customer.storeName || ''}</p>
+                            <h4 class="font-bold text-sleepy-800 text-lg">${customer.name || '名前未登録'}</h4>
+                            ${customer.nameKana ? `<p class="text-xs text-sleepy-400">${customer.nameKana}</p>` : ''}
+                            <p class="text-xs text-sleepy-500">${customer.date || ''} ${customer.storeName || ''}</p>
                         </div>
                         <div class="flex gap-1 flex-wrap justify-end">
                             ${hasAllergy ? '<span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded font-bold">アレルギー</span>' : ''}
@@ -7275,21 +7275,21 @@
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm mb-3">
-                        ${customer.birthday ? `<div><span class="text-mavie-500">生年月日:</span> <span class="font-medium">${customer.birthday}</span></div>` : ''}
-                        ${customer.phone ? `<div><span class="text-mavie-500">電話:</span> <span class="font-medium">${customer.phone}</span></div>` : ''}
-                        ${customer.address ? `<div class="col-span-2"><span class="text-mavie-500">住所:</span> <span class="font-medium">${customer.address}</span></div>` : ''}
-                        ${customer.job ? `<div><span class="text-mavie-500">職業:</span> <span class="font-medium">${customer.job}</span></div>` : ''}
+                        ${customer.birthday ? `<div><span class="text-sleepy-500">生年月日:</span> <span class="font-medium">${customer.birthday}</span></div>` : ''}
+                        ${customer.phone ? `<div><span class="text-sleepy-500">電話:</span> <span class="font-medium">${customer.phone}</span></div>` : ''}
+                        ${customer.address ? `<div class="col-span-2"><span class="text-sleepy-500">住所:</span> <span class="font-medium">${customer.address}</span></div>` : ''}
+                        ${customer.job ? `<div><span class="text-sleepy-500">職業:</span> <span class="font-medium">${customer.job}</span></div>` : ''}
                     </div>
 
                     ${hasEyebrowInfo ? `
                     <div class="bg-amber-50 rounded p-3 mb-3">
                         <p class="text-xs font-bold text-amber-700 mb-2">🪶 眉毛メニュー情報</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                            ${customer.eyebrowConcern ? `<div><span class="text-mavie-500">お悩み:</span> <span class="text-mavie-800">${customer.eyebrowConcern}</span></div>` : ''}
-                            ${customer.eyebrowDesign ? `<div><span class="text-mavie-500">ご希望デザイン:</span> <span class="text-mavie-800">${customer.eyebrowDesign}</span></div>` : ''}
-                            ${customer.eyebrowImpression ? `<div><span class="text-mavie-500">印象:</span> <span class="text-mavie-800">${customer.eyebrowImpression}</span></div>` : ''}
-                            ${customer.eyebrowFrequency ? `<div><span class="text-mavie-500">利用頻度:</span> <span class="text-mavie-800">${customer.eyebrowFrequency}</span></div>` : ''}
-                            ${customer.eyebrowLastCare ? `<div class="col-span-2"><span class="text-mavie-500">最後のお手入れ:</span> <span class="text-mavie-800">${customer.eyebrowLastCare}</span></div>` : ''}
+                            ${customer.eyebrowConcern ? `<div><span class="text-sleepy-500">お悩み:</span> <span class="text-sleepy-800">${customer.eyebrowConcern}</span></div>` : ''}
+                            ${customer.eyebrowDesign ? `<div><span class="text-sleepy-500">ご希望デザイン:</span> <span class="text-sleepy-800">${customer.eyebrowDesign}</span></div>` : ''}
+                            ${customer.eyebrowImpression ? `<div><span class="text-sleepy-500">印象:</span> <span class="text-sleepy-800">${customer.eyebrowImpression}</span></div>` : ''}
+                            ${customer.eyebrowFrequency ? `<div><span class="text-sleepy-500">利用頻度:</span> <span class="text-sleepy-800">${customer.eyebrowFrequency}</span></div>` : ''}
+                            ${customer.eyebrowLastCare ? `<div class="col-span-2"><span class="text-sleepy-500">最後のお手入れ:</span> <span class="text-sleepy-800">${customer.eyebrowLastCare}</span></div>` : ''}
                         </div>
                     </div>
                     ` : ''}
@@ -7298,10 +7298,10 @@
                     <div class="bg-purple-50 rounded p-3 mb-3">
                         <p class="text-xs font-bold text-purple-700 mb-2">👁️ まつ毛メニュー情報</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                            ${customer.lashDesign ? `<div><span class="text-mavie-500">ご希望デザイン:</span> <span class="text-mavie-800">${customer.lashDesign}</span></div>` : ''}
-                            ${customer.lashFrequency ? `<div><span class="text-mavie-500">利用頻度:</span> <span class="text-mavie-800">${customer.lashFrequency}</span></div>` : ''}
-                            ${customer.lashEyeLook ? `<div><span class="text-mavie-500">目の見え方:</span> <span class="text-mavie-800">${customer.lashEyeLook}</span></div>` : ''}
-                            ${customer.lashContact ? `<div><span class="text-mavie-500">コンタクト:</span> <span class="text-mavie-800">${customer.lashContact}</span></div>` : ''}
+                            ${customer.lashDesign ? `<div><span class="text-sleepy-500">ご希望デザイン:</span> <span class="text-sleepy-800">${customer.lashDesign}</span></div>` : ''}
+                            ${customer.lashFrequency ? `<div><span class="text-sleepy-500">利用頻度:</span> <span class="text-sleepy-800">${customer.lashFrequency}</span></div>` : ''}
+                            ${customer.lashEyeLook ? `<div><span class="text-sleepy-500">目の見え方:</span> <span class="text-sleepy-800">${customer.lashEyeLook}</span></div>` : ''}
+                            ${customer.lashContact ? `<div><span class="text-sleepy-500">コンタクト:</span> <span class="text-sleepy-800">${customer.lashContact}</span></div>` : ''}
                         </div>
                     </div>
                     ` : ''}
@@ -7351,7 +7351,7 @@
 
             if (!counselingData || counselingData.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-mavie-400">
+                    <div class="text-center py-8 text-sleepy-400">
                         <i data-lucide="clipboard-list" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
                         <p class="text-sm">顧客データがありません</p>
                     </div>
@@ -7394,7 +7394,7 @@
 
             if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-mavie-400">
+                    <div class="text-center py-8 text-sleepy-400">
                         <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
                         <p class="text-sm">該当する回答がありません</p>
                     </div>
@@ -7414,7 +7414,7 @@
             storeList.innerHTML = '';
             Object.keys(STAFF_ROSTER).forEach(storeId => {
                 const storeDiv = document.createElement('div');
-                storeDiv.className = 'flex items-center justify-between bg-mavie-50 p-3 rounded';
+                storeDiv.className = 'flex items-center justify-between bg-sleepy-50 p-3 rounded';
                 storeDiv.innerHTML = `
                     <span class="font-medium">${storeId}</span>
                     <button onclick="deleteStore('${storeId}')" class="text-red-600 hover:text-red-800 text-sm font-bold">削除</button>
@@ -7430,11 +7430,11 @@
                 const storeName = storeId === 'chiba' ? '千葉店' : storeId === 'honatsugi' ? '本厚木店' : storeId === 'yamato' ? '大和店' : storeId;
                 STAFF_ROSTER[storeId].forEach(staffName => {
                     const staffDiv = document.createElement('div');
-                    staffDiv.className = 'bg-mavie-50 p-3 rounded';
+                    staffDiv.className = 'bg-sleepy-50 p-3 rounded';
                     staffDiv.innerHTML = `
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <span class="font-medium text-mavie-800"><strong>${storeName}</strong>: ${staffName}</span>
+                                <span class="font-medium text-sleepy-800"><strong>${storeName}</strong>: ${staffName}</span>
                                 <button onclick="openStaffUrl('${storeId}', '${staffName}')" class="bg-primary-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                     <i data-lucide="external-link" class="w-3 h-3"></i>
                                     専用ページ
@@ -7672,7 +7672,7 @@
                         <div class="flex items-center justify-between p-2 rounded ${hasPassword ? 'bg-green-50' : 'bg-gray-50'} border border-${hasPassword ? 'green' : 'gray'}-200">
                             <div class="flex items-center gap-2">
                                 <i data-lucide="${lockIcon}" class="w-4 h-4 ${hasPassword ? 'text-green-600' : 'text-gray-400'}"></i>
-                                <span class="text-sm font-medium text-mavie-800">${storeName} / ${staff}</span>
+                                <span class="text-sm font-medium text-sleepy-800">${storeName} / ${staff}</span>
                             </div>
                             <span class="text-xs px-2 py-1 rounded ${statusClass}">${statusText}</span>
                         </div>
@@ -7680,7 +7680,7 @@
                 });
             });
 
-            listContainer.innerHTML = html || '<p class="text-sm text-mavie-500">スタッフが登録されていません</p>';
+            listContainer.innerHTML = html || '<p class="text-sm text-sleepy-500">スタッフが登録されていません</p>';
 
             // Lucide iconsを更新
             if (typeof lucide !== 'undefined') {
@@ -7758,8 +7758,8 @@
         }
 
         // --- PASSWORD AUTHENTICATION FUNCTIONS ---
-        const SESSION_TOKEN_KEY = 'mavie_session_token';
-        const SESSION_PAGE_TYPE_KEY = 'mavie_session_page_type';
+        const SESSION_TOKEN_KEY = 'sleepy_session_token';
+        const SESSION_PAGE_TYPE_KEY = 'sleepy_session_page_type';
         let authenticationRequired = false;
         let authPageType = '';
         let authStore = '';
@@ -7905,7 +7905,7 @@
         }
 
         // --- GEMINI API FUNCTIONS ---
-        const GEMINI_API_KEY_STORAGE = 'mavie_gemini_api_key';
+        const GEMINI_API_KEY_STORAGE = 'sleepy_gemini_api_key';
 
         function saveGeminiApiKey() {
             const apiKey = document.getElementById('gemini-api-key').value.trim();
@@ -7960,7 +7960,7 @@
                 const goalAchievementRate = salesGoal > 0 ? ((currentSales / salesGoal) * 100).toFixed(1) : 0;
 
                 // Prepare prompt for Gemini
-                const prompt = `あなたはアイラッシュサロンの経営コンサルタントです。以下のデータを分析し、目標達成のための具体的な業務改善アドバイスを日本語で提供してください。
+                const prompt = `あなたは睡眠整体サロンの経営コンサルタントです。以下のデータを分析し、目標達成のための具体的な業務改善アドバイスを日本語で提供してください。
 
 【現在の状況】
 - 売上目標: ¥${salesGoal.toLocaleString()}
@@ -8033,9 +8033,9 @@
                     </div>
                 </div>
                 <div class="prose prose-sm max-w-none">
-                    <div class="whitespace-pre-wrap text-mavie-800">${advice}</div>
+                    <div class="whitespace-pre-wrap text-sleepy-800">${advice}</div>
                 </div>
-                <div class="mt-4 text-xs text-mavie-400 text-right">
+                <div class="mt-4 text-xs text-sleepy-400 text-right">
                     生成日時: ${new Date().toLocaleString('ja-JP')}
                 </div>
             `;
@@ -8297,18 +8297,18 @@
                 cell.onclick = () => showDayDetails(year, month, day, dayData);
 
                 const dayNumber = document.createElement('div');
-                dayNumber.className = `font-bold text-sm mb-1 ${dayOfWeek === 0 ? 'text-red-500' : dayOfWeek === 6 ? 'text-blue-500' : 'text-mavie-800'}`;
+                dayNumber.className = `font-bold text-sm mb-1 ${dayOfWeek === 0 ? 'text-red-500' : dayOfWeek === 6 ? 'text-blue-500' : 'text-sleepy-800'}`;
                 dayNumber.textContent = day;
                 cell.appendChild(dayNumber);
 
                 if (dayData && salesAmount > 0) {
                     const salesDiv = document.createElement('div');
-                    salesDiv.className = 'text-xs text-mavie-700 font-bold';
+                    salesDiv.className = 'text-xs text-sleepy-700 font-bold';
                     salesDiv.textContent = `¥${salesAmount.toLocaleString()}`;
                     cell.appendChild(salesDiv);
 
                     const custDiv = document.createElement('div');
-                    custDiv.className = 'text-xs text-mavie-500 mt-1 hidden md:block';
+                    custDiv.className = 'text-xs text-sleepy-500 mt-1 hidden md:block';
                     custDiv.textContent = `${dayData.customers}名`;
                     cell.appendChild(custDiv);
                 } else {
@@ -8348,17 +8348,17 @@
             titleEl.textContent = `${month + 1}月${day}日の詳細`;
 
             statsEl.innerHTML = `
-                <div class="bg-mavie-50 border border-mavie-200 rounded-lg p-3">
-                    <p class="text-xs text-mavie-500 mb-1">施術売上</p>
-                    <p class="text-lg font-bold text-mavie-800">¥${dayData.sales.toLocaleString()}</p>
+                <div class="bg-sleepy-50 border border-sleepy-200 rounded-lg p-3">
+                    <p class="text-xs text-sleepy-500 mb-1">施術売上</p>
+                    <p class="text-lg font-bold text-sleepy-800">¥${dayData.sales.toLocaleString()}</p>
                 </div>
-                <div class="bg-mavie-50 border border-mavie-200 rounded-lg p-3">
-                    <p class="text-xs text-mavie-500 mb-1">物販売上</p>
-                    <p class="text-lg font-bold text-mavie-800">¥${dayData.product.toLocaleString()}</p>
+                <div class="bg-sleepy-50 border border-sleepy-200 rounded-lg p-3">
+                    <p class="text-xs text-sleepy-500 mb-1">物販売上</p>
+                    <p class="text-lg font-bold text-sleepy-800">¥${dayData.product.toLocaleString()}</p>
                 </div>
-                <div class="bg-mavie-50 border border-mavie-200 rounded-lg p-3">
-                    <p class="text-xs text-mavie-500 mb-1">総来店数</p>
-                    <p class="text-lg font-bold text-mavie-800">${dayData.customers}名</p>
+                <div class="bg-sleepy-50 border border-sleepy-200 rounded-lg p-3">
+                    <p class="text-xs text-sleepy-500 mb-1">総来店数</p>
+                    <p class="text-lg font-bold text-sleepy-800">${dayData.customers}名</p>
                 </div>
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
                     <p class="text-xs text-blue-600 mb-1">新規</p>
@@ -8368,9 +8368,9 @@
                     <p class="text-xs text-green-600 mb-1">既存</p>
                     <p class="text-lg font-bold text-green-800">${dayData.existingCustomers}名</p>
                 </div>
-                <div class="bg-mavie-100 border border-mavie-300 rounded-lg p-3">
-                    <p class="text-xs text-mavie-500 mb-1">客単価</p>
-                    <p class="text-lg font-bold text-mavie-800">¥${dayData.customers > 0 ? Math.round((dayData.sales + dayData.product) / dayData.customers).toLocaleString() : 0}</p>
+                <div class="bg-sleepy-100 border border-sleepy-300 rounded-lg p-3">
+                    <p class="text-xs text-sleepy-500 mb-1">客単価</p>
+                    <p class="text-lg font-bold text-sleepy-800">¥${dayData.customers > 0 ? Math.round((dayData.sales + dayData.product) / dayData.customers).toLocaleString() : 0}</p>
                 </div>
             `;
 
