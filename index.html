@@ -24,6 +24,9 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- MediaPipe Tasks Vision (Pose Landmarker) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/vision_bundle.js" crossorigin="anonymous"></script>
+
     <!-- Tailwind Config - Premium Color Palette -->
     <script>
         tailwind.config = {
@@ -1739,6 +1742,11 @@
                         <i data-lucide="credit-card" class="w-6 h-6 md:w-4 md:h-4"></i>
                         <span class="hidden md:inline">会員・回数券</span>
                     </button>
+                    <!-- Posture Analysis Tab -->
+                    <button onclick="switchTab('posture')" id="tab-posture" class="tab-btn py-2 px-3 md:py-3 md:px-4 font-medium text-sm text-surface-500 flex items-center justify-center gap-2" title="姿勢分析">
+                        <i data-lucide="scan" class="w-6 h-6 md:w-4 md:h-4"></i>
+                        <span class="hidden md:inline">姿勢分析</span>
+                    </button>
                     <!-- Goal Setting Tab -->
                     <button onclick="switchTab('goal')" id="tab-goal" class="tab-btn py-2 px-3 md:py-3 md:px-4 font-medium text-sm text-surface-500 flex items-center justify-center gap-2" title="売上目標設定">
                         <i data-lucide="target" class="w-6 h-6 md:w-4 md:h-4"></i>
@@ -3402,6 +3410,168 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TAB: POSTURE ANALYSIS -->
+            <section id="content-posture" class="tab-content hidden space-y-6 animate-fade-in">
+                <!-- Header -->
+                <div class="bg-gradient-to-br from-accent-700 to-accent-800 rounded-lg shadow-lg p-6 text-white">
+                    <h2 class="text-xl font-serif font-bold flex items-center gap-3">
+                        <i data-lucide="scan" class="w-6 h-6"></i>
+                        姿勢分析 &amp; 睡眠リスク評価
+                    </h2>
+                    <p class="text-sm text-accent-200 mt-1">MediaPipe Poseによる姿勢分析と、睡眠への影響リスクを評価します</p>
+                </div>
+
+                <!-- Customer Name Input -->
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-4">
+                    <label class="block text-sm font-bold text-sleepy-800 mb-2">お客様名</label>
+                    <input type="text" id="posture-customer-name" placeholder="お客様の名前を入力" class="w-full md:w-64 border border-sleepy-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500">
+                </div>
+
+                <!-- Mode & Input Selectors -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- View Mode -->
+                    <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-4">
+                        <label class="block text-sm font-bold text-sleepy-800 mb-3">撮影モード</label>
+                        <div class="flex gap-2">
+                            <button onclick="setPostureViewMode('front')" id="posture-mode-front" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all">
+                                <i data-lucide="user" class="w-4 h-4 inline mr-1"></i>正面
+                            </button>
+                            <button onclick="setPostureViewMode('side')" id="posture-mode-side" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all">
+                                <i data-lucide="user" class="w-4 h-4 inline mr-1"></i>側面
+                            </button>
+                        </div>
+                        <p id="posture-mode-hint" class="text-xs text-surface-500 mt-2">正面: 肩・骨盤の左右バランス、頭部傾斜を評価</p>
+                    </div>
+                    <!-- Input Method -->
+                    <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-4">
+                        <label class="block text-sm font-bold text-sleepy-800 mb-3">入力方法</label>
+                        <div class="flex gap-2">
+                            <button onclick="setPostureInputMethod('camera')" id="posture-input-camera" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all">
+                                <i data-lucide="camera" class="w-4 h-4 inline mr-1"></i>カメラ
+                            </button>
+                            <button onclick="setPostureInputMethod('upload')" id="posture-input-upload" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all">
+                                <i data-lucide="upload" class="w-4 h-4 inline mr-1"></i>画像
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Area -->
+                <div id="posture-camera-area" class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-4">
+                    <div class="relative max-w-2xl mx-auto">
+                        <video id="posture-video" autoplay playsinline class="w-full rounded-lg bg-black" style="display:none;"></video>
+                        <canvas id="posture-canvas" class="w-full rounded-lg bg-slate-900" style="display:none;"></canvas>
+                        <div id="posture-camera-placeholder" class="flex flex-col items-center justify-center py-20 text-surface-400">
+                            <i data-lucide="camera" class="w-16 h-16 mb-4"></i>
+                            <p class="text-sm">カメラを起動してください</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <button onclick="startPostureCamera()" id="btn-start-camera" class="btn-primary py-2 px-6 text-sm flex items-center gap-2">
+                            <i data-lucide="video" class="w-4 h-4"></i>カメラ起動
+                        </button>
+                        <button onclick="capturePostureFrame()" id="btn-capture" class="btn-secondary py-2 px-6 text-sm flex items-center gap-2" style="display:none;">
+                            <i data-lucide="aperture" class="w-4 h-4"></i>撮影して分析
+                        </button>
+                        <button onclick="stopPostureCamera()" id="btn-stop-camera" class="bg-red-100 text-red-700 hover:bg-red-200 py-2 px-6 rounded-lg text-sm flex items-center gap-2" style="display:none;">
+                            <i data-lucide="video-off" class="w-4 h-4"></i>停止
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upload Area -->
+                <div id="posture-upload-area" class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-4" style="display:none;">
+                    <div class="max-w-2xl mx-auto">
+                        <div id="posture-upload-dropzone" class="border-2 border-dashed border-surface-300 rounded-lg p-10 text-center cursor-pointer hover:border-accent-500 hover:bg-accent-50 transition-all" onclick="document.getElementById('posture-file-input').click()">
+                            <i data-lucide="image-plus" class="w-12 h-12 mx-auto mb-3 text-surface-400"></i>
+                            <p class="text-sm text-surface-500">クリックまたはドラッグ＆ドロップで画像をアップロード</p>
+                            <p class="text-xs text-surface-400 mt-1">JPG, PNG対応</p>
+                        </div>
+                        <input type="file" id="posture-file-input" accept="image/*" class="hidden" onchange="handlePostureImageUpload(event)">
+                        <div id="posture-upload-preview" class="relative mt-4" style="display:none;">
+                            <canvas id="posture-upload-canvas" class="w-full rounded-lg"></canvas>
+                            <div class="flex justify-center gap-3 mt-4">
+                                <button onclick="analyzeUploadedImage()" class="btn-primary py-2 px-6 text-sm flex items-center gap-2">
+                                    <i data-lucide="scan" class="w-4 h-4"></i>姿勢を分析
+                                </button>
+                                <button onclick="resetPostureUpload()" class="btn-secondary py-2 px-6 text-sm flex items-center gap-2">
+                                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>やり直し
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="posture-loading" class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-8 text-center" style="display:none;">
+                    <div class="animate-spin w-10 h-10 border-4 border-accent-300 border-t-accent-700 rounded-full mx-auto mb-3"></div>
+                    <p class="text-sm text-surface-600">姿勢を分析中...</p>
+                </div>
+
+                <!-- Analysis Results -->
+                <div id="posture-results" style="display:none;">
+                    <!-- Overall Score -->
+                    <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-6 mb-6">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4 flex items-center gap-2">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent-600"></i>
+                            分析結果
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="text-center p-4 bg-gradient-to-br from-accent-50 to-white rounded-lg border border-accent-100">
+                                <div id="posture-total-score" class="text-3xl font-bold text-accent-700">--</div>
+                                <div class="text-xs text-surface-500 mt-1">総合スコア</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-br from-sage-400/10 to-white rounded-lg border border-sage-400/20">
+                                <div id="posture-grade" class="text-3xl font-bold text-sage-600">--</div>
+                                <div class="text-xs text-surface-500 mt-1">評価</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-br from-rose-400/10 to-white rounded-lg border border-rose-400/20">
+                                <div id="posture-sleep-risk" class="text-3xl font-bold text-rose-600">--</div>
+                                <div class="text-xs text-surface-500 mt-1">睡眠リスク</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-br from-primary-50 to-white rounded-lg border border-primary-100">
+                                <div id="posture-view-label" class="text-lg font-bold text-primary-600">--</div>
+                                <div class="text-xs text-surface-500 mt-1">撮影モード</div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Metrics -->
+                        <div id="posture-metrics-detail" class="space-y-3"></div>
+                    </div>
+
+                    <!-- Sleep Risk Detail -->
+                    <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-6 mb-6">
+                        <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4 flex items-center gap-2">
+                            <i data-lucide="moon" class="w-5 h-5 text-accent-600"></i>
+                            睡眠への影響リスク評価
+                        </h3>
+                        <div id="posture-sleep-detail" class="space-y-3"></div>
+                        <div id="posture-sleep-advice" class="mt-4 p-4 bg-accent-50 rounded-lg border border-accent-100 text-sm text-accent-800"></div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-center gap-3 mb-6">
+                        <button onclick="savePostureResult()" class="btn-primary py-3 px-8 text-sm flex items-center gap-2">
+                            <i data-lucide="save" class="w-4 h-4"></i>結果を保存
+                        </button>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div class="bg-white rounded-lg shadow-sm border border-sleepy-200 p-6">
+                    <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4 flex items-center gap-2">
+                        <i data-lucide="history" class="w-5 h-5 text-accent-600"></i>
+                        分析履歴
+                    </h3>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <input type="text" id="posture-history-search" placeholder="お客様名で検索..." class="border border-sleepy-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500" oninput="renderPostureHistory()">
+                    </div>
+                    <div id="posture-history-list" class="space-y-3">
+                        <p class="text-sm text-surface-400 text-center py-8">保存された分析結果はありません</p>
+                    </div>
+                </div>
+            </section>
 
             <!-- TAB: SETTINGS -->
             <section id="content-settings" class="tab-content hidden space-y-8 animate-fade-in">
@@ -7355,6 +7525,13 @@
                 if (typeof lucide !== 'undefined') lucide.createIcons();
             }
 
+            // Initialize posture analysis when switching to posture tab
+            if (id === 'posture') {
+                if (!postureLandmarker) initPostureLandmarker();
+                renderPostureHistory();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+
             // Load counseling results when switching to staff-dashboard or counseling-results tab
             if (id === 'staff-dashboard' || id === 'counseling-results') {
                 if (customerData.length === 0) {
@@ -9362,6 +9539,520 @@
             `;
             document.body.appendChild(popup);
             if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ===== 姿勢分析 Phase1: 状態変数 & MediaPipe初期化 =====
+        let postureLandmarker = null;
+        let postureViewMode = 'front'; // 'front' | 'side'
+        let postureInputMethod = 'camera'; // 'camera' | 'upload'
+        let postureStream = null;
+        let postureAnimFrame = null;
+        let postureHistory = JSON.parse(localStorage.getItem('sleepy_posture_history') || '[]');
+        let postureUploadedImage = null;
+
+        async function initPostureLandmarker() {
+            try {
+                const vision = await FilesetResolver.forVisionTasks(
+                    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm"
+                );
+                postureLandmarker = await PoseLandmarker.createFromOptions(vision, {
+                    baseOptions: {
+                        modelAssetPath: "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task",
+                        delegate: "GPU"
+                    },
+                    runningMode: "IMAGE",
+                    numPoses: 1
+                });
+                console.log('PoseLandmarker initialized');
+            } catch (e) {
+                console.error('PoseLandmarker init failed:', e);
+                alert('姿勢分析エンジンの初期化に失敗しました。ブラウザがWebGLに対応しているか確認してください。');
+            }
+        }
+
+        // ===== Phase1: UI切替 =====
+        function setPostureViewMode(mode) {
+            postureViewMode = mode;
+            const frontBtn = document.getElementById('posture-mode-front');
+            const sideBtn = document.getElementById('posture-mode-side');
+            const hint = document.getElementById('posture-mode-hint');
+            if (mode === 'front') {
+                frontBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all';
+                sideBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all';
+                hint.textContent = '正面: 肩・骨盤の左右バランス、頭部傾斜を評価';
+            } else {
+                sideBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all';
+                frontBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all';
+                hint.textContent = '側面: ストレートネック・猫背・腰椎前弯を評価';
+            }
+        }
+
+        function setPostureInputMethod(method) {
+            postureInputMethod = method;
+            const camBtn = document.getElementById('posture-input-camera');
+            const upBtn = document.getElementById('posture-input-upload');
+            const camArea = document.getElementById('posture-camera-area');
+            const upArea = document.getElementById('posture-upload-area');
+            if (method === 'camera') {
+                camBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all';
+                upBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all';
+                camArea.style.display = '';
+                upArea.style.display = 'none';
+            } else {
+                upBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-accent-700 text-white transition-all';
+                camBtn.className = 'flex-1 py-2 px-4 rounded-lg text-sm font-medium bg-surface-100 text-surface-600 hover:bg-surface-200 transition-all';
+                camArea.style.display = 'none';
+                upArea.style.display = '';
+                stopPostureCamera();
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ===== Phase1: カメラ制御 =====
+        async function startPostureCamera() {
+            if (!postureLandmarker) await initPostureLandmarker();
+            try {
+                postureStream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' } });
+                const video = document.getElementById('posture-video');
+                video.srcObject = postureStream;
+                video.style.display = '';
+                document.getElementById('posture-camera-placeholder').style.display = 'none';
+                document.getElementById('btn-start-camera').style.display = 'none';
+                document.getElementById('btn-capture').style.display = '';
+                document.getElementById('btn-stop-camera').style.display = '';
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            } catch (e) {
+                console.error('Camera error:', e);
+                alert('カメラへのアクセスが拒否されました。ブラウザの設定を確認してください。');
+            }
+        }
+
+        function stopPostureCamera() {
+            if (postureStream) {
+                postureStream.getTracks().forEach(t => t.stop());
+                postureStream = null;
+            }
+            if (postureAnimFrame) {
+                cancelAnimationFrame(postureAnimFrame);
+                postureAnimFrame = null;
+            }
+            const video = document.getElementById('posture-video');
+            video.srcObject = null;
+            video.style.display = 'none';
+            document.getElementById('posture-canvas').style.display = 'none';
+            document.getElementById('posture-camera-placeholder').style.display = '';
+            document.getElementById('btn-start-camera').style.display = '';
+            document.getElementById('btn-capture').style.display = 'none';
+            document.getElementById('btn-stop-camera').style.display = 'none';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        async function capturePostureFrame() {
+            if (!postureLandmarker) { alert('分析エンジンを初期化中です。少々お待ちください。'); return; }
+            const video = document.getElementById('posture-video');
+            const canvas = document.getElementById('posture-canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            video.style.display = 'none';
+            canvas.style.display = '';
+            document.getElementById('posture-loading').style.display = '';
+            try {
+                const result = postureLandmarker.detect(canvas);
+                drawPostureLandmarks(canvas, result);
+                processPostureResult(result);
+            } catch (e) {
+                console.error('Detection error:', e);
+                alert('姿勢の検出に失敗しました。全身が映るように撮影してください。');
+            }
+            document.getElementById('posture-loading').style.display = 'none';
+        }
+
+        // ===== Phase1: 画像アップロード =====
+        function handlePostureImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    postureUploadedImage = img;
+                    const canvas = document.getElementById('posture-upload-canvas');
+                    const maxW = 800;
+                    const scale = Math.min(1, maxW / img.width);
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    document.getElementById('posture-upload-dropzone').style.display = 'none';
+                    document.getElementById('posture-upload-preview').style.display = '';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function analyzeUploadedImage() {
+            if (!postureUploadedImage) return;
+            if (!postureLandmarker) await initPostureLandmarker();
+            const canvas = document.getElementById('posture-upload-canvas');
+            document.getElementById('posture-loading').style.display = '';
+            try {
+                const result = postureLandmarker.detect(canvas);
+                drawPostureLandmarks(canvas, result);
+                processPostureResult(result);
+            } catch (e) {
+                console.error('Detection error:', e);
+                alert('姿勢の検出に失敗しました。全身が映った画像を使用してください。');
+            }
+            document.getElementById('posture-loading').style.display = 'none';
+        }
+
+        function resetPostureUpload() {
+            postureUploadedImage = null;
+            document.getElementById('posture-upload-dropzone').style.display = '';
+            document.getElementById('posture-upload-preview').style.display = 'none';
+            document.getElementById('posture-file-input').value = '';
+            document.getElementById('posture-results').style.display = 'none';
+        }
+
+        // ===== Phase1: ランドマーク描画 =====
+        function drawPostureLandmarks(canvas, result) {
+            if (!result || !result.landmarks || result.landmarks.length === 0) return;
+            const ctx = canvas.getContext('2d');
+            const lm = result.landmarks[0];
+            const w = canvas.width, h = canvas.height;
+            const connections = [
+                [0,1],[1,2],[2,3],[3,7],[0,4],[4,5],[5,6],[6,8],
+                [9,10],[11,12],[11,13],[13,15],[15,17],[15,19],[15,21],
+                [12,14],[14,16],[16,18],[16,20],[16,22],
+                [11,23],[12,24],[23,24],[23,25],[25,27],[27,29],[27,31],
+                [24,26],[26,28],[28,30],[28,32]
+            ];
+            ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+            ctx.lineWidth = 2;
+            connections.forEach(([a,b]) => {
+                if (lm[a] && lm[b] && (lm[a].visibility||0) > 0.5 && (lm[b].visibility||0) > 0.5) {
+                    ctx.beginPath();
+                    ctx.moveTo(lm[a].x*w, lm[a].y*h);
+                    ctx.lineTo(lm[b].x*w, lm[b].y*h);
+                    ctx.stroke();
+                }
+            });
+            lm.forEach((p, i) => {
+                if ((p.visibility||0) > 0.5) {
+                    ctx.beginPath();
+                    ctx.arc(p.x*w, p.y*h, 4, 0, 2*Math.PI);
+                    ctx.fillStyle = [11,12,23,24,0,7,8].includes(i) ? '#c99445' : '#4d6290';
+                    ctx.fill();
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Placeholder: Phase2で実装
+        function processPostureResult(result) {
+            if (!result || !result.landmarks || result.landmarks.length === 0) {
+                alert('姿勢を検出できませんでした。全身が映るように撮影してください。');
+                return;
+            }
+            const lm = result.landmarks[0];
+            const metrics = calculatePostureMetrics(lm, postureViewMode);
+            const sleepRisk = calculateSleepRisk(metrics, postureViewMode);
+            renderPostureResults(metrics, sleepRisk);
+        }
+
+        // ===== Phase2: 角度計算ユーティリティ =====
+        function calcAngleDeg(a, b, c) {
+            const ab = { x: a.x - b.x, y: a.y - b.y };
+            const cb = { x: c.x - b.x, y: c.y - b.y };
+            const dot = ab.x * cb.x + ab.y * cb.y;
+            const magAB = Math.sqrt(ab.x*ab.x + ab.y*ab.y);
+            const magCB = Math.sqrt(cb.x*cb.x + cb.y*cb.y);
+            if (magAB === 0 || magCB === 0) return 0;
+            const cos = Math.max(-1, Math.min(1, dot / (magAB * magCB)));
+            return Math.acos(cos) * (180 / Math.PI);
+        }
+
+        function slopeAngleDeg(a, b) {
+            return Math.atan2(Math.abs(a.y - b.y), Math.abs(a.x - b.x)) * (180 / Math.PI);
+        }
+
+        function verticalAngleDeg(a, b) {
+            return Math.atan2(Math.abs(a.x - b.x), Math.abs(a.y - b.y)) * (180 / Math.PI);
+        }
+
+        function scoreFromAngle(angle, idealMin, idealMax, worstAngle) {
+            if (angle >= idealMin && angle <= idealMax) return 100;
+            const deviation = angle < idealMin ? idealMin - angle : angle - idealMax;
+            const maxDev = Math.abs(worstAngle);
+            return Math.max(0, Math.round(100 - (deviation / maxDev) * 100));
+        }
+
+        // ===== Phase2: 正面メトリクス =====
+        function calcFrontMetrics(lm) {
+            const ls = lm[11], rs = lm[12]; // shoulders
+            const lh = lm[23], rh = lm[24]; // hips
+            const nose = lm[0], le = lm[7], re = lm[8]; // head
+            const midShoulder = { x: (ls.x+rs.x)/2, y: (ls.y+rs.y)/2 };
+            const midHip = { x: (lh.x+rh.x)/2, y: (lh.y+rh.y)/2 };
+
+            // 肩の傾き（水平からの角度）
+            const shoulderTiltDeg = Math.atan2(rs.y - ls.y, rs.x - ls.x) * (180/Math.PI);
+            const shoulderTilt = Math.abs(shoulderTiltDeg);
+            const shoulderScore = scoreFromAngle(shoulderTilt, 0, 2, 15);
+
+            // 骨盤の傾き
+            const hipTiltDeg = Math.atan2(rh.y - lh.y, rh.x - lh.x) * (180/Math.PI);
+            const hipTilt = Math.abs(hipTiltDeg);
+            const hipScore = scoreFromAngle(hipTilt, 0, 2, 15);
+
+            // 頭部傾斜（鼻と肩中点の水平ずれ）
+            const headOffsetRatio = Math.abs(nose.x - midShoulder.x) / Math.abs(rs.x - ls.x);
+            const headTiltDeg = headOffsetRatio * 30;
+            const headTiltScore = scoreFromAngle(headTiltDeg, 0, 3, 20);
+
+            // 体幹傾斜（肩中点→腰中点の垂直からのずれ）
+            const trunkLean = verticalAngleDeg(midShoulder, midHip);
+            const trunkScore = scoreFromAngle(trunkLean, 0, 2, 15);
+
+            const total = Math.round((shoulderScore * 0.3 + hipScore * 0.25 + headTiltScore * 0.25 + trunkScore * 0.2));
+
+            return {
+                items: [
+                    { name: '肩の左右バランス', angle: shoulderTilt.toFixed(1), score: shoulderScore, unit: '°', ideal: '0-2°', icon: 'arrow-left-right' },
+                    { name: '骨盤の左右バランス', angle: hipTilt.toFixed(1), score: hipScore, unit: '°', ideal: '0-2°', icon: 'move-horizontal' },
+                    { name: '頭部の傾斜', angle: headTiltDeg.toFixed(1), score: headTiltScore, unit: '°', ideal: '0-3°', icon: 'brain' },
+                    { name: '体幹の傾斜', angle: trunkLean.toFixed(1), score: trunkScore, unit: '°', ideal: '0-2°', icon: 'align-vertical-space-between' }
+                ],
+                totalScore: total
+            };
+        }
+
+        // ===== Phase2: 側面メトリクス =====
+        function calcSideMetrics(lm) {
+            const ear = lm[7].visibility > (lm[8].visibility||0) ? lm[7] : lm[8];
+            const shoulder = lm[11].visibility > (lm[12].visibility||0) ? lm[11] : lm[12];
+            const hip = lm[23].visibility > (lm[24].visibility||0) ? lm[23] : lm[24];
+            const knee = lm[25].visibility > (lm[26].visibility||0) ? lm[25] : lm[26];
+
+            // ストレートネック（耳→肩の前方ずれ角）
+            const fhpAngle = verticalAngleDeg(ear, shoulder);
+            const fhpScore = scoreFromAngle(fhpAngle, 0, 5, 30);
+
+            // 猫背（肩→腰→耳の角度で推定）
+            const kyphAngle = calcAngleDeg(ear, shoulder, hip);
+            const kyphDeviation = Math.abs(180 - kyphAngle);
+            const kyphScore = scoreFromAngle(kyphDeviation, 0, 8, 40);
+
+            // 腰椎（肩→腰→膝の角度）
+            const lumbarAngle = calcAngleDeg(shoulder, hip, knee);
+            const lumbarDeviation = Math.abs(170 - lumbarAngle);
+            const lumbarScore = scoreFromAngle(lumbarDeviation, 0, 5, 25);
+
+            const total = Math.round((fhpScore * 0.4 + kyphScore * 0.35 + lumbarScore * 0.25));
+
+            return {
+                items: [
+                    { name: 'ストレートネック', angle: fhpAngle.toFixed(1), score: fhpScore, unit: '°', ideal: '0-5°', icon: 'smartphone' },
+                    { name: '猫背（胸椎後弯）', angle: kyphDeviation.toFixed(1), score: kyphScore, unit: '°', ideal: '0-8°', icon: 'loader' },
+                    { name: '腰椎アライメント', angle: lumbarDeviation.toFixed(1), score: lumbarScore, unit: '°', ideal: '0-5°', icon: 'git-branch' }
+                ],
+                totalScore: total
+            };
+        }
+
+        function calculatePostureMetrics(lm, mode) {
+            return mode === 'front' ? calcFrontMetrics(lm) : calcSideMetrics(lm);
+        }
+
+        // ===== Phase2: 睡眠リスク評価 =====
+        function calculateSleepRisk(metrics, mode) {
+            const totalScore = metrics.totalScore;
+            let riskLevel, riskLabel, riskColor, advice;
+            const risks = [];
+
+            if (totalScore >= 85) {
+                riskLevel = 1; riskLabel = '低リスク'; riskColor = 'text-sage-600';
+                advice = '姿勢は良好です。現在の姿勢が睡眠に悪影響を与えるリスクは低いと考えられます。定期的なストレッチで維持しましょう。';
+            } else if (totalScore >= 70) {
+                riskLevel = 2; riskLabel = '軽度リスク'; riskColor = 'text-primary-600';
+                advice = '軽度の姿勢の乱れがあります。長期的に筋緊張や軽い痛みにつながり、睡眠の質に影響する可能性があります。ストレッチと姿勢改善を心がけましょう。';
+            } else if (totalScore >= 50) {
+                riskLevel = 3; riskLabel = '中リスク'; riskColor = 'text-warmgold-600';
+                advice = '姿勢の乱れが目立ちます。筋骨格系の痛みを通じて睡眠の質が低下するリスクがあります。施術による改善と日常の姿勢意識が重要です。';
+            } else {
+                riskLevel = 4; riskLabel = '高リスク'; riskColor = 'text-red-600';
+                advice = '姿勢に大きな問題があります。慢性的な痛みや筋緊張により睡眠障害につながるリスクが高いです。継続的な施術と生活習慣の改善を強くお勧めします。';
+            }
+
+            metrics.items.forEach(item => {
+                if (item.score < 60) {
+                    let sleepImpact = '';
+                    if (item.name.includes('ネック') || item.name.includes('頭部')) {
+                        sleepImpact = '首の痛み・緊張性頭痛により入眠困難や中途覚醒のリスク';
+                    } else if (item.name.includes('猫背') || item.name.includes('肩')) {
+                        sleepImpact = '肩こり・上背部痛により寝返りの増加と睡眠の質低下のリスク';
+                    } else if (item.name.includes('骨盤') || item.name.includes('腰')) {
+                        sleepImpact = '腰痛により就寝中の不快感と睡眠の質低下のリスク';
+                    } else if (item.name.includes('体幹')) {
+                        sleepImpact = '体幹の歪みによる全身の筋バランス崩れと睡眠時の不快感';
+                    }
+                    risks.push({ metric: item.name, score: item.score, impact: sleepImpact });
+                }
+            });
+
+            return { riskLevel, riskLabel, riskColor, advice, risks, totalScore };
+        }
+
+        // ===== Phase3: 結果UI描画 =====
+        let lastPostureMetrics = null;
+        let lastPostureSleepRisk = null;
+
+        function renderPostureResults(metrics, sleepRisk) {
+            lastPostureMetrics = metrics;
+            lastPostureSleepRisk = sleepRisk;
+
+            const gradeMap = [[90,'A+'],[80,'A'],[70,'B+'],[60,'B'],[50,'C+'],[40,'C'],[0,'D']];
+            const grade = gradeMap.find(([min]) => metrics.totalScore >= min)[1];
+
+            document.getElementById('posture-total-score').textContent = metrics.totalScore;
+            document.getElementById('posture-grade').textContent = grade;
+            document.getElementById('posture-sleep-risk').textContent = sleepRisk.riskLabel;
+            document.getElementById('posture-sleep-risk').className = `text-2xl font-bold ${sleepRisk.riskColor}`;
+            document.getElementById('posture-view-label').textContent = postureViewMode === 'front' ? '正面' : '側面';
+
+            // メトリクス詳細
+            const detailEl = document.getElementById('posture-metrics-detail');
+            detailEl.innerHTML = metrics.items.map(item => {
+                const barColor = item.score >= 80 ? 'bg-sage-500' : item.score >= 60 ? 'bg-primary-500' : item.score >= 40 ? 'bg-warmgold-500' : 'bg-red-500';
+                return `<div class="flex items-center gap-3 p-3 bg-surface-50 rounded-lg">
+                    <i data-lucide="${item.icon}" class="w-5 h-5 text-accent-600 flex-shrink-0"></i>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-sm font-medium text-sleepy-800">${item.name}</span>
+                            <span class="text-sm font-bold ${item.score >= 80 ? 'text-sage-600' : item.score >= 60 ? 'text-primary-600' : 'text-red-600'}">${item.score}点</span>
+                        </div>
+                        <div class="w-full bg-surface-200 rounded-full h-2">
+                            <div class="${barColor} h-2 rounded-full transition-all" style="width:${item.score}%"></div>
+                        </div>
+                        <div class="text-xs text-surface-500 mt-1">計測: ${item.angle}${item.unit}（理想: ${item.ideal}）</div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            // 睡眠リスク詳細
+            const sleepDetailEl = document.getElementById('posture-sleep-detail');
+            if (sleepRisk.risks.length > 0) {
+                sleepDetailEl.innerHTML = sleepRisk.risks.map(r => `
+                    <div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg border border-red-100">
+                        <span class="text-red-500 mt-0.5">⚠</span>
+                        <div>
+                            <div class="text-sm font-medium text-red-800">${r.metric}（${r.score}点）</div>
+                            <div class="text-xs text-red-600 mt-1">${r.impact}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                sleepDetailEl.innerHTML = '<p class="text-sm text-sage-600 p-3 bg-sage-400/10 rounded-lg">睡眠に大きく影響するリスク要因は検出されませんでした。</p>';
+            }
+
+            document.getElementById('posture-sleep-advice').innerHTML = `<p class="font-medium mb-1">総合アドバイス:</p><p>${sleepRisk.advice}</p>`;
+            document.getElementById('posture-results').style.display = '';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ===== Phase3: Google Sheets保存 =====
+        async function savePostureResult() {
+            const customerName = document.getElementById('posture-customer-name').value.trim();
+            if (!customerName) { alert('お客様名を入力してください。'); return; }
+            if (!lastPostureMetrics) { alert('先に姿勢分析を実行してください。'); return; }
+
+            const record = {
+                id: Date.now().toString(),
+                date: new Date().toISOString().slice(0, 10),
+                time: new Date().toTimeString().slice(0, 5),
+                customerName,
+                viewMode: postureViewMode,
+                totalScore: lastPostureMetrics.totalScore,
+                items: lastPostureMetrics.items,
+                sleepRiskLabel: lastPostureSleepRisk.riskLabel,
+                sleepRiskLevel: lastPostureSleepRisk.riskLevel,
+                store: document.getElementById('store-selector')?.value || ''
+            };
+
+            // ローカル保存
+            postureHistory.unshift(record);
+            localStorage.setItem('sleepy_posture_history', JSON.stringify(postureHistory));
+
+            // Google Sheets保存
+            const apiUrl = localStorage.getItem(SPREADSHEET_API_KEY) || API_URL;
+            if (apiUrl) {
+                try {
+                    await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify({
+                            action: 'savePosture',
+                            data: record
+                        })
+                    });
+                } catch (e) {
+                    console.warn('Sheets保存失敗（ローカルには保存済み）:', e);
+                }
+            }
+
+            alert('分析結果を保存しました。');
+            renderPostureHistory();
+        }
+
+        // ===== Phase3: 履歴表示 =====
+        function renderPostureHistory() {
+            const search = (document.getElementById('posture-history-search')?.value || '').trim().toLowerCase();
+            const filtered = search ? postureHistory.filter(r => r.customerName.toLowerCase().includes(search)) : postureHistory;
+            const listEl = document.getElementById('posture-history-list');
+
+            if (filtered.length === 0) {
+                listEl.innerHTML = '<p class="text-sm text-surface-400 text-center py-8">保存された分析結果はありません</p>';
+                return;
+            }
+
+            listEl.innerHTML = filtered.slice(0, 20).map(r => {
+                const modeLabel = r.viewMode === 'front' ? '正面' : '側面';
+                const riskColors = { '低リスク': 'text-sage-600 bg-sage-400/10', '軽度リスク': 'text-primary-600 bg-primary-50', '中リスク': 'text-warmgold-600 bg-warmgold-400/10', '高リスク': 'text-red-600 bg-red-50' };
+                const rc = riskColors[r.sleepRiskLabel] || 'text-surface-600 bg-surface-50';
+                return `<div class="flex items-center justify-between p-4 bg-surface-50 rounded-lg border border-surface-100 hover:border-accent-200 transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent-700">${r.totalScore}</div>
+                            <div class="text-xs text-surface-500">点</div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-sleepy-800">${r.customerName}</div>
+                            <div class="text-xs text-surface-500">${r.date} ${r.time || ''} | ${modeLabel} | ${r.store || ''}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium px-2 py-1 rounded ${rc}">${r.sleepRiskLabel}</span>
+                        <button onclick="deletePostureRecord('${r.id}')" class="text-surface-400 hover:text-red-500 transition-colors" title="削除">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function deletePostureRecord(id) {
+            if (!confirm('この記録を削除しますか？')) return;
+            postureHistory = postureHistory.filter(r => r.id !== id);
+            localStorage.setItem('sleepy_posture_history', JSON.stringify(postureHistory));
+            renderPostureHistory();
         }
 
         // スプラッシュ画面終了後に通知チェック
