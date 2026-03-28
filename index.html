@@ -3560,6 +3560,25 @@
                         <button onclick="savePostureResult()" class="btn-primary py-3 px-8 text-sm flex items-center gap-2">
                             <i data-lucide="save" class="w-4 h-4"></i>結果を保存
                         </button>
+                        <button onclick="getAIPostureFeedback()" id="btn-ai-feedback" class="bg-accent-700 hover:bg-accent-800 text-white py-3 px-8 rounded-lg text-sm flex items-center gap-2 transition-all">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>AI評価を取得
+                        </button>
+                    </div>
+
+                    <!-- AI Feedback Section -->
+                    <div id="posture-ai-feedback" style="display:none;" class="mb-6">
+                        <div class="bg-white rounded-lg shadow-sm border border-accent-200 p-6">
+                            <h3 class="text-lg font-serif font-bold text-sleepy-800 mb-4 flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-accent-600"></i>
+                                AI姿勢フィードバック
+                                <span class="text-xs font-normal text-surface-400 ml-2">Powered by Claude Sonnet 4.6</span>
+                            </h3>
+                            <div id="posture-ai-feedback-loading" class="text-center py-6" style="display:none;">
+                                <div class="animate-spin w-8 h-8 border-4 border-accent-300 border-t-accent-700 rounded-full mx-auto mb-2"></div>
+                                <p class="text-sm text-surface-500">AIが分析結果を評価中...</p>
+                            </div>
+                            <div id="posture-ai-feedback-content" class="text-sm text-sleepy-800 leading-relaxed whitespace-pre-line"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -10079,6 +10098,55 @@
             postureHistory = postureHistory.filter(r => r.id !== id);
             localStorage.setItem('sleepy_posture_history', JSON.stringify(postureHistory));
             renderPostureHistory();
+        }
+
+        // ===== AI姿勢フィードバック（Claude Sonnet 4.6 via Vercel） =====
+        async function getAIPostureFeedback() {
+            if (!lastPostureMetrics || !lastPostureSleepRisk) {
+                alert('先に姿勢分析を実行してください。');
+                return;
+            }
+            const customerName = document.getElementById('posture-customer-name').value.trim();
+            const feedbackSection = document.getElementById('posture-ai-feedback');
+            const loadingEl = document.getElementById('posture-ai-feedback-loading');
+            const contentEl = document.getElementById('posture-ai-feedback-content');
+            const btn = document.getElementById('btn-ai-feedback');
+
+            feedbackSection.style.display = '';
+            loadingEl.style.display = '';
+            contentEl.textContent = '';
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+
+            try {
+                const apiBase = window.location.origin;
+                const response = await fetch(`${apiBase}/api/posture-feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        metrics: lastPostureMetrics,
+                        sleepRisk: lastPostureSleepRisk,
+                        viewMode: postureViewMode,
+                        customerName: customerName || '未入力'
+                    })
+                });
+
+                if (!response.ok) {
+                    const err = await response.json().catch(() => ({}));
+                    throw new Error(err.error || `HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                contentEl.textContent = data.feedback;
+            } catch (e) {
+                console.error('AI feedback error:', e);
+                contentEl.textContent = 'AIフィードバックの取得に失敗しました: ' + e.message;
+            } finally {
+                loadingEl.style.display = 'none';
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
         }
 
         // スプラッシュ画面終了後に通知チェック
