@@ -7527,7 +7527,6 @@
 
             // Initialize posture analysis when switching to posture tab
             if (id === 'posture') {
-                if (!postureLandmarker) initPostureLandmarker();
                 renderPostureHistory();
                 if (typeof lucide !== 'undefined') lucide.createIcons();
             }
@@ -9551,22 +9550,32 @@
         let postureUploadedImage = null;
 
         async function initPostureLandmarker() {
-            try {
-                const vision = await FilesetResolver.forVisionTasks(
-                    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm"
-                );
-                postureLandmarker = await PoseLandmarker.createFromOptions(vision, {
-                    baseOptions: {
-                        modelAssetPath: "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task",
-                        delegate: "GPU"
-                    },
-                    runningMode: "IMAGE",
-                    numPoses: 1
-                });
-                console.log('PoseLandmarker initialized');
-            } catch (e) {
-                console.error('PoseLandmarker init failed:', e);
-                alert('姿勢分析エンジンの初期化に失敗しました。ブラウザがWebGLに対応しているか確認してください。');
+            if (postureLandmarker) return;
+            if (typeof FilesetResolver === 'undefined' || typeof PoseLandmarker === 'undefined') {
+                console.warn('MediaPipe Tasks Vision not loaded yet');
+                throw new Error('MediaPipe CDNがまだ読み込まれていません。ページを再読み込みしてください。');
+            }
+            // GPU失敗時にCPUへフォールバック
+            const delegates = ['GPU', 'CPU'];
+            for (const delegate of delegates) {
+                try {
+                    const vision = await FilesetResolver.forVisionTasks(
+                        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm"
+                    );
+                    postureLandmarker = await PoseLandmarker.createFromOptions(vision, {
+                        baseOptions: {
+                            modelAssetPath: "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task",
+                            delegate: delegate
+                        },
+                        runningMode: "IMAGE",
+                        numPoses: 1
+                    });
+                    console.log('PoseLandmarker initialized with delegate:', delegate);
+                    return;
+                } catch (e) {
+                    console.warn(`PoseLandmarker init failed with ${delegate}:`, e);
+                    if (delegate === 'CPU') throw e;
+                }
             }
         }
 
@@ -9610,7 +9619,12 @@
 
         // ===== Phase1: カメラ制御 =====
         async function startPostureCamera() {
-            if (!postureLandmarker) await initPostureLandmarker();
+            try {
+                if (!postureLandmarker) await initPostureLandmarker();
+            } catch (e) {
+                alert('姿勢分析エンジンの初期化に失敗しました: ' + e.message);
+                return;
+            }
             try {
                 postureStream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' } });
                 const video = document.getElementById('posture-video');
@@ -9648,7 +9662,10 @@
         }
 
         async function capturePostureFrame() {
-            if (!postureLandmarker) { alert('分析エンジンを初期化中です。少々お待ちください。'); return; }
+            if (!postureLandmarker) {
+                alert('分析エンジンを初期化中です。少々お待ちください。');
+                return;
+            }
             const video = document.getElementById('posture-video');
             const canvas = document.getElementById('posture-canvas');
             canvas.width = video.videoWidth;
@@ -9696,7 +9713,12 @@
 
         async function analyzeUploadedImage() {
             if (!postureUploadedImage) return;
-            if (!postureLandmarker) await initPostureLandmarker();
+            try {
+                if (!postureLandmarker) await initPostureLandmarker();
+            } catch (e) {
+                alert('姿勢分析エンジンの初期化に失敗しました: ' + e.message);
+                return;
+            }
             const canvas = document.getElementById('posture-upload-canvas');
             document.getElementById('posture-loading').style.display = '';
             try {
