@@ -24,8 +24,13 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- MediaPipe Tasks Vision (Pose Landmarker) -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/vision_bundle.js" crossorigin="anonymous"></script>
+    <!-- MediaPipe Tasks Vision (Pose Landmarker) - ESモジュールとして読み込み -->
+    <script type="module">
+        import { FilesetResolver, PoseLandmarker, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18";
+        window._MediaPipe = { FilesetResolver, PoseLandmarker, DrawingUtils };
+        window._mediaPipeReady = true;
+        console.log('MediaPipe Tasks Vision loaded');
+    </script>
 
     <!-- Tailwind Config - Premium Color Palette -->
     <script>
@@ -9551,11 +9556,10 @@
 
         async function initPostureLandmarker() {
             if (postureLandmarker) return;
-            if (typeof FilesetResolver === 'undefined' || typeof PoseLandmarker === 'undefined') {
-                console.warn('MediaPipe Tasks Vision not loaded yet');
-                throw new Error('MediaPipe CDNがまだ読み込まれていません。ページを再読み込みしてください。');
+            if (!window._mediaPipeReady || !window._MediaPipe) {
+                throw new Error('MediaPipeライブラリを読み込み中です。数秒待ってから再度お試しください。');
             }
-            // GPU失敗時にCPUへフォールバック
+            const { FilesetResolver, PoseLandmarker } = window._MediaPipe;
             const delegates = ['GPU', 'CPU'];
             for (const delegate of delegates) {
                 try {
